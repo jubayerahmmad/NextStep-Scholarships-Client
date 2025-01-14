@@ -2,7 +2,7 @@ import { FaChevronRight } from "react-icons/fa";
 
 const SearchBar = () => {
   return (
-    <div className="max-w-7xl mx-auto my-6">
+    <div className="max-w-xl mx-auto my-6">
       <div className="flex">
         <select className="inline-flex items-center py-2 px-4 font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-2 focus:outline-none focus:ring-teal-500 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600">
           <option>
