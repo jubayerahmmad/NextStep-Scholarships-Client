@@ -26,13 +26,13 @@ const Banner = () => {
             }}
           >
             {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-black opacity-70 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-cyan-950 opacity-70 transition-opacity duration-300"></div>
 
             {/* Content (Text) */}
             <div className="flex flex-col justify-center items-center max-w-5xl mx-auto text-center h-full text-white font-bold relative z-10 opacity-100 transition-opacity duration-300 space-y-2 p-4">
               <h2 className="text-white text-4xl lg:text-6xl font-bold mb-4 animate__animated animate__fadeInLeft">
                 Welcome to <br />
-                <span className="font-light bg-gradient-to-br from-cyan-400 via-cyan-600 to-cyan-800 bg-clip-text text-transparent font-playfair">
+                <span className="font-bold bg-gradient-to-br from-teal-200 via-teal-400 to-teal-500 bg-clip-text text-transparent font-playfair">
                   NextStep Scholarships
                 </span>
               </h2>
@@ -58,7 +58,7 @@ const Banner = () => {
             }}
           >
             {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-black opacity-70 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-cyan-950 opacity-70 transition-opacity duration-300"></div>
 
             {/* Content (Text) */}
             <div className="flex flex-col justify-center items-center max-w-5xl mx-auto text-center h-full text-white font-bold relative z-10 opacity-100 transition-opacity duration-300 space-y-2 p-4">
@@ -84,7 +84,7 @@ const Banner = () => {
             }}
           >
             {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-black opacity-70 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-cyan-950 opacity-70 transition-opacity duration-300"></div>
 
             {/* Content (Text) */}
             <div className="flex flex-col justify-center items-center max-w-5xl mx-auto text-center h-full text-white font-bold relative z-10 opacity-100 transition-opacity duration-300 space-y-2 p-4">
@@ -110,7 +110,7 @@ const Banner = () => {
             }}
           >
             {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-black opacity-70 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-cyan-950 opacity-70 transition-opacity duration-300"></div>
 
             {/* Content (Text) */}
             <div className="flex flex-col justify-center items-center max-w-5xl mx-auto text-center h-full text-white font-bold relative z-10 opacity-100 transition-opacity duration-300 space-y-2 p-4">

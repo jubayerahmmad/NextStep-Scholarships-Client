@@ -14,6 +14,7 @@ import ManageScholarships from "../Pages/CommonPage/ManageScholarships";
 import AllReviews from "../Pages/CommonPage/AllReviews";
 import MyApplications from "../Pages/UsersPages/MyApplications";
 import MyReviews from "../Pages/UsersPages/MyReviews";
+import ScholarshipDetails from "../Pages/ScholarshipDetails/ScholarshipDetails";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "allScholarships",
         element: <AllScholarships />,
+      },
+      {
+        path: "scholarship-details/:id",
+        element: <ScholarshipDetails />,
       },
     ],
   },

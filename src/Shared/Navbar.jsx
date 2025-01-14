@@ -21,10 +21,7 @@ const Navbar = () => {
     <div className="fixed top-0 w-full z-50 bg-teal-100 animate__animated animate__fadeInDown">
       <div className="navbar lg:w-10/12 mx-auto px-6">
         <div className="navbar-start">
-          <Link
-            to={"/"}
-            className="btn btn-ghost text-base hover:bg-none lg:text-2xl"
-          >
+          <Link to={"/"} className="text-base hover:bg-none lg:text-2xl">
             <div className="flex items-center gap-2">
               <img className="w-10 h-10" src={logo} alt="" />
               <div className="text-left bg-gradient-to-br from-cyan-500 via-cyan-700 to-cyan-900 bg-clip-text text-transparent">

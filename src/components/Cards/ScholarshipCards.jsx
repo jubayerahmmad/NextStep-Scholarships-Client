@@ -1,3 +1,8 @@
+import { FaMoneyBill } from "react-icons/fa";
+import { FaHourglass, FaLocationArrow } from "react-icons/fa6";
+import { IoBookSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
+
 const ScholarshipCards = ({
   universityName = "Harvard University",
   universityLogo = "https://i.ibb.co.com/zxcDpWs/harvard.webp",
@@ -7,64 +12,66 @@ const ScholarshipCards = ({
   subjectCategory = "Engineering, Science",
   applicationFee = 75,
   rating = 4.8,
-  onDetailsClick,
 }) => {
   return (
-    <div className="card w-full bg-base-100 shadow-xl border border-gray-200">
-      {/* University Image */}
-      <figure className="p-4">
-        <img
-          src={universityLogo}
-          alt={`${universityName} Logo`}
-          className="h-20 w-20 object-cover rounded-full"
-        />
-      </figure>
+    <div className="w-full shadow-lg hover:shadow-xl duration-500 rounded-md border border-gray-200">
+      <div className="flex items-center">
+        {/* University Image */}
+        <figure className="p-4">
+          <img
+            src={universityLogo}
+            alt={`${universityName} Logo`}
+            className="h-20 w-20 object-cover rounded-full"
+          />
+        </figure>
+        <div>
+          {/* University Name */}
+          <h2 className="lg:text-lg flex items-center gap-2 font-bold text-gray-800">
+            {universityName}{" "}
+            <span className="badge badge-accent badge-xs xl:badge-sm">
+              {scholarshipCategory}
+            </span>
+          </h2>
+
+          {/* Location */}
+          <p className="text-sm flex items-center gap-2">
+            <FaLocationArrow /> {location.city}, {location.country}
+          </p>
+        </div>
+      </div>
 
       {/* Card Body */}
-      <div className="card-body">
-        {/* University Name */}
-        <h2 className="card-title text-lg font-bold text-gray-800">
-          {universityName}
-        </h2>
-
-        {/* Scholarship Category */}
-        <p className="text-sm text-blue-600 font-medium">
-          Scholarship Category:{" "}
-          <span className="font-semibold">{scholarshipCategory}</span>
-        </p>
-
-        {/* Location */}
-        <p className="text-sm text-gray-600">
-          📍 {location.city}, {location.country}
-        </p>
-
+      <div className=" p-5">
         {/* Deadline */}
-        <p className="text-sm text-red-500">
-          ⏳ Deadline: <span className="font-medium">{deadline}</span>
+        <p className="text-sm flex items-center gap-2">
+          <FaHourglass /> Deadline:{" "}
+          <span className="font-medium">{deadline}</span>
         </p>
 
         {/* Subject Category */}
-        <p className="text-sm text-gray-600">
-          📘 Subject: <span className="font-medium">{subjectCategory}</span>
+        <p className="text-sm flex items-center gap-2">
+          <IoBookSharp /> Subject:{" "}
+          <span className="font-medium">{subjectCategory}</span>
         </p>
 
         {/* Application Fee */}
-        <p className="text-sm text-gray-600">
-          💵 Application Fee:{" "}
+        <p className="text-sm flex items-center gap-2">
+          <FaMoneyBill /> Application Fee:{" "}
           <span className="font-medium">${applicationFee}</span>
         </p>
 
-        {/* Rating */}
-        <div className="flex items-center space-x-1">
-          <span className="text-yellow-500">⭐</span>
-          <span className="font-bold text-gray-800">{rating.toFixed(1)}</span>
-        </div>
-
         {/* Scholarship Details Button */}
-        <div className="card-actions justify-end mt-4">
-          <button className="btn btn-primary btn-sm" onClick={onDetailsClick}>
-            View Details
-          </button>
+        <div className="flex items-center justify-between mt-4">
+          {/* Rating */}
+          <div className="flex items-center space-x-1">
+            <span className="text-yellow-500">⭐</span>
+            <span className="font-bold text-gray-800">{rating.toFixed(1)}</span>
+          </div>
+          <Link to={`/scholarship-details/1`}>
+            <button className="btn btn-outline text-teal-700 hover:bg-teal-800 btn-sm">
+              View Details
+            </button>
+          </Link>
         </div>
       </div>
     </div>
