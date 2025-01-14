@@ -37,7 +37,7 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex"></div>
         <div className="navbar-end items-center">
           {/* big screen nav */}
-          <ul className="text-xl gap-4 px-2 py-1 rounded-md hidden font-bold lg:flex">
+          <ul className="text-xl gap-4 px-2 py-1 rounded-md hidden font-bold lg:flex mx-4">
             {navOptions}
           </ul>
           <div className="dropdown dropdown-end">

@@ -30,20 +30,20 @@ const Banner = () => {
 
             {/* Content (Text) */}
             <div className="flex flex-col justify-center items-center max-w-5xl mx-auto text-center h-full text-white font-bold relative z-10 opacity-100 transition-opacity duration-300 space-y-2 p-4">
-              <h2 className="text-white text-2xl lg:text-6xl font-bold mb-4 animate__animated animate__fadeInLeft">
-                Welcome to{" "}
+              <h2 className="text-white text-4xl lg:text-6xl font-bold mb-4 animate__animated animate__fadeInLeft">
+                Welcome to <br />
                 <span className="font-light bg-gradient-to-br from-cyan-400 via-cyan-600 to-cyan-800 bg-clip-text text-transparent font-playfair">
-                  NextStep Scholarship
+                  NextStep Scholarships
                 </span>
               </h2>
-              <p className="text-gray-300 text-xs px-5 lg:text-lg max-w-6xl text-center animate__animated animate__fadeInLeft">
+              <p className="text-gray-300 tracking-wider text-xs px-5 lg:text-lg max-w-6xl text-center animate__animated animate__fadeInLeft">
                 NextStep Scholarships is a platform that provides financial aid
                 to students who are pursuing higher education. Our scholarships
                 are open to all students, regardless of their background or
                 field of study. We are committed to supporting the next
                 generation of leaders and innovators.
               </p>
-              <button className="btn btn-link text-cyan-500 text-xl">
+              <button className="btn btn-sm btn-outline hover:bg-teal-900 text-teal-500 text-lg">
                 Explore Scholarships
               </button>
             </div>
@@ -69,7 +69,7 @@ const Banner = () => {
                 Apply today and secure financial support for your education.
                 Limited spots available!
               </p>
-              <button className="btn btn-link text-cyan-500 text-xl">
+              <button className="btn btn-sm btn-outline hover:bg-teal-900 text-teal-500 text-lg">
                 Apply for Scholarships
               </button>
             </div>
@@ -95,7 +95,7 @@ const Banner = () => {
                 Receive expert advice to navigate through your scholarship
                 applications effortlessly.
               </p>
-              <button className="btn btn-link text-cyan-500 text-xl">
+              <button className="btn btn-sm btn-outline hover:bg-teal-900 text-teal-500 text-lg">
                 Apply Now
               </button>
             </div>
@@ -121,7 +121,7 @@ const Banner = () => {
               <p className="text-gray-300 text-xs px-5 lg:text-xl max-w-6xl text-center animate__animated animate__fadeInLeft">
                 Connect with thousands of students benefiting from our programs.
               </p>
-              <button className="btn btn-link text-cyan-500 text-xl">
+              <button className="btn btn-sm btn-outline hover:bg-teal-900 text-teal-500 text-lg">
                 Join Today
               </button>
             </div>

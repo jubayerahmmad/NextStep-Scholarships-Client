@@ -7,7 +7,7 @@ const AboutUs = () => {
         Heading={"About Us"}
         subHeading={"Empowering dreams, one scholarship at a time."}
       ></Heading>
-      <div className="max-w-7xl mx-auto rounded-md shadow-lg text-gray-800 px-6 py-4">
+      <div className="max-w-7xl mx-auto px-6 py-4 rounded-md shadow-lg text-gray-800">
         <div className="flex flex-wrap items-center">
           {/* Left Side: Text */}
           <div className="w-full md:w-1/2 mb-6 md:mb-0">
