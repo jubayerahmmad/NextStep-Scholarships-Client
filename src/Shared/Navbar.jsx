@@ -18,7 +18,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="fixed top-0 w-full z-50 bg-teal-50 animate__animated animate__fadeInDown">
+    <div className="fixed top-0 w-full z-50 bg-teal-100 animate__animated animate__fadeInDown">
       <div className="navbar lg:w-10/12 mx-auto px-6">
         <div className="navbar-start">
           <Link
@@ -76,7 +76,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="px-5 py-3 right-3 text-black flex flex-col font-semibold dropdown-content bg-base-100 rounded-box z-[1] mt-3 shadow"
+              className="px-5 py-2 space-y-2 right-3 text-black flex flex-col font-semibold dropdown-content bg-base-100 rounded-md z-[1] mt-3 shadow"
             >
               {navOptions}
             </ul>

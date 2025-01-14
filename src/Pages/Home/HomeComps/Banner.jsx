@@ -1,13 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
-
-import img1 from "../../../assets/banner/slider1.png";
-import img2 from "../../../assets/banner/slider2.png";
-import img3 from "../../../assets/banner/slider3.png";
 
 const Banner = () => {
   return (
