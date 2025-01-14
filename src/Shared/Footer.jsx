@@ -30,38 +30,32 @@ const Footer = () => {
 
             <ul className="mt-6 flex items-center gap-12">
               <li>
-                <a
-                  href="#"
-                  className="flex text-base text-black transition-all duration-200 hover:text-teal-600 focus:text-teal-600"
-                >
+                <Link className="flex text-base text-black transition-all duration-200 hover:text-teal-600 focus:text-teal-600">
                   Home
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="allScholarships"
                   className="flex text-base text-black transition-all duration-200 hover:text-teal-600 focus:text-teal-600"
                 >
                   All Scholarships
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/faq"
                   className="flex text-base text-black transition-all duration-200 hover:text-teal-600 focus:text-teal-600"
                 >
-                  About
-                </a>
+                  Help
+                </Link>
               </li>
             </ul>
             <ul className="flex items-center space-x-3 mt-6">
               <li>
-                <a
-                  href="#"
-                  className="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-7 h-7 hover:bg-teal-600 focus:bg-teal-600"
-                >
+                <a className="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-7 h-7 hover:bg-teal-600 focus:bg-teal-600">
                   <FaFacebook />
                 </a>
               </li>

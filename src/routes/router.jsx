@@ -15,6 +15,7 @@ import AllReviews from "../Pages/CommonPage/AllReviews";
 import MyApplications from "../Pages/UsersPages/MyApplications";
 import MyReviews from "../Pages/UsersPages/MyReviews";
 import ScholarshipDetails from "../Pages/ScholarshipDetails/ScholarshipDetails";
+import Faq from "../Pages/Faq/Faq";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "scholarship-details/:id",
         element: <ScholarshipDetails />,
+      },
+      {
+        path: "faq",
+        element: <Faq />,
       },
     ],
   },

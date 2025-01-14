@@ -2,10 +2,14 @@ import { FaHourglass, FaLocationArrow, FaMoneyBill } from "react-icons/fa";
 import { IoBookSharp } from "react-icons/io5";
 import Heading from "../../components/Heading";
 import Reviews from "../../components/Cards/Reviews";
+import { Helmet } from "react-helmet-async";
 
 const ScholarshipDetails = () => {
   return (
     <div className="max-w-7xl mx-auto mt-6 px-4 py-6">
+      <Helmet>
+        <title>Scholarship Details | NextStep Scholarships</title>
+      </Helmet>
       <Heading Heading="Check Full Details"></Heading>
       <div className="divider"></div>
       <div className="w-full rounded-sm duration-500 mt-6">

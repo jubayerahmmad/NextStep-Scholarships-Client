@@ -1,24 +1,37 @@
 import bg from "../../assets/loginbg.png";
 import loginGif from "../../assets/login.gif";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { useState } from "react";
-import { FaEyeSlash } from "react-icons/fa";
+import { FaArrowLeft, FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa6";
+import { Helmet } from "react-helmet-async";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
   return (
     <div
       style={{
         backgroundImage: `url(${bg})`,
         backgroundRepeat: "no-repeat",
       }}
-      className="flex flex-col bg-cover bg-center justify-center items-center min-h-screen p-6"
+      className="flex flex-col bg-cover bg-center justify-center items-center min-h-screen p-6 overflow-hidden"
     >
-      <div className="card lg:card-side bg-base-100 shadow-xl animate__animated animate__zoomIn">
+      <Helmet>
+        <title>Login | NextStep Scholarships</title>
+      </Helmet>
+      <div className="card relative lg:card-side bg-base-100 shadow-xl animate__animated animate__fadeInRight">
         <figure className="lg:w-1/3">
           <img src={loginGif} alt="Album" />
         </figure>
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+          className="absolute left-3 top-3 btn btn-sm btn-outline text-black hover:bg-transparent hover:border-teal-500 hover:text-teal-500"
+        >
+          <FaArrowLeft /> Back{" "}
+        </button>
         <div className="card-body lg:w-2/3 bg-cyan-950">
           <div className="text-center space-y-3">
             {/* logo */}
@@ -29,9 +42,10 @@ const Login = () => {
                 <p className="text-lg lg:text-xl font-bold">Scholarships</p>
               </div>
             </div>
+
             {/* login */}
             <h1 className="text-xl text-white font-bold">Login Now</h1>
-            <button className="w-full text-center border border-[#e5eaf2] rounded-md py-2 px-4 flex items-center mx-auto gap-[10px] text-[1rem] text-white transition-all duration-200">
+            <button className="w-full text-center border border-[#e5eaf2] rounded-md py-2 px-4 flex justify-center items-center mx-auto gap-[10px] text-[1rem] text-white transition-all duration-200">
               <img
                 src="https://i.ibb.co/dQMmB8h/download-4-removebg-preview-1.png"
                 alt="google logo"

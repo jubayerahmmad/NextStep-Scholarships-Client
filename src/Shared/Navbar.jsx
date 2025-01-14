@@ -15,6 +15,11 @@ const Navbar = () => {
           <button>Scholarships</button>
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/faq">
+          <button>FAQs</button>
+        </NavLink>
+      </li>
     </>
   );
   return (
