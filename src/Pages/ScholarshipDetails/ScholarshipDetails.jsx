@@ -1,6 +1,5 @@
 import { FaHourglass, FaLocationArrow, FaMoneyBill } from "react-icons/fa";
 import { IoBookSharp } from "react-icons/io5";
-import { Link } from "react-router-dom";
 import Heading from "../../components/Heading";
 import Reviews from "../../components/Cards/Reviews";
 
