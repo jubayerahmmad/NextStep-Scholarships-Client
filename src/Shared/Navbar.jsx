@@ -18,7 +18,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="fixed top-0 w-full z-50 bg-gray-300 animate__animated animate__fadeInDown">
+    <div className="fixed top-0 w-full z-50 bg-teal-50 animate__animated animate__fadeInDown">
       <div className="navbar lg:w-10/12 mx-auto px-6">
         <div className="navbar-start">
           <Link
@@ -27,7 +27,7 @@ const Navbar = () => {
           >
             <div className="flex items-center gap-2">
               <img className="w-10 h-10" src={logo} alt="" />
-              <div className="text-left">
+              <div className="text-left bg-gradient-to-br from-cyan-500 via-cyan-700 to-cyan-900 bg-clip-text text-transparent">
                 <h1 className="text-sm lg:text-base font-bold">NextStep</h1>
                 <p className="text-xs lg:text-sm font-bold">Scholarships</p>
               </div>
@@ -88,71 +88,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-// {
-//   user ? (
-//     <>
-//       <div className="dropdown dropdown-end">
-//         <div
-//           tabIndex={0}
-//           role="button"
-//           className="btn btn-ghost btn-circle avatar"
-//         >
-//           <div className="w-10 rounded-full">
-//             <img
-//               referrerPolicy="no-referrer"
-//               alt="Tailwind CSS Navbar component"
-//               src={user.photoURL}
-//             />
-//           </div>
-//         </div>
-//         <ul
-//           tabIndex={0}
-//           className="menu menu-sm dropdown-content bg-base-100 text-black rounded-box z-[1] mt-3 w-52 p-2 shadow"
-//         >
-//           <li>
-//             <NavLink
-//               to={`/dashboard/${isAdmin ? "adminHome" : "userHome"}`}
-//               className="justify-between"
-//             >
-//               Dashboard
-//             </NavLink>
-//           </li>
-
-//           <li>
-//             <button onClick={handleLogout} className="">
-//               Log Out
-//             </button>
-//           </li>
-//         </ul>
-//       </div>
-//     </>
-//   ) : (
-//     <>
-//       <div className="dropdown dropdown-end">
-//         <div
-//           tabIndex={0}
-//           role="button"
-//           className="btn btn-ghost btn-circle avatar"
-//         >
-//           <div className="w-10 rounded-full">
-//             <img
-//               alt="Tailwind CSS Navbar component"
-//               src="https://i.ibb.co.com/KVqSkwf/silver-gradient-social-media-chatting-online-blank-profile-picture-head-and-body-icon-people-standin.jpg"
-//             />
-//           </div>
-//         </div>
-//         <ul
-//           tabIndex={0}
-//           className="menu menu-sm dropdown-content bg-base-100 text-black rounded-box z-[1] mt-3 w-52 p-2 shadow"
-//         >
-//           <li>
-//             <Link to="/login">Login</Link>
-//           </li>
-//           <li>
-//             <Link to="/register">Register</Link>
-//           </li>
-//         </ul>
-//       </div>
-//     </>
-//   );
-// }
