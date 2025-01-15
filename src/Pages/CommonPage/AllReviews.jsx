@@ -19,7 +19,7 @@ const AllReviews = () => {
                 <th>Reviewer</th>
                 <th>Comment</th>
                 <th>University</th>
-                <th>Category</th>
+                <th>Subject Category</th>
                 <th>Date</th>
                 <th>Actions</th>
               </tr>

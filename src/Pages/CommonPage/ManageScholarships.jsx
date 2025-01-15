@@ -21,7 +21,7 @@ const ManageScholarships = () => {
                 <th>Scholarship</th>
                 <th>University</th>
                 <th>Degree</th>
-                <th>Category</th>
+                <th>Subject Category</th>
                 <th>Fees</th>
                 <th>Actions</th>
               </tr>

@@ -9,13 +9,13 @@ const MyApplicationsRow = () => {
           <div className="avatar">
             <div className="mask mask-squircle h-8 w-8 lg:h-12 lg:w-12">
               <img
-                src="https://img.daisyui.com/images/profile/demo/2@94.webp"
-                alt="Avatar Tailwind CSS Component"
+                src="https://i.ibb.co.com/cDJwpsZ/Pau-Cubarsi.jpg"
+                alt="user profile"
               />
             </div>
           </div>
           <div>
-            <div className="font-bold">Harvard University</div>
+            <div className="font-bold text-xs">Harvard University</div>
             <div className="opacity-50">United States</div>
           </div>
         </div>
@@ -23,7 +23,7 @@ const MyApplicationsRow = () => {
       <td>
         Masters
         <br />
-        <span className="badge badge-ghost badge-xs">Engineering</span>
+        <span className="badge badge-ghost badge-xs text-xs">Engineering</span>
       </td>
       <td>
         <div className="flex flex-wrap">
@@ -43,19 +43,19 @@ const MyApplicationsRow = () => {
       <td>Pending</td>
       <td>
         <div className="flex">
-          <button className="btn btn-ghost btn-xs">
-            <FaInfoCircle size={16} />{" "}
+          <button className="btn btn-ghost btn-sm">
+            <FaInfoCircle size={20} />{" "}
           </button>
-          <button className="btn btn-ghost btn-xs">
-            <FaEdit size={16} />{" "}
+          <button className="btn btn-ghost btn-sm">
+            <FaEdit size={20} />{" "}
           </button>
-          <button className="btn btn-ghost btn-xs">
-            <GiCancel size={16} />
+          <button className="btn btn-ghost btn-sm">
+            <GiCancel size={20} />
           </button>
         </div>
       </td>
       <td>
-        <button className="btn btn-xs btn-accent">Review</button>
+        <button className="btn btn-sm btn-accent">Review</button>
       </td>
     </tr>
   );
