@@ -6,9 +6,37 @@ import { useState } from "react";
 import { FaArrowLeft, FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa6";
 import { Helmet } from "react-helmet-async";
+import { useForm } from "react-hook-form";
+import ImageUploadInput from "../../components/ImageUploadInput";
+import { imageUpload } from "../../utils";
+import useAuth from "../../hooks/useAuth";
 const Register = () => {
+  const [imageFile, setImageFile] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const handleFileChange = (e) => {
+    e.preventDefault();
+    const file = e.target.files[0];
+    setImageFile(file);
+  };
+
+  const onSubmit = async (data) => {
+    const name = data?.name;
+    const email = data?.email;
+    const password = data?.password;
+    const imageURL = await imageUpload(imageFile);
+
+    console.log(name, email, password);
+    console.log(imageURL);
+    reset();
+  };
   return (
     <div
       style={{
@@ -56,42 +84,71 @@ const Register = () => {
           </div>
           <div className="divider divider-accent text-teal-400">OR</div>
           {/* login form */}
-          <form className="">
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-5">
-              <label
-                for="email"
-                className="block mb-2 text-sm font-medium text-white"
-              >
-                Your email
-              </label>
+              <div className="flex items-center">
+                <label className="block mb-2 text-sm font-medium text-white">
+                  Your Name
+                </label>
+                {errors.name && (
+                  <span className="text-red-500 mb-2 font-bold">*</span>
+                )}
+              </div>
               <input
-                type="email"
-                id="email"
+                type="text"
+                {...register("name", { required: true })}
                 className="bg-transparent border border-gray-300 text-white text-sm rounded-lg focus:ring-2 focus:ring-teal-200 focus:border-teal-500 block w-full p-2.5"
-                placeholder="Email"
-                required
+                placeholder="Name"
               />
             </div>
-            <div className="mb-5 relative">
-              <label
-                for="password"
-                className="block mb-2 text-sm font-medium text-white"
-              >
-                Your password
-              </label>
+
+            <div className="mb-5">
+              <div className="flex items-center">
+                <label className="block mb-2 text-sm font-medium text-white">
+                  Your Email
+                </label>
+                {errors.email && (
+                  <span className="text-red-500 mb-2 font-bold">*</span>
+                )}
+              </div>
               <input
+                type="email"
+                {...register("email", { required: true })}
+                className="bg-transparent border border-gray-300 text-white text-sm rounded-lg focus:ring-2 focus:ring-teal-200 focus:border-teal-500 block w-full p-2.5"
+                placeholder="Email"
+              />
+            </div>
+
+            <div className="mb-5 relative">
+              <div className="flex items-center">
+                <label className="block mb-2 text-sm font-medium text-white">
+                  Your password
+                </label>{" "}
+                {errors.password && (
+                  <span className="text-red-500 mb-2 font-bold">*</span>
+                )}
+              </div>
+              <input
+                {...register("password", { required: true })}
                 type={showPassword ? "text" : "password"}
-                id="password"
                 placeholder="Your Password"
                 className="bg-transparent border border-gray-300 text-white text-sm rounded-lg focus:ring-2 focus:ring-teal-200 focus:border-teal-500 block w-full p-2.5"
-                required
               />
               <button
+                type="button"
                 className="text-white absolute right-3 bottom-3"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? <FaEye /> : <FaEyeSlash />}
               </button>
+            </div>
+
+            {/* image */}
+            <div className="mb-5">
+              <ImageUploadInput
+                imageFile={imageFile}
+                handleFileChange={handleFileChange}
+              ></ImageUploadInput>
             </div>
 
             <button

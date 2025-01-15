@@ -1,8 +1,16 @@
 import { useState } from "react";
+import ImageUploadInput from "../ImageUploadInput";
 
 const AddScholarshipForm = () => {
+  const [imageFile, setImageFile] = useState("");
+
+  const handleFileChange = (e) => {
+    e.preventDefault();
+    const file = e.target.files[0];
+    setImageFile(file);
+  };
   return (
-    <div className="max-w-5xl mx-auto p-6 bg-gray-200 rounded-lg mt-10">
+    <div className="max-w-5xl mx-auto p-6 bg-gray-100 rounded-lg mt-10">
       <p className="text-2xl font-bold text-teal-800 text-center mb-6">
         Scholarship Application Details
       </p>
@@ -43,10 +51,10 @@ const AddScholarshipForm = () => {
             University Image/Logo
           </label>
 
-          <input
-            type="file"
-            className="mt-1 block text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border file:font-bold file:bg-teal-100 file:text-teal-700 hover:file:bg-teal-100"
-          />
+          <ImageUploadInput
+            imageFile={imageFile}
+            handleFileChange={handleFileChange}
+          ></ImageUploadInput>
         </div>
 
         {/* Country and City */}

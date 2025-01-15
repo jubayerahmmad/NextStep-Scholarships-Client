@@ -6,9 +6,23 @@ import { useState } from "react";
 import { FaArrowLeft, FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa6";
 import { Helmet } from "react-helmet-async";
+import { useForm } from "react-hook-form";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    reset();
+    const email = data?.email;
+    const password = data?.password;
+    console.log(email, password);
+  };
   return (
     <div
       style={{
@@ -56,36 +70,41 @@ const Login = () => {
           </div>
           <div className="divider divider-accent text-teal-400">OR</div>
           {/* login form */}
-          <form className="">
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-5">
-              <label
-                for="email"
-                className="block mb-2 text-sm font-medium text-white"
-              >
-                Your email
-              </label>
+              <div className="flex items-center">
+                <label className="block mb-2 text-sm font-medium text-white">
+                  Your Email
+                </label>
+                {errors.email && (
+                  <span className="text-red-500 mb-2 font-bold">*</span>
+                )}
+              </div>
               <input
                 type="email"
                 id="email"
+                {...register("email", { required: true })}
                 className="bg-transparent border border-gray-300 text-white text-sm rounded-lg focus:ring-2 focus:ring-teal-200 focus:border-teal-500 block w-full p-2.5"
                 placeholder="Email"
-                required
               />
             </div>
             <div className="mb-5 relative">
-              <label
-                for="password"
-                className="block mb-2 text-sm font-medium text-white"
-              >
-                Your password
-              </label>
+              <div className="flex items-center">
+                <label className="block mb-2 text-sm font-medium text-white">
+                  Your Password
+                </label>
+                {errors.password && (
+                  <span className="text-red-500 mb-2 font-bold">*</span>
+                )}
+              </div>
               <input
+                {...register("password", { required: true })}
                 type={showPassword ? "text" : "password"}
                 id="password"
                 placeholder="Your Password"
                 className="bg-transparent border border-gray-300 text-white text-sm rounded-lg focus:ring-2 focus:ring-teal-200 focus:border-teal-500 block w-full p-2.5"
-                required
               />
+
               <button
                 className="text-white absolute right-3 bottom-3"
                 onClick={() => setShowPassword(!showPassword)}
