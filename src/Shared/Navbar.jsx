@@ -51,12 +51,12 @@ const Navbar = () => {
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost btn-circle avatar"
+              className="btn btn-ghost btn-circle ring-2 ring-teal-600 avatar"
             >
               <div className="w-10 lg:w-12 rounded-full">
                 <img
                   alt="Tailwind CSS Navbar component"
-                  src="https://i.ibb.co.com/KVqSkwf/silver-gradient-social-media-chatting-online-blank-profile-picture-head-and-body-icon-people-standin.jpg"
+                  src="https://i.ibb.co.com/KX2TZyk/man.png"
                 />
               </div>
             </div>

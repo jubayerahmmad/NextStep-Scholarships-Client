@@ -48,10 +48,10 @@ const Sidebar = () => {
                 role="button"
                 className="btn btn-ghost btn-circle avatar"
               >
-                <div className="w-10 lg:w-12 rounded-full">
+                <div className="w-10 lg:w-12 rounded-full ring-2 ring-teal-700">
                   <img
-                    alt="Tailwind CSS Navbar component"
-                    src="https://i.ibb.co.com/KVqSkwf/silver-gradient-social-media-chatting-online-blank-profile-picture-head-and-body-icon-people-standin.jpg"
+                    alt="user profile"
+                    src="https://i.ibb.co.com/KX2TZyk/man.png"
                   />
                 </div>
               </div>
@@ -72,7 +72,7 @@ const Sidebar = () => {
         </div>
       </nav>
 
-      {/* sidebar */}
+      {/* ----------SIDEBAR--------- */}
       <aside
         id="logo-sidebar"
         className={`fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform ${
