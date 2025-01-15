@@ -2,7 +2,7 @@ import { FaEdit, FaInfoCircle } from "react-icons/fa";
 import { GiCancel } from "react-icons/gi";
 const MyApplicationsRow = () => {
   return (
-    <tr className="text-xs">
+    <tr className="hover">
       <th>1</th>
       <td>
         <div className="flex items-center gap-3">
@@ -15,17 +15,15 @@ const MyApplicationsRow = () => {
             </div>
           </div>
           <div>
-            <div className="font-bold text-xs">Harvard University</div>
-            <div className="text-xs opacity-50">United States</div>
+            <div className="font-bold">Harvard University</div>
+            <div className="opacity-50">United States</div>
           </div>
         </div>
       </td>
       <td>
-        Master of Business Administration
+        Masters
         <br />
-        <span className="badge badge-ghost badge-xs text-xs">
-          Business Administration
-        </span>
+        <span className="badge badge-ghost badge-xs">Engineering</span>
       </td>
       <td>
         <div className="flex flex-wrap">

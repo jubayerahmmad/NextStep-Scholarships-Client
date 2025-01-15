@@ -3,7 +3,7 @@ import { GiCancel } from "react-icons/gi";
 
 const MyReviewRow = () => {
   return (
-    <tr className="text-xs">
+    <tr className="hover">
       <th>1</th>
 
       <td>Global Excellence Scholarship</td>

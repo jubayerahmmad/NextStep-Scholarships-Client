@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Heading from "../../components/Heading";
+import { Helmet } from "react-helmet-async";
 
 const Faq = () => {
   const [bgAccording, setBgAccording] = useState(null);
@@ -35,6 +36,9 @@ const Faq = () => {
     setBgAccording((prevIndex) => (prevIndex === index ? null : index));
   return (
     <div className="px-4 py-6">
+      <Helmet>
+        <title>FAQ | NextStep Scholarships</title>
+      </Helmet>
       <Heading
         Heading={"Frequently Asked Questions"}
         subHeading={"Explore Frequently Asked Questions"}
@@ -95,7 +99,7 @@ const Faq = () => {
           <p className="text-xs lg:text-base">
             Don't Hesitate to send us an Email with your Enquiry or statement
           </p>
-          {/* form area */}
+          {/* form*/}
           <form className="w-full mt-6">
             <div className="w-full mx-auto">
               <div className="flex sm:flex-row flex-col items-center gap-[20px]">
