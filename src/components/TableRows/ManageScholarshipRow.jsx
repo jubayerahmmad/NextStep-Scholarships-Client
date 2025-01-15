@@ -13,13 +13,13 @@ const ManageScholarshipRow = () => {
       <td>$99</td>
       <td>
         <div className="flex gap-2">
-          <button className="btn btn-success btn-sm">
+          <button className="btn btn-ghost btn-sm">
             <FaInfoCircle size={20} />{" "}
           </button>
-          <button className="btn btn-outline btn-sm">
+          <button className="btn btn-ghost btn-sm">
             <FaEdit size={20} />{" "}
           </button>
-          <button className="btn btn-error btn-sm">
+          <button className="btn btn-ghost text-error btn-sm">
             <GiCancel size={20} />
           </button>
         </div>
