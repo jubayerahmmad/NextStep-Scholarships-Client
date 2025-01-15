@@ -20,6 +20,11 @@ const Navbar = () => {
           <button>FAQs</button>
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/dashboard/my-profile">
+          <button>Dashboard</button>
+        </NavLink>
+      </li>
     </>
   );
   return (

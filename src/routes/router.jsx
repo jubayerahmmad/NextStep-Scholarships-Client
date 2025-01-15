@@ -16,6 +16,7 @@ import MyApplications from "../Pages/UsersPages/MyApplications";
 import MyReviews from "../Pages/UsersPages/MyReviews";
 import ScholarshipDetails from "../Pages/ScholarshipDetails/ScholarshipDetails";
 import Faq from "../Pages/Faq/Faq";
+import AdminProfile from "../Pages/AdminPages/AdminProfile";
 
 const router = createBrowserRouter([
   {
@@ -57,13 +58,17 @@ const router = createBrowserRouter([
     element: <DashboardLayout />,
     children: [
       {
-        index: true,
+        path: "my-profile",
         element: <MyProfile />,
       },
       // Admin/Moderator Routes
       {
         path: "allUsers",
         element: <AllUsers />, // admin only
+      },
+      {
+        path: "admin-profile",
+        element: <AdminProfile />, // admin only
       },
       {
         path: "addScholarships",
