@@ -42,6 +42,7 @@ const MyApplicationsRow = () => {
       <td>
         <span>$35</span>
       </td>
+      <td>Pending</td>
       <td>
         <div className="flex">
           <button className="btn btn-ghost btn-xs">

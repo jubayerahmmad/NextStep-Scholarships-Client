@@ -22,7 +22,8 @@ const MyApplications = () => {
                 <th>Degree</th>
                 <th>Feedback</th>
                 <th>Fees</th>
-                <th>Service Charge</th>
+                <th>Charge</th>
+                <th>Status</th>
                 <th>Actions</th>
                 <th>Review</th>
               </tr>
