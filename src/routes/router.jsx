@@ -17,6 +17,7 @@ import MyReviews from "../Pages/UsersPages/MyReviews";
 import ScholarshipDetails from "../Pages/ScholarshipDetails/ScholarshipDetails";
 import Faq from "../Pages/Faq/Faq";
 import AdminProfile from "../Pages/AdminPages/AdminProfile";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -55,10 +56,14 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
     children: [
       {
-        path: "my-profile",
+        index: true,
         element: <MyProfile />,
       },
       // Admin/Moderator Routes

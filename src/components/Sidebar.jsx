@@ -1,6 +1,6 @@
 import { BiLogOut, BiMenu } from "react-icons/bi";
 import logo from "../assets/logo.png";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { CgClose, CgProfile } from "react-icons/cg";
 import { FaUserGraduate, FaUserShield } from "react-icons/fa6";
@@ -9,8 +9,34 @@ import { GiGraduateCap } from "react-icons/gi";
 import { MdRateReview, MdReviews } from "react-icons/md";
 import { LiaGraduationCapSolid } from "react-icons/lia";
 import { VscGitStashApply } from "react-icons/vsc";
+import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
 const Sidebar = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
+  const { user, logOutUser } = useAuth();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    Swal.fire({
+      title: "Are you sure You want to Log Out?",
+      text: "",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        logOutUser().then(() => {
+          navigate("/");
+          Swal.fire({
+            title: "User Logged Out",
+            text: "Log Out Successful",
+            icon: "success",
+          });
+        });
+      }
+    });
+  };
 
   return (
     <div>
@@ -51,19 +77,24 @@ const Sidebar = () => {
                 <div className="w-10 lg:w-12 rounded-full ring-2 ring-teal-700">
                   <img
                     alt="user profile"
-                    src="https://i.ibb.co.com/KX2TZyk/man.png"
+                    referrerPolicy="no-referrer"
+                    src={
+                      user?.photoURL
+                        ? user?.photoURL
+                        : "https://i.ibb.co.com/KX2TZyk/man.png"
+                    }
                   />
                 </div>
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 text-black rounded-md w-40 z-[1] mt-3 p-2 shadow"
+                className="menu menu-sm dropdown-content bg-base-100 text-black rounded-md z-[1] mt-3 p-2 shadow"
               >
                 <li>
-                  <p>Pau Cubarsi</p>
+                  <p>{user?.displayName}</p>
                 </li>
                 <li>
-                  <p>cucu@cubarsi.com</p>
+                  <p>{user?.email}</p>
                 </li>
               </ul>
             </div>
@@ -180,16 +211,16 @@ const Sidebar = () => {
             <div className="divider"></div>
             {/* logout and profile(moderator,user profile) */}
             <li>
-              <NavLink
-                to="my-profile"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
+              <NavLink className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <CgProfile size={20} />
                 <span className="flex-1 ms-3 whitespace-nowrap">Profile</span>
               </NavLink>
             </li>
             <li>
-              <button className="flex items-center gap-3 p-2 w-full text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-3 p-2 w-full text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
                 <BiLogOut size={20} />
                 <span>Log Out</span>
               </button>

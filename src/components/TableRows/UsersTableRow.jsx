@@ -1,28 +1,25 @@
 import { MdDelete } from "react-icons/md";
 
-const UsersTableRow = () => {
+const UsersTableRow = ({ userData }) => {
+  const { name, email, image, role } = userData;
   return (
     <tr className="hover">
-      <th>1</th>
       <td>
         <div className="flex items-center gap-3">
           <div className="avatar">
             <div className="mask mask-squircle h-8 w-8 lg:h-12 lg:w-12">
-              <img
-                src="https://i.ibb.co.com/cDJwpsZ/Pau-Cubarsi.jpg"
-                alt="Avatar"
-              />
+              <img referrerPolicy="no-referrer" src={image} alt="Avatar" />
             </div>
           </div>
           <div>
-            <div className="font-bold text-xs">Pau Cubarsi</div>
+            <div className="font-bold text-xs">{name}</div>
           </div>
         </div>
       </td>
-      <td>cucu@cubarsi.com</td>
+      <td>{email}</td>
       <td>
         <select
-          defaultValue={"User"}
+          defaultValue={role}
           className="px-3 py-1 rounded-lg bg-teal-900 text-white"
         >
           <option value="">Change Role</option>

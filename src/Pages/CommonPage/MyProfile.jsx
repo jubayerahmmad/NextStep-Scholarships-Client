@@ -1,4 +1,10 @@
+import { useState } from "react";
+import UpdateUserModal from "../../components/Modals/UpdateUserModal";
+import useAuth from "../../hooks/useAuth";
+
 const MyProfile = () => {
+  const { user, updateUser } = useAuth();
+  const [isModalOpen, setisModalOpen] = useState(false);
   return (
     <div className="px-4 flex flex-col items-center justify-center min-h-[calc(100vh-96px)]">
       <div className="rounded-2xl max-w-4xl border bg-base-100 shadow-2xl ">
@@ -12,20 +18,28 @@ const MyProfile = () => {
         <div className="px-6 py-4 bg-teal-50 rounded-b-2xl">
           <div className="avatar -mt-16">
             <div className="ring-teal-600 ring-offset-base-100 w-24 rounded-full ring ring-offset-2">
-              <img src="https://i.ibb.co.com/Zf8Bg9d/cubarsi.jpg" />
+              <img referrerPolicy="no-referrer" src={user?.photoURL} />
             </div>
           </div>
           <h2 className="card-title">
-            Pau Cubarsi
+            {user?.displayName}
             <span className="badge badge-accent badge-outline">User</span>
           </h2>
-          <p>cucu@cubarsi.com</p>
+          <p> {user?.email}</p>
           <div className="card-actions py-6">
-            <button className="btn btn-sm btn-outline text-teal-600 hover:bg-teal-700 hover:border-teal-700">
+            <button
+              onClick={() => setisModalOpen(true)}
+              className="btn btn-sm btn-outline text-teal-600 hover:bg-teal-700 hover:border-teal-700"
+            >
               Update Profile
             </button>
           </div>
         </div>
+        <UpdateUserModal
+          isModalOpen={isModalOpen}
+          setisModalOpen={setisModalOpen}
+          updateUser={updateUser}
+        />
       </div>
     </div>
   );
