@@ -4,11 +4,12 @@ import UsersTableRow from "../../components/TableRows/UsersTableRow";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import Loader from "../../components/Loader";
+import { BiSort } from "react-icons/bi";
+import { useState } from "react";
 
 const AllUsers = () => {
   const { user } = useAuth();
   const axiosPrivate = useAxiosPrivate();
-  // console.log(user?.email);
 
   const {
     data: users = [],
@@ -46,7 +47,12 @@ const AllUsers = () => {
                   <tr>
                     <th>User Info</th>
                     <th>User Email</th>
-                    <th>Role</th>
+                    <th className="inline-flex items-center gap-1">
+                      Role{" "}
+                      <button>
+                        <BiSort size={16} />
+                      </button>
+                    </th>
                     <th>Actions</th>
                   </tr>
                 </thead>

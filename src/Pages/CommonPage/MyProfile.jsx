@@ -17,7 +17,7 @@ const MyProfile = () => {
             alt="background"
           />
         </figure>
-        <div className="px-6 py-4 bg-teal-50 rounded-b-2xl">
+        <div className="px-6 py-4 bg-gradient-to-bl from-teal-300 via-teal-100 to-teal-50 rounded-b-2xl">
           <div className="avatar -mt-16">
             <div className="ring-teal-600 ring-offset-base-100 w-24 rounded-full ring ring-offset-2">
               <img referrerPolicy="no-referrer" src={user?.photoURL} />

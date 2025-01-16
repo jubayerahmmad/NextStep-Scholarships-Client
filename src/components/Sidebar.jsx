@@ -18,7 +18,6 @@ const Sidebar = () => {
   const navigate = useNavigate();
 
   const { role } = useRole();
-  console.log(role);
 
   const handleLogout = () => {
     Swal.fire({

@@ -28,12 +28,12 @@ const UpdateUserModal = ({ isModalOpen, setisModalOpen, updateUser }) => {
   return (
     <div
       className={`${
-        isModalOpen ? " visible" : " invisible"
+        isModalOpen ? "visible" : "invisible"
       } w-full h-screen fixed top-0 left-0 z-50 bg-[#000000c4] transition-all duration-300 flex items-center justify-center`}
     >
       <div
         className={`${
-          isModalOpen ? " scale-[1] opacity-100" : " scale-[0] opacity-0"
+          isModalOpen ? "scale-[1] opacity-100" : "scale-[0] opacity-0"
         } w-[90%] md:w-[80%] lg:w-[35%] bg-[#fff] rounded-lg transition-all duration-300 mx-auto mt-8`}
       >
         <div className="w-full flex items-end p-4 justify-between border-b border-[#d1d1d1]">
@@ -57,7 +57,7 @@ const UpdateUserModal = ({ isModalOpen, setisModalOpen, updateUser }) => {
               name="name"
               id="Name"
               placeholder="Your Name"
-              className="py-2 px-3 border border-[#d1d1d1] rounded-md w-full focus:outline-none mt-1 focus:border-[#3B9DF8]"
+              className="py-2 px-3 border border-[#d1d1d1] rounded-md w-full focus:outline-none mt-1 focus:border-teal-500"
             />
           </div>
           <div className="mb-5">
@@ -69,7 +69,7 @@ const UpdateUserModal = ({ isModalOpen, setisModalOpen, updateUser }) => {
 
           <button
             type="submit"
-            className="py-2 px-4 w-full bg-[#3B9DF8] text-[#fff] rounded-md"
+            className="py-2 px-4 w-full bg-teal-600 text-[#fff] rounded-md"
           >
             Update
           </button>
