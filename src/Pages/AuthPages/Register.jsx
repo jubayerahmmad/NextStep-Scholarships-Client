@@ -1,6 +1,6 @@
 import bg from "../../assets/loginbg.png";
 import loginGif from "../../assets/login.gif";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { useState } from "react";
 import { FaArrowLeft, FaEyeSlash } from "react-icons/fa";
@@ -10,10 +10,14 @@ import { useForm } from "react-hook-form";
 import ImageUploadInput from "../../components/ImageUploadInput";
 import { imageUpload } from "../../utils";
 import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 const Register = () => {
   const [imageFile, setImageFile] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [load, setLoad] = useState(false);
   const navigate = useNavigate();
+  const { state } = useLocation();
+  const { updateUser, createUser, googleLogin } = useAuth();
   const {
     register,
     handleSubmit,
@@ -28,15 +32,39 @@ const Register = () => {
   };
 
   const onSubmit = async (data) => {
+    setLoad(true);
     const name = data?.name;
     const email = data?.email;
     const password = data?.password;
     const imageURL = await imageUpload(imageFile);
 
-    console.log(name, email, password);
-    console.log(imageURL);
-    reset();
+    try {
+      const result = await createUser(email, password);
+      // update profile
+      await updateUser(name, imageURL);
+      // console.log(result);
+      toast.success("User Registration Successful");
+      //TODO: save user to the data
+      setLoad(false);
+      reset();
+      navigate(`${state ? state : "/"}`);
+    } catch (error) {
+      setLoad(false);
+      toast.error(error.code.split("/")[1].split("-").join(" ").toUpperCase());
+    }
   };
+
+  const handleGoogleLogin = async () => {
+    setLoad(true);
+    try {
+      const result = await googleLogin();
+      navigate(`${state ? state : "/"}`);
+      toast.success("Login Successful");
+    } catch (error) {
+      toast.error(error.code.split("/")[1].split("-").join(" ").toUpperCase());
+    }
+  };
+
   return (
     <div
       style={{
@@ -73,7 +101,10 @@ const Register = () => {
             {/* login */}
             <h1 className="text-xl text-white font-bold">Register Now</h1>
 
-            <button className="w-full text-center border border-[#e5eaf2] rounded-md py-2 px-4 flex justify-center items-center mx-auto gap-[10px] text-[1rem] text-white transition-all duration-200">
+            <button
+              onClick={handleGoogleLogin}
+              className="w-full text-center border border-[#e5eaf2] rounded-md py-2 px-4 flex justify-center items-center mx-auto gap-[10px] text-[1rem] text-white transition-all duration-200"
+            >
               <img
                 src="https://i.ibb.co/dQMmB8h/download-4-removebg-preview-1.png"
                 alt="google logo"
@@ -152,10 +183,11 @@ const Register = () => {
             </div>
 
             <button
+              disabled={imageFile == ""}
               type="submit"
-              className="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800"
+              className={`disabled:bg-gray-300 disabled:text-gray-800 disabled:cursor-not-allowed text-white bg-teal-700 hover:bg-teal-800 font-medium rounded-lg text-sm w-full sm:w-auto px-4 py-2 text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800`}
             >
-              Register
+              {load ? "Registering..." : "Register"}
             </button>
           </form>
           <p className="text-center text-white">

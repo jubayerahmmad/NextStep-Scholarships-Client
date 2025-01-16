@@ -1,15 +1,19 @@
 import bg from "../../assets/loginbg.png";
 import loginGif from "../../assets/login.gif";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { useState } from "react";
 import { FaArrowLeft, FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa6";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
+import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { loginUser, googleLogin } = useAuth();
   const navigate = useNavigate();
+  const { state } = useLocation();
   const {
     register,
     handleSubmit,
@@ -17,12 +21,31 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    reset();
+  const onSubmit = async (data) => {
     const email = data?.email;
     const password = data?.password;
-    console.log(email, password);
+
+    try {
+      await loginUser(email, password);
+      navigate(`${state ? state : "/"}`);
+      toast.success("Login Successful");
+      reset();
+    } catch (error) {
+      toast.error(error.code.split("/")[1].split("-").join(" ").toUpperCase());
+    }
   };
+
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await googleLogin();
+      navigate(`${state ? state : "/"}`);
+      toast.success("Login Successful");
+    } catch (error) {
+      console.log(error);
+      toast.error(error.code.split("/")[1].split("-").join(" ").toUpperCase());
+    }
+  };
+
   return (
     <div
       style={{
@@ -59,7 +82,10 @@ const Login = () => {
 
             {/* login */}
             <h1 className="text-xl text-white font-bold">Login Now</h1>
-            <button className="w-full text-center border border-[#e5eaf2] rounded-md py-2 px-4 flex justify-center items-center mx-auto gap-[10px] text-[1rem] text-white transition-all duration-200">
+            <button
+              onClick={handleGoogleLogin}
+              className="w-full text-center border border-[#e5eaf2] rounded-md py-2 px-4 flex justify-center items-center mx-auto gap-[10px] text-[1rem] text-white transition-all duration-200"
+            >
               <img
                 src="https://i.ibb.co/dQMmB8h/download-4-removebg-preview-1.png"
                 alt="google logo"

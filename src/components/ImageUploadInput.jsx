@@ -12,7 +12,7 @@ const ImageUploadInput = ({ handleFileChange, imageFile }) => {
         <div className="w-full border-4 border-dashed px-2 py-4 rounded-xl">
           <p className="text-black bg-teal-50 text-sm flex items-center gap-2 px-4 py-2 rounded-md border w-fit mx-auto">
             {imageFile === ""
-              ? `Upload Image`
+              ? `Upload Image *`
               : `${
                   imageFile?.name.length < 15
                     ? imageFile?.name
