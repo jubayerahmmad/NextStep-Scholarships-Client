@@ -63,7 +63,7 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        index: true,
+        path: "my-profile",
         element: <MyProfile />,
       },
       // Admin/Moderator Routes

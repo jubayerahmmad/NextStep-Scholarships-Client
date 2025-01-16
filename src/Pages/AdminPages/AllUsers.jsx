@@ -8,7 +8,8 @@ import Loader from "../../components/Loader";
 const AllUsers = () => {
   const { user } = useAuth();
   const axiosPrivate = useAxiosPrivate();
-  console.log(user?.email);
+  // console.log(user?.email);
+
   const {
     data: users = [],
     isLoading,

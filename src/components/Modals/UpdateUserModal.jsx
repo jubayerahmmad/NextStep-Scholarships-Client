@@ -16,7 +16,7 @@ const UpdateUserModal = ({ isModalOpen, setisModalOpen, updateUser }) => {
     const imageURL = await imageUpload(imageFile);
 
     try {
-      await updateUser(name, imageURL);
+      updateUser(name, imageURL);
       //  save user to the data
       await axiosPublic.post(`/save-user/${user?.email}`, userInfo);
       toast.success("User Registration Successful");

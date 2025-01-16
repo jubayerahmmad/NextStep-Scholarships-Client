@@ -1,10 +1,12 @@
 import { useState } from "react";
 import UpdateUserModal from "../../components/Modals/UpdateUserModal";
 import useAuth from "../../hooks/useAuth";
+import useRole from "../../hooks/useRole";
 
 const MyProfile = () => {
   const { user, updateUser } = useAuth();
   const [isModalOpen, setisModalOpen] = useState(false);
+  const { role } = useRole();
   return (
     <div className="px-4 flex flex-col items-center justify-center min-h-[calc(100vh-96px)]">
       <div className="rounded-2xl max-w-4xl border bg-base-100 shadow-2xl ">
@@ -23,7 +25,9 @@ const MyProfile = () => {
           </div>
           <h2 className="card-title">
             {user?.displayName}
-            <span className="badge badge-accent badge-outline">User</span>
+            {role !== "User" && (
+              <span className="badge badge-accent badge-outline">{role}</span>
+            )}
           </h2>
           <p> {user?.email}</p>
           <div className="card-actions py-6">

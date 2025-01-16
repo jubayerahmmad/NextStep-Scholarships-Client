@@ -158,6 +158,7 @@ const Login = () => {
                     />
 
                     <button
+                      type="button"
                       className="text-white absolute right-3 bottom-3"
                       onClick={() => setShowPassword(!showPassword)}
                     >

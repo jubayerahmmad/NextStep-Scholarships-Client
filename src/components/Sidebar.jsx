@@ -11,10 +11,15 @@ import { LiaGraduationCapSolid } from "react-icons/lia";
 import { VscGitStashApply } from "react-icons/vsc";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
+import useRole from "../hooks/useRole";
 const Sidebar = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
   const { user, logOutUser } = useAuth();
   const navigate = useNavigate();
+
+  const { role } = useRole();
+  console.log(role);
+
   const handleLogout = () => {
     Swal.fire({
       title: "Are you sure You want to Log Out?",
@@ -114,104 +119,119 @@ const Sidebar = () => {
         <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
             {/* only admin */}
-            <li>
-              <NavLink
-                to="admin-profile"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <FcStatistics size={20} />
-                <span className="ms-3">Admin Profile</span>
-              </NavLink>
-            </li>
+            {role === "Admin" && (
+              <>
+                <li>
+                  <NavLink
+                    to="admin-profile"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <FcStatistics size={20} />
+                    <span className="ms-3">Admin Profile</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="allUsers"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <FaUserShield size={20} />
+                    <span className="flex-1 ms-3 whitespace-nowrap">
+                      Manage Users
+                    </span>
+                  </NavLink>
+                </li>
+              </>
+            )}
 
             {/* admin/moderator */}
-            <li>
-              <NavLink
-                to="appliedScholarships"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <FaUserGraduate size={20} />
-                <span className="flex-1 ms-3 whitespace-nowrap">
-                  Applied Scholarships
-                </span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="allReviews"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <MdReviews size={20} />
-                <span className="flex-1 ms-3 whitespace-nowrap">Reviews</span>
-                <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
-                  3
-                </span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="addScholarships"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <GiGraduateCap size={20} />
-                <span className="flex-1 ms-3 whitespace-nowrap">
-                  Add Scholarship
-                </span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="manageScholarships"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <LiaGraduationCapSolid size={20} />
-                <span className="flex-1 ms-3 whitespace-nowrap">
-                  Manage Scholarships
-                </span>
-              </NavLink>
-            </li>
-
-            <li>
-              <NavLink
-                to="allUsers"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <FaUserShield size={20} />
-                <span className="flex-1 ms-3 whitespace-nowrap">
-                  Manage Users
-                </span>
-              </NavLink>
-            </li>
-
+            {role === "Admin" || role === "Moderator" ? (
+              <>
+                <li>
+                  <NavLink
+                    to="appliedScholarships"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <FaUserGraduate size={20} />
+                    <span className="flex-1 ms-3 whitespace-nowrap">
+                      Applied Scholarships
+                    </span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="allReviews"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <MdReviews size={20} />
+                    <span className="flex-1 ms-3 whitespace-nowrap">
+                      Reviews
+                    </span>
+                    <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
+                      3
+                    </span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="addScholarships"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <GiGraduateCap size={20} />
+                    <span className="flex-1 ms-3 whitespace-nowrap">
+                      Add Scholarship
+                    </span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="manageScholarships"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <LiaGraduationCapSolid size={20} />
+                    <span className="flex-1 ms-3 whitespace-nowrap">
+                      Manage Scholarships
+                    </span>
+                  </NavLink>
+                </li>
+              </>
+            ) : null}
             {/* user/student navs */}
 
-            <li>
-              <NavLink
-                to="myApplications"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <VscGitStashApply size={20} />
-                <span className="flex-1 ms-3 whitespace-nowrap">
-                  My Applications
-                </span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="myReviews"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <MdRateReview size={20} />
-                <span className="flex-1 ms-3 whitespace-nowrap">
-                  My Reviews
-                </span>
-              </NavLink>
-            </li>
+            {role === "User" && (
+              <>
+                <li>
+                  <NavLink
+                    to="myApplications"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <VscGitStashApply size={20} />
+                    <span className="flex-1 ms-3 whitespace-nowrap">
+                      My Applications
+                    </span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="myReviews"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <MdRateReview size={20} />
+                    <span className="flex-1 ms-3 whitespace-nowrap">
+                      My Reviews
+                    </span>
+                  </NavLink>
+                </li>
+              </>
+            )}
 
             <div className="divider"></div>
             {/* logout and profile(moderator,user profile) */}
             <li>
-              <NavLink className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+              <NavLink
+                to="my-profile"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
                 <CgProfile size={20} />
                 <span className="flex-1 ms-3 whitespace-nowrap">Profile</span>
               </NavLink>
