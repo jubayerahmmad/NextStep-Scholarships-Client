@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// upload image to cloudinary
 export const imageUpload = async (imageFile) => {
   if (!imageFile) return;
   const formData = new FormData();
@@ -10,8 +11,8 @@ export const imageUpload = async (imageFile) => {
     `https://api.cloudinary.com/v1_1/dbjhyikin/image/upload`,
     formData
   );
-
   const image_url = data.url;
-
   return image_url;
 };
+
+export const saveUserData = async (name, email, image) => {};

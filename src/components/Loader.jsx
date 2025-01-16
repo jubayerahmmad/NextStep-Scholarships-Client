@@ -1,3 +1,4 @@
+import logo from "../assets/logo.png";
 const Loader = () => {
   const sharedStyle = {
     content: "",
@@ -12,8 +13,15 @@ const Loader = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center">
-      <div className="relative w-[22.4px] h-[22.4px]">
+    <div className="min-h-screen bg-teal-100 flex flex-col justify-center items-center">
+      <div className="flex items-center gap-2">
+        <img className="w-10 h-10" src={logo} alt="" />
+        <div className="text-left bg-gradient-to-br from-cyan-500 via-cyan-700 to-cyan-900 bg-clip-text text-transparent">
+          <h1 className="text-sm lg:text-base font-bold">NextStep</h1>
+          <p className="text-xs lg:text-sm font-bold">Scholarships</p>
+        </div>
+      </div>
+      <div className="relative mt-16 w-[22.4px] h-[22.4px]">
         <div
           style={{
             ...sharedStyle,
