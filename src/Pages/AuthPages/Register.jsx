@@ -12,6 +12,7 @@ import { imageUpload } from "../../utils";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 const Register = () => {
   const [imageFile, setImageFile] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -19,6 +20,7 @@ const Register = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const { updateUser, createUser, googleLogin } = useAuth();
+  const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
@@ -40,17 +42,24 @@ const Register = () => {
     const imageURL = await imageUpload(imageFile);
 
     try {
-      const result = await createUser(email, password);
+      const { user } = await createUser(email, password);
       // update profile
       await updateUser(name, imageURL);
-      // console.log(result);
+      console.log(user);
+      const userInfo = {
+        name: user?.displayName,
+        email: user?.email,
+        image: user?.photoURL,
+      };
+      //  save user to the data
+      await axiosPublic.post(`/save-user/${user?.email}`, userInfo);
       toast.success("User Registration Successful");
-      //TODO: save user to the data
       setLoad(false);
       reset();
       navigate(`${state ? state : "/"}`);
     } catch (error) {
       setLoad(false);
+      console.log(error);
       toast.error(error.code.split("/")[1].split("-").join(" ").toUpperCase());
     }
   };
@@ -58,10 +67,19 @@ const Register = () => {
   const handleGoogleLogin = async () => {
     setLoad(true);
     try {
-      const result = await googleLogin();
+      const { user } = await googleLogin();
+      const userInfo = {
+        name: user?.displayName,
+        email: user?.email,
+        image: user?.photoURL,
+      };
+      //  save user to the data
+      await axiosPublic.post(`/save-user/${user?.email}`, userInfo);
+      setLoad(false);
+      toast.success("User Sign In Successful");
       navigate(`${state ? state : "/"}`);
-      toast.success("Login Successful");
     } catch (error) {
+      console.log(error);
       toast.error(error.code.split("/")[1].split("-").join(" ").toUpperCase());
     }
   };
@@ -154,23 +172,34 @@ const Register = () => {
                     </div>
                     <input
                       type="email"
-                      {...register("email", { required: true })}
+                      {...register("email", {
+                        required: true,
+                      })}
                       className="bg-transparent border border-gray-300 text-white text-sm rounded-lg focus:ring-2 focus:ring-teal-200 focus:border-teal-500 block w-full p-2.5"
                       placeholder="Email"
                     />
                   </div>
 
                   <div className="mb-5 relative">
-                    <div className="flex items-center">
+                    <div className="flex items-center gap-2">
                       <label className="block mb-2 text-sm font-medium text-white">
                         Your password
                       </label>{" "}
                       {errors.password && (
-                        <span className="text-red-500 mb-2 font-bold">*</span>
+                        <span className="text-red-500 mb-1 font-bold text-[10px]">
+                          {errors.password.message}
+                        </span>
                       )}
                     </div>
                     <input
-                      {...register("password", { required: true })}
+                      {...register("password", {
+                        required: true,
+                        pattern: {
+                          value: /(?=.*[a-z])(?=.*[A-Z])/,
+                          message:
+                            "Password must include uppercase and lowercase character",
+                        },
+                      })}
                       type={showPassword ? "text" : "password"}
                       placeholder="Your Password"
                       className="bg-transparent border border-gray-300 text-white text-sm rounded-lg focus:ring-2 focus:ring-teal-200 focus:border-teal-500 block w-full p-2.5"

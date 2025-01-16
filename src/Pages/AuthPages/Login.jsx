@@ -10,12 +10,14 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { loginUser, googleLogin } = useAuth();
   const [load, setLoad] = useState(false);
   const navigate = useNavigate();
   const { state } = useLocation();
+  const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
@@ -36,6 +38,7 @@ const Login = () => {
       reset();
     } catch (error) {
       setLoad(false);
+      console.log(error);
       toast.error(error.code.split("/")[1].split("-").join(" ").toUpperCase());
     }
   };
@@ -43,13 +46,21 @@ const Login = () => {
   const handleGoogleLogin = async () => {
     setLoad(true);
     try {
-      const result = await googleLogin();
-      navigate(`${state ? state : "/"}`);
+      const { user } = await googleLogin();
+
       setLoad(false);
-      toast.success("Login Successful");
+      const userInfo = {
+        name: user?.displayName,
+        email: user?.email,
+        image: user?.photoURL,
+      };
+      //  save user to the data
+      await axiosPublic.post(`/save-user/${user?.email}`, userInfo);
+
+      navigate(`${state ? state : "/"}`);
+      toast.success("User Sign In Successful");
     } catch (error) {
       console.log(error);
-      setLoad(false);
       toast.error(error.code.split("/")[1].split("-").join(" ").toUpperCase());
     }
   };
