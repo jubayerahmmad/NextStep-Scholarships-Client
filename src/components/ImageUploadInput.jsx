@@ -10,7 +10,7 @@ const ImageUploadInput = ({ handleFileChange, imageFile }) => {
       />
       <label htmlFor="imageFile">
         <div className="w-full border-4 border-dashed px-2 py-4 rounded-xl">
-          <p className="text-black bg-teal-50 text-sm flex items-center gap-2 px-4 py-2 rounded-md border w-fit mx-auto">
+          <p className="text-black bg-teal-100 text-sm flex items-center gap-2 px-4 py-2 rounded-md border w-fit mx-auto">
             {imageFile === ""
               ? `Upload Image *`
               : `${

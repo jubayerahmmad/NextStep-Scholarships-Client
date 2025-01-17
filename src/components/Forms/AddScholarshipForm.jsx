@@ -57,7 +57,7 @@ const AddScholarshipForm = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-6 bg-gray-100 rounded-lg mt-10">
+    <div className="max-w-7xl mx-auto p-6 bg-gray-100 rounded-lg mt-10">
       <p className="text-2xl font-bold text-teal-800 text-center mb-6">
         Scholarship Application Details
       </p>
@@ -65,7 +65,7 @@ const AddScholarshipForm = () => {
       {/* form */}
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         {/* Uni and Scholarship Row world rank */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {/* Scholarship*/}
           <div className="w-full">
             <label className="block text-sm font-medium text-gray-700">
@@ -117,6 +117,20 @@ const AddScholarshipForm = () => {
             imageFile={imageFile}
             handleFileChange={handleFileChange}
           ></ImageUploadInput>
+        </div>
+
+        {/* scholarship desc*/}
+        <div className="w-full">
+          <label className="block text-sm font-medium text-gray-700">
+            Description
+          </label>
+          <textarea
+            rows={5}
+            name="description"
+            {...register("description", { required: true })}
+            className="mt-1 block w-full rounded-md px-4 py-2 outline-teal-500"
+            placeholder="Write Scholarship Details"
+          />
         </div>
 
         {/* Country and City */}
@@ -183,26 +197,40 @@ const AddScholarshipForm = () => {
             </select>
           </div>
         </div>
+        {/* degre and subject name */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* subject name */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Subject Name
+            </label>
+            <input
+              name="subjectName"
+              {...register("subjectName", { required: true })}
+              className="mt-1 block w-full rounded-md px-4 py-2 outline-teal-500"
+            ></input>
+          </div>
 
-        {/* Degree */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Degree
-          </label>
-          <select
-            name="degree"
-            {...register("degree", { required: true })}
-            className="mt-1 block w-full rounded-md px-4 py-2 outline-teal-500"
-          >
-            <option value="">Select a degree</option>
-            <option value="Diploma">Diploma</option>
-            <option value="Bachelor">Bachelor</option>
-            <option value="Masters">Masters</option>
-          </select>
+          {/* Degree */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Degree
+            </label>
+            <select
+              name="degree"
+              {...register("degree", { required: true })}
+              className="mt-1 block w-full rounded-md px-4 py-2 outline-teal-500"
+            >
+              <option value="">Select a degree</option>
+              <option value="Diploma">Diploma</option>
+              <option value="Bachelor">Bachelor</option>
+              <option value="Masters">Masters</option>
+            </select>
+          </div>
         </div>
 
-        {/* Tuition, application Fees, service charge */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {/* Tuition, application Fees, service charge,stipend */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* tution */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
@@ -240,6 +268,19 @@ const AddScholarshipForm = () => {
               {...register("serviceCharge", { required: true })}
               className="mt-1 block w-full rounded-md px-4 py-2 outline-teal-500"
               placeholder="Enter Service Charge"
+            />
+          </div>
+          {/* stipend */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Stipend
+            </label>
+            <input
+              type="number"
+              name="stipend"
+              {...register("stipend", { required: true })}
+              className="mt-1 block w-full rounded-md px-4 py-2 outline-teal-500"
+              placeholder="Enter Stipend"
             />
           </div>
         </div>

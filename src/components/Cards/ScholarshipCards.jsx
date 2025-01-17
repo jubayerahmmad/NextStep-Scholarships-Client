@@ -37,13 +37,13 @@ const ScholarshipCards = ({ scholarship }) => {
             <FaLocationArrow /> {city}, {country}
           </p>
         </div>
-        <span className="absolute right-4 top-4 badge badge-accent badge-sm xl:badge-md">
+        <span className="absolute right-2 top-2 badge badge-accent badge-sm">
           {scholarshipCategory}
         </span>
       </div>
 
       {/* Card Body */}
-      <div className=" p-5">
+      <div className="px-5 pb-2 h-32">
         <h2 className="text-xl font-bold mb-4 font-playfair bg-gradient-to-br from-cyan-800 via-teal-800 to-teal-50 bg-clip-text text-transparent">
           {scholarshipName}
         </h2>
@@ -64,20 +64,19 @@ const ScholarshipCards = ({ scholarship }) => {
           <FaMoneyBill /> Application Fee:{" "}
           <span className="font-medium">${applicationFees}</span>
         </p>
-
-        {/* Scholarship Details Button */}
-        <div className="flex items-center justify-between mt-4">
-          {/* Rating */}
-          <div className="flex items-center space-x-1">
-            <span className="text-yellow-500">⭐</span>
-            <span className="font-bold text-gray-800">{4.6}</span>
-          </div>
-          <Link to={`/scholarship-details/${_id}`}>
-            <button className="btn btn-outline text-teal-700 hover:bg-teal-800 btn-sm">
-              View Details
-            </button>
-          </Link>
+      </div>
+      {/* Scholarship Details Button */}
+      <div className="flex items-center justify-between px-5 pb-4 mt-4">
+        {/* Rating */}
+        <div className="flex items-center space-x-1">
+          <span className="text-yellow-500">⭐</span>
+          <span className="font-bold text-gray-800">{4.6}</span>
         </div>
+        <Link to={`/scholarship-details/${_id}`}>
+          <button className="btn btn-outline text-teal-700 hover:bg-teal-800 btn-sm">
+            View Details
+          </button>
+        </Link>
       </div>
     </div>
   );

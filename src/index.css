@@ -7,12 +7,12 @@
 h1,
 h2,
 h3,
-button {
+button,
+span {
   font-family: "Comfortaa", serif;
 }
 
 p,
-span,
 li {
   font-family: "Merriweather", serif;
 }
