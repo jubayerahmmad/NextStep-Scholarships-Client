@@ -10,16 +10,19 @@ import { useState } from "react";
 const AllUsers = () => {
   const { user } = useAuth();
   const axiosPrivate = useAxiosPrivate();
+  const [sortOrder, setSortOrder] = useState("");
 
   const {
     data: users = [],
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["users", user?.email],
+    queryKey: ["users", user?.email, sortOrder],
     queryFn: async () => {
       try {
-        const { data } = await axiosPrivate(`/all-users/${user?.email}`);
+        const { data } = await axiosPrivate(
+          `/all-users/${user?.email}?sort=${sortOrder}`
+        );
         return data;
       } catch (error) {
         console.log(error);
@@ -29,6 +32,11 @@ const AllUsers = () => {
 
   if (isLoading) return <Loader />;
   // console.log(users);
+
+  const handleSort = async () => {
+    setSortOrder(sortOrder === "asc" ? "dsc" : "asc");
+    refetch();
+  };
 
   return (
     <div>
@@ -49,7 +57,7 @@ const AllUsers = () => {
                     <th>User Email</th>
                     <th className="inline-flex items-center gap-1">
                       Role{" "}
-                      <button>
+                      <button onClick={handleSort}>
                         <BiSort size={16} />
                       </button>
                     </th>
