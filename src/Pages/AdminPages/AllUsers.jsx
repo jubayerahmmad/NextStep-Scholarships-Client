@@ -4,7 +4,6 @@ import UsersTableRow from "../../components/TableRows/UsersTableRow";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import Loader from "../../components/Loader";
-import { BiSort } from "react-icons/bi";
 import { useState } from "react";
 
 const AllUsers = () => {
@@ -33,12 +32,6 @@ const AllUsers = () => {
   });
 
   if (isLoading) return <Loader />;
-  // console.log(users);
-
-  // const handleSort = async () => {
-  //   setSortOrder();
-  //   // refetch();
-  // };
 
   return (
     <div>
@@ -73,12 +66,7 @@ const AllUsers = () => {
                   <tr>
                     <th>User Info</th>
                     <th>User Email</th>
-                    <th className="inline-flex items-center gap-1">
-                      Role{" "}
-                      {/* <button onClick={handleSort}>
-                        <BiSort size={16} />
-                      </button> */}
-                    </th>
+                    <th className="inline-flex items-center gap-1">Role </th>
                     <th>Actions</th>
                   </tr>
                 </thead>

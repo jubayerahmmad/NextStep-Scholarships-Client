@@ -27,7 +27,6 @@ const ScholarshipDetails = () => {
   });
 
   if (isLoading) return <Loader />;
-  console.log(scholarship);
 
   const {
     image,
@@ -52,7 +51,7 @@ const ScholarshipDetails = () => {
       </Helmet>
       <Heading Heading="Check Full Details"></Heading>
       <div className="divider"></div>
-      <div className="w-full rounded-sm duration-500 mt-6 relative">
+      <div className="w-full rounded-sm duration-500 mt-6 relative animate__animated animate__zoomInDown">
         <span className="absolute top-2 right-4 badge badge-accent badge-lg">
           World Rank: {worldRank}
         </span>
