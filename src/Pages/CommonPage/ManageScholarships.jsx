@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Heading from "../../components/Heading";
 import ManageScholarshipRow from "../../components/TableRows/ManageScholarshipRow";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../components/Loader";
+import UpdateScholarshipModal from "../../components/Modals/UpdateScholarshipModal";
 
 const ManageScholarships = () => {
   const axiosPrivate = useAxiosPrivate();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [updateScholarship, setUpdateScholarship] = useState({});
+
   const {
     data: scholarships = [],
     isLoading,
@@ -20,6 +24,18 @@ const ManageScholarships = () => {
   });
   if (isLoading) return <Loader />;
 
+  // TODO: Edit func
+  const handleOpenModal = async (id) => {
+    setModalOpen(true);
+
+    try {
+      const { data } = await axiosPrivate(`/scholarship/${id}`);
+      // console.log(data);
+      setUpdateScholarship(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <Heading
@@ -53,11 +69,20 @@ const ManageScholarships = () => {
                       scholarship={scholarship}
                       index={index}
                       refetch={refetch}
+                      handleOpenModal={handleOpenModal}
                     />
                   ))}
                 </tbody>
               </table>
             </div>
+            {modalOpen && (
+              <UpdateScholarshipModal
+                modalOpen={modalOpen}
+                setModalOpen={setModalOpen}
+                updateScholarship={updateScholarship}
+                refetch={refetch}
+              />
+            )}
           </div>
         ) : (
           "No Data"

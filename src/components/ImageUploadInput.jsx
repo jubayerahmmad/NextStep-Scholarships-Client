@@ -7,6 +7,7 @@ const ImageUploadInput = ({ handleFileChange, imageFile }) => {
         id="imageFile"
         className="hidden"
         onChange={handleFileChange}
+        required
       />
       <label htmlFor="imageFile">
         <div className="w-full border-4 border-dashed px-2 py-4 rounded-xl">

@@ -6,7 +6,6 @@ import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { toast } from "react-toastify";
 import { imageUpload } from "../../utils";
 import Loader from "../Loader";
-import { TbFidgetSpinner } from "react-icons/tb";
 
 const AddScholarshipForm = () => {
   const [imageFile, setImageFile] = useState("");
@@ -39,7 +38,7 @@ const AddScholarshipForm = () => {
 
     const imageURL = await imageUpload(imageFile);
     try {
-      const { data: added } = await axiosPrivate.post("/add-scholarship", {
+      await axiosPrivate.post("/add-scholarship", {
         ...data,
         applicationFees,
         email: user?.email,
@@ -50,8 +49,8 @@ const AddScholarshipForm = () => {
       setImageFile("");
       reset();
       toast.success("New Scholarship Added!");
-      console.log(added);
     } catch (error) {
+      setLoading(false);
       console.log(error);
     }
   };

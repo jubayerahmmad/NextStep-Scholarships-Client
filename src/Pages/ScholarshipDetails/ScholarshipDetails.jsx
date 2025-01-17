@@ -16,7 +16,6 @@ import Loader from "../../components/Loader";
 const ScholarshipDetails = () => {
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
-  console.log(id);
 
   const { data: scholarship = {}, isLoading } = useQuery({
     queryKey: ["scholarship"],
@@ -27,6 +26,8 @@ const ScholarshipDetails = () => {
   });
 
   if (isLoading) return <Loader />;
+
+  // TODO: Apply functionality
 
   const {
     image,

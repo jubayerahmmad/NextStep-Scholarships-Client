@@ -4,7 +4,12 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
-const ManageScholarshipRow = ({ scholarship, refetch, index }) => {
+const ManageScholarshipRow = ({
+  scholarship,
+  refetch,
+  index,
+  handleOpenModal,
+}) => {
   const axiosPrivate = useAxiosPrivate();
   const {
     _id,
@@ -55,7 +60,10 @@ const ManageScholarshipRow = ({ scholarship, refetch, index }) => {
             </button>
           </Link>
 
-          <button className="btn btn-ghost btn-sm">
+          <button
+            onClick={() => handleOpenModal(_id)}
+            className="btn btn-ghost btn-sm"
+          >
             <FaEdit size={20} />{" "}
           </button>
 

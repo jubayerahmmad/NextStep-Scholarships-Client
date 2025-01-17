@@ -21,7 +21,7 @@ const AllScholarships = () => {
   });
 
   if (isLoading) return <Loader />;
-  console.log(scholarships);
+
   return (
     <section className="px-4 py-6">
       <Helmet>
