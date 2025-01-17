@@ -29,8 +29,10 @@ const AddScholarshipForm = () => {
 
   const onSubmit = async (data) => {
     setLoading(true);
-    const postDate = new Date().toISOString().split("T")[0];
-    if (postDate > data.applicationDeadline) {
+    const postDate = new Date();
+    const applicationDeadline = new Date(data.applicationDeadline);
+
+    if (postDate > applicationDeadline) {
       return toast.error("Deadline cannot be a past date!!");
     }
 
@@ -43,7 +45,8 @@ const AddScholarshipForm = () => {
         applicationFees,
         email: user?.email,
         image: imageURL,
-        postDate: new Date().toISOString().split("T")[0],
+        applicationDeadline,
+        postDate,
       });
       setLoading(false);
       setImageFile("");

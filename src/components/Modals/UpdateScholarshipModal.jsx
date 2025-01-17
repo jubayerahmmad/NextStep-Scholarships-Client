@@ -43,18 +43,13 @@ const UpdateScholarshipModal = ({
     serviceCharge,
   } = updateScholarship;
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data) => {
-    // console.log(data);
     setLoading(true);
-    const postDate = new Date().toISOString().split("T")[0];
-    if (postDate > data.applicationDeadline) {
+    const postDate = new Date();
+    const applicationDeadline = new Date(data.applicationDeadline);
+    if (postDate > applicationDeadline) {
       return toast.error("Deadline cannot be a past date!!");
     }
 
@@ -67,7 +62,8 @@ const UpdateScholarshipModal = ({
         applicationFees,
         email: user?.email,
         image: imageURL,
-        postDate: new Date().toISOString().split("T")[0],
+        applicationDeadline,
+        postDate: new Date(),
       });
       setLoading(false);
       setImageFile("");

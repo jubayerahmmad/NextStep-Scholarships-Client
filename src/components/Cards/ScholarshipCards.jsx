@@ -1,5 +1,5 @@
 import { FaMoneyBill } from "react-icons/fa";
-import { FaHourglass, FaLocationArrow } from "react-icons/fa6";
+import { FaGraduationCap, FaHourglass, FaLocationArrow } from "react-icons/fa6";
 import { IoBookSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
@@ -13,11 +13,15 @@ const ScholarshipCards = ({ scholarship }) => {
     scholarshipCategory,
     subjectCategory,
     city,
+    degree,
     applicationDeadline,
     image,
   } = scholarship || {};
+
+  console.log(applicationDeadline);
+
   return (
-    <div className="w-full shadow-lg hover:shadow-xl duration-500 rounded-md border border-gray-200">
+    <div className="w-full shadow-lg hover:shadow-xl duration-500 rounded-md border border-gray-200 animate__animated animate__zoomIn">
       <div className="relative flex items-center py-2">
         {/* University Image */}
         <figure className="p-2">
@@ -32,6 +36,10 @@ const ScholarshipCards = ({ scholarship }) => {
           <h2 className="lg:text-lg flex items-center gap-2 font-bold text-gray-800">
             {universityName}{" "}
           </h2>
+          {/* degree */}
+          <p className="text-sm flex items-center gap-2">
+            <FaGraduationCap /> {degree}
+          </p>
           {/* Location */}
           <p className="text-sm flex items-center gap-2">
             <FaLocationArrow /> {city}, {country}
@@ -50,7 +58,9 @@ const ScholarshipCards = ({ scholarship }) => {
         {/* Deadline */}
         <p className="text-sm flex items-center gap-2">
           <FaHourglass /> Deadline:{" "}
-          <span className="font-medium">{applicationDeadline}</span>
+          <span className="font-medium">
+            {new Date(applicationDeadline).toLocaleDateString()}
+          </span>
         </p>
 
         {/* Subject Category */}

@@ -12,10 +12,13 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import Loader from "../../components/Loader";
+import useRole from "../../hooks/useRole";
+import { FaGraduationCap } from "react-icons/fa6";
 
 const ScholarshipDetails = () => {
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
+  const { role } = useRole();
 
   const { data: scholarship = {}, isLoading } = useQuery({
     queryKey: ["scholarship"],
@@ -42,6 +45,7 @@ const ScholarshipDetails = () => {
     subjectName,
     stipend,
     postDate,
+    degree,
     worldRank,
   } = scholarship;
 
@@ -74,6 +78,10 @@ const ScholarshipDetails = () => {
               <span className=""> By {universityName}</span>
             </div>
 
+            {/* degree */}
+            <p className="text-sm flex items-center gap-2">
+              <FaGraduationCap /> {degree}
+            </p>
             {/* Location */}
             <p className="text-sm flex items-center gap-2">
               <FaLocationArrow /> {city}, {country}
@@ -81,12 +89,16 @@ const ScholarshipDetails = () => {
             {/* postDate */}
             <p className="text-sm flex items-center gap-2">
               <FaClock /> Posted On:{" "}
-              <span className="font-medium">{postDate}</span>
+              <span className="font-medium">
+                {new Date(postDate).toLocaleDateString()}
+              </span>
             </p>
             {/* Deadline */}
             <p className="text-sm flex items-center gap-2">
               <FaHourglass /> Deadline:{" "}
-              <span className="font-medium">{applicationDeadline}</span>
+              <span className="font-medium">
+                {new Date(applicationDeadline).toLocaleDateString()}
+              </span>
             </p>
 
             {/* Subject Category */}
@@ -120,7 +132,14 @@ const ScholarshipDetails = () => {
               {description}
             </p>
           </div>
-          <button className="btn btn-outline text-teal-700 hover:bg-teal-800 btn-sm">
+          <button
+            disabled={role === "Admin" || role === "Moderator"}
+            className={`btn ${
+              role === "Admin" || role === "Moderator"
+                ? "btn-disabled"
+                : "btn-outline"
+            } text-teal-700 hover:bg-teal-800 btn-sm`}
+          >
             Apply
           </button>
         </div>
