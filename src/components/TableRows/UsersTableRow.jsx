@@ -63,7 +63,7 @@ const UsersTableRow = ({ userData, refetch }) => {
         <select
           defaultValue={role}
           onChange={(e) => handleRoleUpdate(e.target.value)}
-          className="px-3 py-1 rounded-lg bg-teal-900 text-white"
+          className="px-3 py-1 rounded-lg bg-teal-900 text-white font-playfair"
         >
           <option value="">Change Role</option>
           <option value="User">User</option>

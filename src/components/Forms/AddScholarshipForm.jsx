@@ -1,14 +1,61 @@
 import { useState } from "react";
 import ImageUploadInput from "../ImageUploadInput";
+import { useForm } from "react-hook-form";
+import useAuth from "../../hooks/useAuth";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import { toast } from "react-toastify";
+import { imageUpload } from "../../utils";
+import Loader from "../Loader";
+import { TbFidgetSpinner } from "react-icons/tb";
 
 const AddScholarshipForm = () => {
   const [imageFile, setImageFile] = useState("");
+  const { user } = useAuth();
+  const axiosPrivate = useAxiosPrivate();
+  const [loading, setLoading] = useState(false);
 
-  const handleFileChange = (e) => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const handleFileChange = async (e) => {
     e.preventDefault();
+
     const file = e.target.files[0];
     setImageFile(file);
   };
+
+  const onSubmit = async (data) => {
+    setLoading(true);
+    const postDate = new Date().toISOString().split("T")[0];
+    if (postDate > data.applicationDeadline) {
+      return toast.error("Deadline cannot be a past date!!");
+    }
+
+    const applicationFees = parseInt(data.applicationFees);
+
+    const imageURL = await imageUpload(imageFile);
+    try {
+      const { data: added } = await axiosPrivate.post("/add-scholarship", {
+        ...data,
+        applicationFees,
+        email: user?.email,
+        image: imageURL,
+        postDate: new Date().toISOString().split("T")[0],
+      });
+      setLoading(false);
+      setImageFile("");
+      reset();
+      toast.success("New Scholarship Added!");
+      console.log(added);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="max-w-5xl mx-auto p-6 bg-gray-100 rounded-lg mt-10">
       <p className="text-2xl font-bold text-teal-800 text-center mb-6">
@@ -16,9 +63,9 @@ const AddScholarshipForm = () => {
       </p>
 
       {/* form */}
-      <form className="space-y-5">
-        {/* Uni and Scholarship Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+        {/* Uni and Scholarship Row world rank */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {/* Scholarship*/}
           <div className="w-full">
             <label className="block text-sm font-medium text-gray-700">
@@ -27,6 +74,7 @@ const AddScholarshipForm = () => {
             <input
               type="text"
               name="scholarshipName"
+              {...register("scholarshipName", { required: true })}
               className="mt-1 block w-full rounded-md px-4 py-2 outline-teal-500"
               placeholder="Enter the scholarship name"
             />
@@ -39,8 +87,22 @@ const AddScholarshipForm = () => {
             <input
               type="text"
               name="universityName"
+              {...register("universityName", { required: true })}
               className="mt-1 block w-full rounded-md px-4 py-2 outline-teal-500"
               placeholder="Enter the university name"
+            />
+          </div>
+          {/* world rank*/}
+          <div className="w-full">
+            <label className="block text-sm font-medium text-gray-700">
+              World Rank
+            </label>
+            <input
+              type="number"
+              name="worldRank"
+              {...register("worldRank", { required: true })}
+              className="mt-1 block w-full rounded-md px-4 py-2 outline-teal-500"
+              placeholder="University World Rank"
             />
           </div>
         </div>
@@ -66,6 +128,7 @@ const AddScholarshipForm = () => {
             <input
               type="text"
               name="country"
+              {...register("country", { required: true })}
               className="mt-1 block w-full rounded-md px-4 py-2 outline-teal-500"
               placeholder="Enter the country"
             />
@@ -77,6 +140,7 @@ const AddScholarshipForm = () => {
             <input
               type="text"
               name="city"
+              {...register("city", { required: true })}
               className="mt-1 block w-full rounded-md px-4 py-2 outline-teal-500"
               placeholder="Enter the city"
             />
@@ -92,6 +156,7 @@ const AddScholarshipForm = () => {
             </label>
             <select
               name="subjectCategory"
+              {...register("subjectCategory", { required: true })}
               className="mt-1 block w-full rounded-md px-4 py-2 outline-teal-500"
             >
               <option value="">Select a Subject</option>
@@ -108,6 +173,7 @@ const AddScholarshipForm = () => {
             </label>
             <select
               name="scholarshipCategory"
+              {...register("scholarshipCategory", { required: true })}
               className="mt-1 block w-full rounded-md px-4 py-2 outline-teal-500"
             >
               <option value="">Select a Scholarship</option>
@@ -125,6 +191,7 @@ const AddScholarshipForm = () => {
           </label>
           <select
             name="degree"
+            {...register("degree", { required: true })}
             className="mt-1 block w-full rounded-md px-4 py-2 outline-teal-500"
           >
             <option value="">Select a degree</option>
@@ -144,6 +211,7 @@ const AddScholarshipForm = () => {
             <input
               type="number"
               name="tuitionFees"
+              {...register("tuitionFees", { required: true })}
               className="mt-1 block w-full rounded-md px-4 py-2 outline-teal-500"
               placeholder="Enter tuition fees"
             />
@@ -156,6 +224,7 @@ const AddScholarshipForm = () => {
             <input
               type="number"
               name="applicationFees"
+              {...register("applicationFees", { required: true })}
               className="mt-1 block w-full rounded-md px-4 py-2 outline-teal-500"
               placeholder="Enter application fees"
             />
@@ -168,6 +237,7 @@ const AddScholarshipForm = () => {
             <input
               type="number"
               name="serviceCharge"
+              {...register("serviceCharge", { required: true })}
               className="mt-1 block w-full rounded-md px-4 py-2 outline-teal-500"
               placeholder="Enter Service Charge"
             />
@@ -182,16 +252,20 @@ const AddScholarshipForm = () => {
           <input
             type="date"
             name="applicationDeadline"
+            {...register("applicationDeadline", { required: true })}
             className="mt-1 block w-full rounded-md px-4 py-2 outline-teal-500"
           />
         </div>
 
         {/* Submit Button */}
         <button
+          disabled={loading}
           type="submit"
-          className="w-full py-2 px-4 bg-teal-600 text-white rounded-md shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+          className={`w-full py-2 px-4 bg-teal-600 text-white rounded-md shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 ${
+            loading && "btn-disabled"
+          }`}
         >
-          Submit
+          {loading ? "Submitting..." : "Submit"}
         </button>
       </form>
     </div>

@@ -12,6 +12,8 @@ const AllUsers = () => {
   const axiosPrivate = useAxiosPrivate();
   const [sortOrder, setSortOrder] = useState("");
 
+  console.log(sortOrder);
+
   const {
     data: users = [],
     isLoading,
@@ -33,10 +35,10 @@ const AllUsers = () => {
   if (isLoading) return <Loader />;
   // console.log(users);
 
-  const handleSort = async () => {
-    setSortOrder(sortOrder === "asc" ? "dsc" : "asc");
-    refetch();
-  };
+  // const handleSort = async () => {
+  //   setSortOrder();
+  //   // refetch();
+  // };
 
   return (
     <div>
@@ -44,8 +46,24 @@ const AllUsers = () => {
         Heading="Registered Users"
         subHeading="View and manage all registered users on the platform"
       ></Heading>
+
       {/* table */}
       <div className="max-w-7xl mx-auto my-6">
+        <div className="my-6 flex items-center gap-3 justify-end">
+          <p>Sort By: </p>
+          <select
+            onChange={(e) => setSortOrder(e.target.value)}
+            className="bg-teal-900 rounded-md px-2 py-1 text-white text-lg font-playfair"
+            name="role"
+            value={sortOrder}
+          >
+            <option value="">Role</option>
+            <option value="Admin">Admin</option>
+            <option value="Moderator">Moderator</option>
+            <option value="User">User</option>
+          </select>
+        </div>
+
         {users.length > 0 ? (
           <>
             <div className="overflow-x-auto shadow-2xl rounded-2xl animate__animated animate__fadeInUp">
@@ -57,9 +75,9 @@ const AllUsers = () => {
                     <th>User Email</th>
                     <th className="inline-flex items-center gap-1">
                       Role{" "}
-                      <button onClick={handleSort}>
+                      {/* <button onClick={handleSort}>
                         <BiSort size={16} />
-                      </button>
+                      </button> */}
                     </th>
                     <th>Actions</th>
                   </tr>

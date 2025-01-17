@@ -111,7 +111,7 @@ const Navbar = () => {
                         }
                       />
                     </div>
-                    <p>{user?.displayName}</p>
+                    <p className="text-center">{user?.displayName}</p>
                   </div>
                   <li>
                     <button onClick={handleLogout}>Log Out</button>
