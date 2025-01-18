@@ -20,6 +20,9 @@ import AdminProfile from "../Pages/AdminPages/AdminProfile";
 import PrivateRoute from "./PrivateRoute";
 import Checkout from "../Pages/Checkout/Checkout";
 import ApplyScholarshipForm from "../components/Forms/ApplyScholarshipForm";
+import OnlyAdminRoute from "../providers/OnlyAdminRoute";
+import AdminModeratorRoute from "../providers/AdminModeratorRoute";
+import UsersRoute from "../providers/UsersRoute";
 
 const router = createBrowserRouter([
   {
@@ -92,37 +95,70 @@ const router = createBrowserRouter([
       // Admin/Moderator Routes
       {
         path: "allUsers",
-        element: <AllUsers />, // admin only
+        element: (
+          <OnlyAdminRoute>
+            <AllUsers />
+          </OnlyAdminRoute>
+        ), // admin only
       },
       {
         path: "admin-profile",
-        element: <AdminProfile />, // admin only
+        element: (
+          <OnlyAdminRoute>
+            <AdminProfile />
+          </OnlyAdminRoute>
+        ), // admin only
       },
       {
         path: "addScholarships",
-        element: <AddScholarship />,
+        element: (
+          <AdminModeratorRoute>
+            <AddScholarship />
+          </AdminModeratorRoute>
+        ),
       },
       {
         path: "appliedScholarships",
-        element: <AppliedScholarships />,
+        element: (
+          <AdminModeratorRoute>
+            <AppliedScholarships />
+          </AdminModeratorRoute>
+        ),
       },
       {
         path: "manageScholarships",
-        element: <ManageScholarships />,
+        element: (
+          <AdminModeratorRoute>
+            {" "}
+            <ManageScholarships />
+          </AdminModeratorRoute>
+        ),
       },
       {
         path: "allReviews",
-        element: <AllReviews />,
+        element: (
+          <AdminModeratorRoute>
+            <AllReviews />
+          </AdminModeratorRoute>
+        ),
       },
       // User Routes
       {
         path: "myApplications",
-        element: <MyApplications />,
+        element: (
+          <UsersRoute>
+            <MyApplications />,
+          </UsersRoute>
+        ),
       },
 
       {
         path: "myReviews",
-        element: <MyReviews />,
+        element: (
+          <UsersRoute>
+            <MyReviews />
+          </UsersRoute>
+        ),
       },
     ],
   },

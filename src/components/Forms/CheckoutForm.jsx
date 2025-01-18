@@ -4,6 +4,7 @@ import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import useRole from "../../hooks/useRole";
 
 const CheckoutForm = ({ applicationFees, id }) => {
   const stripe = useStripe();
@@ -11,6 +12,7 @@ const CheckoutForm = ({ applicationFees, id }) => {
   const [clientSecret, setClientSecret] = useState("");
   const { user } = useAuth();
   const navigate = useNavigate();
+  const { role } = useRole();
 
   const axiosPrivate = useAxiosPrivate();
 
@@ -93,7 +95,7 @@ const CheckoutForm = ({ applicationFees, id }) => {
         <button
           className="btn btn-sm btn-accent"
           type="submit"
-          disabled={!stripe}
+          disabled={!stripe || role === "Admin" || role === "Moderator"}
         >
           Pay ${applicationFees}
         </button>

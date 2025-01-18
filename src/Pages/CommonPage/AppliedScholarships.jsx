@@ -3,11 +3,17 @@ import Heading from "../../components/Heading";
 import AppliedScholarshipRow from "../../components/TableRows/AppliedScholarshipRow";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import Loader from "../../components/Loader";
+import { useState } from "react";
+import ApplicationDetailsModal from "../../components/Modals/ApplicationDetailsModal";
 
 const AppliedScholarships = () => {
   const axiosPrivate = useAxiosPrivate();
-
-  const { data: appliedScholarships = [], isLoading } = useQuery({
+  const [isModalOpen, setisModalOpen] = useState(false);
+  const {
+    data: appliedScholarships = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["appliedScholarships"],
     queryFn: async () => {
       const { data } = await axiosPrivate(`/applied-scholarships`);
@@ -16,7 +22,15 @@ const AppliedScholarships = () => {
   });
 
   if (isLoading) return <Loader />;
-  console.log(appliedScholarships);
+
+  const handleDetails = async (id) => {
+    try {
+      const { data } = await axiosPrivate(`/applied-scholarship/${id}`);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -51,6 +65,9 @@ const AppliedScholarships = () => {
                     i={i}
                     key={applications._id}
                     applications={applications}
+                    refetch={refetch}
+                    setisModalOpen={setisModalOpen}
+                    handleDetails={handleDetails}
                   />
                 ))}
               </tbody>
@@ -59,6 +76,13 @@ const AppliedScholarships = () => {
         </div>
       ) : (
         ""
+      )}
+
+      {isModalOpen && (
+        <ApplicationDetailsModal
+          setisModalOpen={setisModalOpen}
+          isModalOpen={isModalOpen}
+        />
       )}
     </div>
   );

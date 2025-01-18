@@ -18,7 +18,6 @@ import { FaGraduationCap } from "react-icons/fa6";
 const ScholarshipDetails = () => {
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
-  const { role } = useRole();
 
   const { data: scholarship = {}, isLoading } = useQuery({
     queryKey: ["scholarship"],
@@ -134,12 +133,7 @@ const ScholarshipDetails = () => {
           </div>
           <Link to={`/checkout/${id}`}>
             <button
-              disabled={role === "Admin" || role === "Moderator"}
-              className={`btn ${
-                role === "Admin" || role === "Moderator"
-                  ? "btn-disabled"
-                  : "btn-outline"
-              } text-teal-700 hover:bg-teal-800 btn-sm mt-1`}
+              className={`btn btn-outline text-teal-700 hover:bg-teal-800 btn-sm mt-1`}
             >
               Apply
             </button>
