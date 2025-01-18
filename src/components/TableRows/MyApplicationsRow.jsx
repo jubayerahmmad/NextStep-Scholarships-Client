@@ -1,32 +1,37 @@
 import { FaEdit, FaInfoCircle } from "react-icons/fa";
 import { GiCancel } from "react-icons/gi";
 import { Link } from "react-router-dom";
-const MyApplicationsRow = ({ application }) => {
-  console.log(application);
-  const { scholarshipId } = application;
+const MyApplicationsRow = ({ application, index }) => {
+  // console.log(application);
+  const {
+    scholarshipId,
+    universityName,
+    universityAddress,
+    subjectCategory,
+    degree,
+    applicationFees,
+    serviceCharge,
+    subjectName,
+    status,
+  } = application;
   return (
     <tr className="hover">
-      <th>1</th>
+      <th>{index + 1}</th>
       <td>
-        <div className="flex items-center gap-3">
-          <div className="avatar">
-            <div className="mask mask-squircle h-8 w-8 lg:h-12 lg:w-12">
-              <img
-                src="https://i.ibb.co.com/cDJwpsZ/Pau-Cubarsi.jpg"
-                alt="user profile"
-              />
-            </div>
-          </div>
-          <div>
-            <div className="font-bold text-xs">Harvard University</div>
-            <div className="opacity-50">United States</div>
+        <div>
+          <div className="font-bold text-xs">{universityName}</div>
+          <div className="opacity-50">
+            {universityAddress.city}, {universityAddress.country}
           </div>
         </div>
       </td>
+
       <td>
-        Masters
+        {degree}
         <br />
-        <span className="badge badge-ghost badge-xs text-xs">Engineering</span>
+        <span className="badge badge-ghost badge-xs text-xs">
+          {subjectCategory}
+        </span>
       </td>
       <td>
         <div className="flex flex-wrap">
@@ -38,12 +43,12 @@ const MyApplicationsRow = ({ application }) => {
         </div>
       </td>
       <td>
-        <span>$999</span>
+        <span>${applicationFees}</span>
       </td>
       <td>
-        <span>$35</span>
+        <span>${serviceCharge}</span>
       </td>
-      <td>Pending</td>
+      <td>{status}</td>
       <td>
         <div className="flex">
           <Link to={`/scholarship-details/${scholarshipId}`}>

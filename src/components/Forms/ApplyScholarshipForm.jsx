@@ -51,29 +51,27 @@ const ApplyScholarshipForm = () => {
     setLoading(true);
     //  save this data to db
     try {
-      const { data: result } = await axiosPrivate.post(
-        "/applied-scholarships",
-        {
-          ...data,
-          applicantName: name,
-          applicantEmail: email,
-          applicantPhoto: image,
-          userdId: userId,
-          degree,
-          subjectCategory,
-          scholarshipCategory,
-          universityName,
-          universityAddress: {
-            city,
-            country,
-          },
-          applicationFees,
-          serviceCharge,
-          scholarshipId: _id,
-          appliedDate: new Date(),
-        }
-      );
-      console.log(result);
+      await axiosPrivate.post("/applied-scholarships", {
+        ...data,
+        applicantName: name,
+        applicantEmail: email,
+        applicantPhoto: image,
+        userdId: userId,
+        degree,
+        subjectCategory,
+        scholarshipCategory,
+        universityName,
+        universityAddress: {
+          city,
+          country,
+        },
+        applicationFees,
+        serviceCharge,
+        scholarshipId: _id,
+        scholarshipName,
+        appliedDate: new Date(),
+      });
+      // console.log(result);
 
       reset();
       setLoading(false);

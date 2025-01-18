@@ -47,9 +47,10 @@ const MyApplications = () => {
               </thead>
               <tbody>
                 {/* row 1 */}
-                {myApplications?.map((application) => (
+                {myApplications?.map((application, index) => (
                   <MyApplicationsRow
                     key={application._id}
+                    index={index}
                     application={application}
                   />
                 ))}
