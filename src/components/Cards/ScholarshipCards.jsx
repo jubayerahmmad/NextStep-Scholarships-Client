@@ -1,4 +1,4 @@
-import { FaMoneyBill } from "react-icons/fa";
+import { FaHourglassStart, FaMoneyBill } from "react-icons/fa";
 import { FaGraduationCap, FaHourglass, FaLocationArrow } from "react-icons/fa6";
 import { IoBookSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
@@ -16,6 +16,7 @@ const ScholarshipCards = ({ scholarship }) => {
     degree,
     applicationDeadline,
     image,
+    postDate,
   } = scholarship || {};
 
   return (
@@ -53,6 +54,13 @@ const ScholarshipCards = ({ scholarship }) => {
         <h2 className="text-xl font-bold mb-4 font-playfair bg-gradient-to-br from-cyan-800 via-teal-800 to-teal-50 bg-clip-text text-transparent">
           {scholarshipName}
         </h2>
+        {/* Post date */}
+        <p className="text-sm flex items-center gap-2">
+          <FaHourglassStart /> Posted On:{" "}
+          <span className="font-medium">
+            {new Date(postDate).toLocaleDateString()}
+          </span>
+        </p>
         {/* Deadline */}
         <p className="text-sm flex items-center gap-2">
           <FaHourglass /> Deadline:{" "}

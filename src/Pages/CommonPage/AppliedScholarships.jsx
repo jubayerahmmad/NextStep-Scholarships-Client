@@ -5,11 +5,15 @@ import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import Loader from "../../components/Loader";
 import { useState } from "react";
 import ApplicationDetailsModal from "../../components/Modals/ApplicationDetailsModal";
+import FeedbackModal from "../../components/Modals/FeedbackModal";
 
 const AppliedScholarships = () => {
   const axiosPrivate = useAxiosPrivate();
   const [isModalOpen, setisModalOpen] = useState(false);
+  const [feedbackModalOpen, setFeedbackModalOpen] = useState(false);
   const [singleData, setSingleData] = useState({});
+  const [feedbackId, setFeedbackId] = useState("");
+
   const {
     data: appliedScholarships = [],
     isLoading,
@@ -33,6 +37,10 @@ const AppliedScholarships = () => {
     }
   };
 
+  const getFeedbackId = (id) => {
+    setFeedbackId(id);
+  };
+
   return (
     <div>
       <Heading
@@ -49,10 +57,7 @@ const AppliedScholarships = () => {
                 <tr>
                   <th>#</th>
                   <th>Applicants Info</th>
-                  <th>Scholarship Name</th>
                   <th>Scholarship Category</th>
-                  <th>University</th>
-                  <th>Degree</th>
                   <th>Subject Category</th>
                   <th>Status</th>
                   <th>Actions</th>
@@ -66,9 +71,10 @@ const AppliedScholarships = () => {
                     i={i}
                     key={applications._id}
                     applications={applications}
-                    refetch={refetch}
                     setisModalOpen={setisModalOpen}
+                    setFeedbackModalOpen={setFeedbackModalOpen}
                     handleDetails={handleDetails}
+                    getFeedbackId={getFeedbackId}
                   />
                 ))}
               </tbody>
@@ -79,11 +85,21 @@ const AppliedScholarships = () => {
         ""
       )}
 
+      {/* details modal */}
       {isModalOpen && (
         <ApplicationDetailsModal
           setisModalOpen={setisModalOpen}
           isModalOpen={isModalOpen}
           singleData={singleData}
+        />
+      )}
+
+      {/* feedback modal */}
+      {feedbackModalOpen && (
+        <FeedbackModal
+          setFeedbackModalOpen={setFeedbackModalOpen}
+          feedbackModalOpen={feedbackModalOpen}
+          feedbackId={feedbackId}
         />
       )}
     </div>

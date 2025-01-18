@@ -2,27 +2,23 @@ import { RxCross2 } from "react-icons/rx";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
-
 import { FaCircleInfo } from "react-icons/fa6";
-import { useState } from "react";
 
 const AppliedScholarshipRow = ({
   applications,
   i,
-  refetch,
   setisModalOpen,
   handleDetails,
+  getFeedbackId,
+  setFeedbackModalOpen,
 }) => {
   const axiosPrivate = useAxiosPrivate();
   const {
     _id,
-    degree,
     subjectCategory,
     scholarshipCategory,
-    universityName,
     applicantName,
     applicantEmail,
-    scholarshipName,
     status,
   } = applications;
 
@@ -74,25 +70,25 @@ const AppliedScholarshipRow = ({
           </div>
         </div>
       </td>
-      <td>{scholarshipName}</td>
       <td>{scholarshipCategory}</td>
-      <td>{universityName}</td>
-      <td>{degree}</td>
       <td>{subjectCategory}</td>
       <td>
         <select
           defaultValue={status}
+          disabled={status === "Completed" || status === "Rejected"}
           onChange={(e) => handleUpdateStatus(e.target.value)}
-          className={`px-2 py-1 rounded-lg ${
+          className={`px-2 py-1 rounded-lg text-white disabled:cursor-not-allowed ${
             status === "Pending" && "bg-teal-500"
           }  ${status === "Processing" && "bg-green-800"}  ${
             status === "Rejected" && "bg-red-500"
-          }  ${status === "Completed" && "bg-green-500"} text-white`}
+          }  ${status === "Completed" && "bg-green-500"} `}
         >
           <option disabled value="">
             Update Status
           </option>
-          <option value="Pending">Pending</option>
+          <option disabled={status === "Processing"} value="Pending">
+            Pending
+          </option>
           <option value="Processing">Processing</option>
           <option value="Completed">Completed</option>
           <option value="Rejected">Rejected</option>
@@ -101,12 +97,9 @@ const AppliedScholarshipRow = ({
       <td>
         <div className="flex gap-1">
           <button
+            disabled={status === "Rejected" || status === "Completed"}
             onClick={handleCancelApplication}
-            className={`btn btn-error ${
-              status === "Rejected" || status === "Completed"
-                ? "btn-disabled"
-                : "btn-error"
-            } btn-xs`}
+            className={`btn btn-error disabled:cursor-not-allowed btn-xs`}
           >
             <RxCross2 size={20} />
           </button>
@@ -122,7 +115,15 @@ const AppliedScholarshipRow = ({
         </div>
       </td>
       <td>
-        <button className="btn btn-xs btn-accent">Feedback</button>
+        <button
+          onClick={() => {
+            getFeedbackId(_id);
+            setFeedbackModalOpen(true);
+          }}
+          className="btn btn-xs btn-accent"
+        >
+          Feedback
+        </button>
       </td>
     </tr>
   );

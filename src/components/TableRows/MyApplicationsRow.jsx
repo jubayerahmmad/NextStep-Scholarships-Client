@@ -1,9 +1,12 @@
 import { FaEdit, FaInfoCircle } from "react-icons/fa";
 import { GiCancel } from "react-icons/gi";
 import { Link } from "react-router-dom";
-const MyApplicationsRow = ({ application, index }) => {
-  // console.log(application);
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import Swal from "sweetalert2";
+const MyApplicationsRow = ({ application, index, refetch }) => {
+  const axiosPrivate = useAxiosPrivate();
   const {
+    _id,
     scholarshipId,
     universityName,
     universityAddress,
@@ -11,9 +14,32 @@ const MyApplicationsRow = ({ application, index }) => {
     degree,
     applicationFees,
     serviceCharge,
-    subjectName,
     status,
+    feedback,
   } = application;
+
+  const handleCancelApplication = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Cancel it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosPrivate.delete(`/delete-application/${_id}`);
+        refetch();
+        Swal.fire({
+          title: "Deleted!",
+          text: "Application has been cancelled.",
+          icon: "success",
+        });
+      }
+    });
+  };
+
   return (
     <tr className="hover">
       <th>{index + 1}</th>
@@ -35,11 +61,14 @@ const MyApplicationsRow = ({ application, index }) => {
       </td>
       <td>
         <div className="flex flex-wrap">
-          {`${"Congratulations! Your application has been accepted.".slice(
-            0,
-            18
-          )}...`}{" "}
-          <button className="btn btn-xs btn-link">Read More</button>
+          {feedback ? (
+            <>
+              {feedback.slice(0, 30)}...
+              <button className="btn btn-xs btn-link">Read More</button>
+            </>
+          ) : (
+            "No Feedback Given"
+          )}
         </div>
       </td>
       <td>
@@ -48,7 +77,17 @@ const MyApplicationsRow = ({ application, index }) => {
       <td>
         <span>${serviceCharge}</span>
       </td>
-      <td>{status}</td>
+      <td>
+        <span
+          className={`px-2 py-1  ${status === "Rejected" && "text-red-500"}  ${
+            status === "Pending" && "text-yellow-600"
+          }  ${status === "Completed" && "text-green-500"}  ${
+            status === "Processing" && "text-teal-800"
+          }`}
+        >
+          {status}
+        </span>
+      </td>
       <td>
         <div className="flex">
           <Link to={`/scholarship-details/${scholarshipId}`}>
@@ -59,7 +98,10 @@ const MyApplicationsRow = ({ application, index }) => {
           <button className="btn btn-ghost btn-sm">
             <FaEdit size={20} />{" "}
           </button>
-          <button className="btn btn-ghost btn-sm">
+          <button
+            onClick={handleCancelApplication}
+            className="btn btn-ghost btn-sm"
+          >
             <GiCancel size={20} />
           </button>
         </div>

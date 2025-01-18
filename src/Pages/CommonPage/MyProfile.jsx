@@ -2,11 +2,13 @@ import { useState } from "react";
 import UpdateUserModal from "../../components/Modals/UpdateUserModal";
 import useAuth from "../../hooks/useAuth";
 import useRole from "../../hooks/useRole";
+import Loader from "../../components/Loader";
 
 const MyProfile = () => {
   const { user, updateUser } = useAuth();
   const [isModalOpen, setisModalOpen] = useState(false);
-  const { role } = useRole();
+  const { role, isLoading } = useRole();
+  if (isLoading) return <Loader />;
   return (
     <div className="px-4 flex flex-col items-center justify-center min-h-[calc(100vh-96px)]">
       <div className="rounded-2xl max-w-4xl border bg-base-100 shadow-2xl ">
@@ -26,7 +28,7 @@ const MyProfile = () => {
           <h2 className="card-title">
             {user?.displayName}
             {role !== "User" && (
-              <span className="badge badge-accent badge-outline">{role}</span>
+              <span className="badge badge-accent">{role}</span>
             )}
           </h2>
           <p> {user?.email}</p>

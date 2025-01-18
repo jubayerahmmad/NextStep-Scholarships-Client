@@ -12,6 +12,7 @@ import { VscGitStashApply } from "react-icons/vsc";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import useRole from "../hooks/useRole";
+
 const Sidebar = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
   const { user, logOutUser } = useAuth();

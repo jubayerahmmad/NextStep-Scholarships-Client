@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -43,9 +44,12 @@ const Banner = () => {
                 field of study. We are committed to supporting the next
                 generation of leaders and innovators.
               </p>
-              <button className="btn btn-sm btn-outline hover:bg-teal-900 hover:border-teal-700 text-teal-500 text-lg">
+              <Link
+                to="/allScholarships"
+                className="btn btn-sm btn-outline hover:bg-teal-900 hover:border-teal-700 text-teal-500 text-lg"
+              >
                 Explore Scholarships
-              </button>
+              </Link>
             </div>
           </div>
         </SwiperSlide>
@@ -69,9 +73,12 @@ const Banner = () => {
                 Apply today and secure financial support for your education.
                 Limited spots available!
               </p>
-              <button className="btn btn-sm btn-outline hover:bg-teal-900 hover:border-teal-700 text-teal-500 text-lg">
+              <Link
+                to="/allScholarships"
+                className="btn btn-sm btn-outline hover:bg-teal-900 hover:border-teal-700 text-teal-500 text-lg"
+              >
                 Apply for Scholarships
-              </button>
+              </Link>
             </div>
           </div>
         </SwiperSlide>
@@ -95,9 +102,12 @@ const Banner = () => {
                 Receive expert advice to navigate through your scholarship
                 applications effortlessly.
               </p>
-              <button className="btn btn-sm btn-outline hover:bg-teal-900 hover:border-teal-700 text-teal-500 text-lg">
+              <Link
+                to="/allScholarships"
+                className="btn btn-sm btn-outline hover:bg-teal-900 hover:border-teal-700 text-teal-500 text-lg"
+              >
                 Apply Now
-              </button>
+              </Link>
             </div>
           </div>
         </SwiperSlide>
@@ -121,9 +131,12 @@ const Banner = () => {
               <p className="text-gray-300 text-xs px-5 lg:text-xl max-w-6xl text-center animate__animated animate__fadeInLeft">
                 Connect with thousands of students benefiting from our programs.
               </p>
-              <button className="btn btn-sm btn-outline hover:bg-teal-900 hover:border-teal-700 text-teal-500 text-lg">
+              <Link
+                to="/allScholarships"
+                className="btn btn-sm btn-outline hover:bg-teal-900 hover:border-teal-700 text-teal-500 text-lg"
+              >
                 Join Today
-              </button>
+              </Link>
             </div>
           </div>
         </SwiperSlide>

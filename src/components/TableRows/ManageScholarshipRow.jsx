@@ -42,8 +42,6 @@ const ManageScholarshipRow = ({
     });
   };
 
-  // TODO: Edit scholarship
-
   return (
     <tr className="hover">
       <th>{index + 1}</th>

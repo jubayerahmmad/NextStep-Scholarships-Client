@@ -10,7 +10,11 @@ const MyApplications = () => {
   const { user } = useAuth();
   const axiosPrivate = useAxiosPrivate();
 
-  const { data: myApplications = [], isLoading } = useQuery({
+  const {
+    data: myApplications = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["myApplications", user?.email],
     queryFn: async () => {
       const { data } = await axiosPrivate(`/my-applications/${user?.email}`);
@@ -46,12 +50,12 @@ const MyApplications = () => {
                 </tr>
               </thead>
               <tbody>
-                {/* row 1 */}
                 {myApplications?.map((application, index) => (
                   <MyApplicationsRow
                     key={application._id}
                     index={index}
                     application={application}
+                    refetch={refetch}
                   />
                 ))}
               </tbody>

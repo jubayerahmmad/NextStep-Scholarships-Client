@@ -1,11 +1,5 @@
-import {
-  FaAddressCard,
-  FaClock,
-  FaGraduationCap,
-  FaHourglass,
-  FaLocationArrow,
-  FaMoneyBill,
-} from "react-icons/fa6";
+import { FaUniversity } from "react-icons/fa";
+import { FaAddressCard, FaClock, FaGraduationCap } from "react-icons/fa6";
 import { IoBookSharp } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
 
@@ -14,7 +8,6 @@ const ApplicationDetailsModal = ({
   setisModalOpen,
   singleData,
 }) => {
-  console.log(singleData);
   const {
     applicantPhoto,
     applicantName,
@@ -23,6 +16,8 @@ const ApplicationDetailsModal = ({
     country,
     scholarshipName,
     degree,
+    universityName,
+    status,
   } = singleData;
   return (
     <div>
@@ -38,7 +33,7 @@ const ApplicationDetailsModal = ({
         >
           <div className="w-full flex items-end p-4 justify-between border-b border-[#d1d1d1]">
             <h1 className="text-[1.5rem] font-bold">
-              View Application Details
+              Application Details of {applicantName}
             </h1>
             <RxCross1
               className="p-2 text-[2.5rem] hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
@@ -65,8 +60,28 @@ const ApplicationDetailsModal = ({
                   </h2>
                 </div>
 
+                <p
+                  className={`text-xs badge ${
+                    status === "Rejected" ? "badge-error" : "badge-accent"
+                  }`}
+                >
+                  {status}
+                </p>
+
                 <p className="text-xs lg:text-sm flex items-center gap-2">
-                  <FaGraduationCap /> {degree}
+                  <IoBookSharp /> Scholarship Name:{" "}
+                  <span className="font-medium">{scholarshipName}</span>
+                </p>
+
+                <p className="text-xs lg:text-sm flex items-center gap-2">
+                  <FaUniversity />
+                  University Name:{" "}
+                  <span className="font-medium">{universityName}</span>
+                </p>
+
+                <p className="text-xs lg:text-sm flex items-center gap-2">
+                  <FaGraduationCap />
+                  Degree: {degree}
                 </p>
 
                 <p className="text-xs lg:text-sm flex items-center gap-2">
@@ -74,15 +89,10 @@ const ApplicationDetailsModal = ({
                 </p>
 
                 <p className="text-xs lg:text-sm flex items-center gap-2">
-                  <FaClock /> Posted On:{" "}
+                  <FaClock /> Applied On:{" "}
                   <span className="font-medium">
                     {new Date(appliedDate).toLocaleDateString()}
                   </span>
-                </p>
-
-                <p className="text-xs lg:text-sm flex items-center gap-2">
-                  <IoBookSharp /> Scholarship Name:{" "}
-                  <span className="font-medium">{scholarshipName}</span>
                 </p>
               </div>
             </div>
