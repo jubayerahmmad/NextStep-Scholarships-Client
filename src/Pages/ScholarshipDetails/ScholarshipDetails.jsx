@@ -10,7 +10,7 @@ import Reviews from "../../components/Cards/Reviews";
 import { Helmet } from "react-helmet-async";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Loader from "../../components/Loader";
 import useRole from "../../hooks/useRole";
 import { FaGraduationCap } from "react-icons/fa6";
@@ -132,16 +132,18 @@ const ScholarshipDetails = () => {
               {description}
             </p>
           </div>
-          <button
-            disabled={role === "Admin" || role === "Moderator"}
-            className={`btn ${
-              role === "Admin" || role === "Moderator"
-                ? "btn-disabled"
-                : "btn-outline"
-            } text-teal-700 hover:bg-teal-800 btn-sm`}
-          >
-            Apply
-          </button>
+          <Link to={`/checkout/${id}`}>
+            <button
+              disabled={role === "Admin" || role === "Moderator"}
+              className={`btn ${
+                role === "Admin" || role === "Moderator"
+                  ? "btn-disabled"
+                  : "btn-outline"
+              } text-teal-700 hover:bg-teal-800 btn-sm mt-1`}
+            >
+              Apply
+            </button>
+          </Link>
         </div>
       </div>
 

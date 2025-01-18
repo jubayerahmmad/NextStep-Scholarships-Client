@@ -5,7 +5,6 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { toast } from "react-toastify";
 import { imageUpload } from "../../utils";
-import Loader from "../Loader";
 
 const AddScholarshipForm = () => {
   const [imageFile, setImageFile] = useState("");

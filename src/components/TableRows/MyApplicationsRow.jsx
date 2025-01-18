@@ -1,6 +1,9 @@
 import { FaEdit, FaInfoCircle } from "react-icons/fa";
 import { GiCancel } from "react-icons/gi";
-const MyApplicationsRow = () => {
+import { Link } from "react-router-dom";
+const MyApplicationsRow = ({ application }) => {
+  console.log(application);
+  const { scholarshipId } = application;
   return (
     <tr className="hover">
       <th>1</th>
@@ -43,9 +46,11 @@ const MyApplicationsRow = () => {
       <td>Pending</td>
       <td>
         <div className="flex">
-          <button className="btn btn-ghost btn-sm">
-            <FaInfoCircle size={20} />{" "}
-          </button>
+          <Link to={`/scholarship-details/${scholarshipId}`}>
+            <button className="btn btn-ghost btn-sm">
+              <FaInfoCircle size={20} />{" "}
+            </button>
+          </Link>
           <button className="btn btn-ghost btn-sm">
             <FaEdit size={20} />{" "}
           </button>

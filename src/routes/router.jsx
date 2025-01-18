@@ -18,6 +18,8 @@ import ScholarshipDetails from "../Pages/ScholarshipDetails/ScholarshipDetails";
 import Faq from "../Pages/Faq/Faq";
 import AdminProfile from "../Pages/AdminPages/AdminProfile";
 import PrivateRoute from "./PrivateRoute";
+import Checkout from "../Pages/Checkout/Checkout";
+import ApplyScholarshipForm from "../components/Forms/ApplyScholarshipForm";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +43,22 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/checkout/:id",
+        element: (
+          <PrivateRoute>
+            <Checkout />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/apply-form/:id",
+        element: (
+          <PrivateRoute>
+            <ApplyScholarshipForm />
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "faq",
         element: <Faq />,
       },
@@ -54,6 +72,7 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
   },
+
   {
     path: "/*",
     element: <ErrorPage />,
@@ -100,6 +119,7 @@ const router = createBrowserRouter([
         path: "myApplications",
         element: <MyApplications />,
       },
+
       {
         path: "myReviews",
         element: <MyReviews />,

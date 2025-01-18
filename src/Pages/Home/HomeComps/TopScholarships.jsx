@@ -17,7 +17,6 @@ const TopScholarships = () => {
     },
   });
   if (isLoading) return <Loader />;
-  console.log(TopScholarships);
   return (
     <section className="px-4 py-6">
       <Heading
