@@ -20,9 +20,9 @@ import AdminProfile from "../Pages/AdminPages/AdminProfile";
 import PrivateRoute from "./PrivateRoute";
 import Checkout from "../Pages/Checkout/Checkout";
 import ApplyScholarshipForm from "../components/Forms/ApplyScholarshipForm";
-import OnlyAdminRoute from "../providers/OnlyAdminRoute";
-import AdminModeratorRoute from "../providers/AdminModeratorRoute";
-import UsersRoute from "../providers/UsersRoute";
+import OnlyAdminRoute from "./OnlyAdminRoute";
+import AdminModeratorRoute from "./AdminModeratorRoute";
+import UsersRoute from "./UsersRoute";
 
 const router = createBrowserRouter([
   {

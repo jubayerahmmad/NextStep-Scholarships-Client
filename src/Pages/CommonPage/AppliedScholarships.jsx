@@ -9,6 +9,7 @@ import ApplicationDetailsModal from "../../components/Modals/ApplicationDetailsM
 const AppliedScholarships = () => {
   const axiosPrivate = useAxiosPrivate();
   const [isModalOpen, setisModalOpen] = useState(false);
+  const [singleData, setSingleData] = useState({});
   const {
     data: appliedScholarships = [],
     isLoading,
@@ -26,7 +27,7 @@ const AppliedScholarships = () => {
   const handleDetails = async (id) => {
     try {
       const { data } = await axiosPrivate(`/applied-scholarship/${id}`);
-      console.log(data);
+      setSingleData(data);
     } catch (error) {
       console.log(error);
     }
@@ -82,6 +83,7 @@ const AppliedScholarships = () => {
         <ApplicationDetailsModal
           setisModalOpen={setisModalOpen}
           isModalOpen={isModalOpen}
+          singleData={singleData}
         />
       )}
     </div>

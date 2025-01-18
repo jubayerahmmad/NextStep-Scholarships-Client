@@ -12,13 +12,13 @@ import { ToastContainer } from "react-toastify";
 const queryClient = new QueryClient();
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AuthProvider>
-      <QueryClientProvider client={queryClient}>
-        <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <HelmetProvider>
+        <AuthProvider>
           <RouterProvider router={router} />
           <ToastContainer position="top-right" autoClose={1500} />
-        </HelmetProvider>
-      </QueryClientProvider>
-    </AuthProvider>
+        </AuthProvider>
+      </HelmetProvider>
+    </QueryClientProvider>
   </StrictMode>
 );
