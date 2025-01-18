@@ -35,6 +35,7 @@ const ApplyScholarshipForm = () => {
     degree,
     serviceCharge,
   } = scholarship || {};
+
   // get user data
   const { data: userData = {} } = useQuery({
     queryKey: ["user"],
@@ -71,7 +72,6 @@ const ApplyScholarshipForm = () => {
         scholarshipName,
         appliedDate: new Date(),
       });
-      // console.log(result);
 
       reset();
       setLoading(false);

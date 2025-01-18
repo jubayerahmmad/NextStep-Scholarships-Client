@@ -82,7 +82,9 @@ const AppliedScholarships = () => {
           </div>
         </div>
       ) : (
-        ""
+        <p className="text-4xl text-center font-playfair">
+          No one has applied to any Scholarship
+        </p>
       )}
 
       {/* details modal */}

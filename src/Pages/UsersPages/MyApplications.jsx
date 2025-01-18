@@ -5,10 +5,14 @@ import MyApplicationsRow from "../../components/TableRows/MyApplicationsRow";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useAuth from "../../hooks/useAuth";
 import Loader from "../../components/Loader";
+import { useState } from "react";
+import ReviewModal from "../../components/Modals/ReviewModal";
 
 const MyApplications = () => {
   const { user } = useAuth();
   const axiosPrivate = useAxiosPrivate();
+  const [reviewModalOpen, setReviewModalOpen] = useState(false);
+  const [scholarshipId, setScholarshipId] = useState("");
 
   const {
     data: myApplications = [],
@@ -23,6 +27,10 @@ const MyApplications = () => {
   });
 
   if (isLoading) return <Loader />;
+
+  const getScholarshipId = (id) => {
+    setScholarshipId(id);
+  };
 
   return (
     <div>
@@ -42,8 +50,8 @@ const MyApplications = () => {
                   <th>University</th>
                   <th>Degree</th>
                   <th>Feedback</th>
-                  <th>Fees</th>
-                  <th>Charge</th>
+                  <th>Application Fees</th>
+                  <th>Service Charge</th>
                   <th>Status</th>
                   <th>Actions</th>
                   <th>Review</th>
@@ -55,7 +63,9 @@ const MyApplications = () => {
                     key={application._id}
                     index={index}
                     application={application}
+                    getScholarshipId={getScholarshipId}
                     refetch={refetch}
+                    setReviewModalOpen={setReviewModalOpen}
                   />
                 ))}
               </tbody>
@@ -66,6 +76,14 @@ const MyApplications = () => {
         <p className="text-4xl text-center font-playfair font-bold">
           You Have not applied to any scholarship yet!!
         </p>
+      )}
+
+      {reviewModalOpen && (
+        <ReviewModal
+          setReviewModalOpen={setReviewModalOpen}
+          reviewModalOpen={reviewModalOpen}
+          scholarshipId={scholarshipId}
+        />
       )}
     </div>
   );

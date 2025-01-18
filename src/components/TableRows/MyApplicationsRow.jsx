@@ -3,7 +3,13 @@ import { GiCancel } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import Swal from "sweetalert2";
-const MyApplicationsRow = ({ application, index, refetch }) => {
+const MyApplicationsRow = ({
+  application,
+  index,
+  refetch,
+  setReviewModalOpen,
+  getScholarshipId,
+}) => {
   const axiosPrivate = useAxiosPrivate();
   const {
     _id,
@@ -107,7 +113,15 @@ const MyApplicationsRow = ({ application, index, refetch }) => {
         </div>
       </td>
       <td>
-        <button className="btn btn-sm btn-accent">Review</button>
+        <button
+          onClick={() => {
+            setReviewModalOpen(true);
+            getScholarshipId(scholarshipId);
+          }}
+          className="btn btn-sm btn-accent"
+        >
+          Review
+        </button>
       </td>
     </tr>
   );

@@ -1,7 +1,23 @@
+import { useQuery } from "@tanstack/react-query";
 import Heading from "../../components/Heading";
 import MyReviewRow from "../../components/TableRows/MyReviewRow";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import useAuth from "../../hooks/useAuth";
+import Loader from "../../components/Loader";
 
 const MyReviews = () => {
+  const axiosPrivate = useAxiosPrivate();
+  const { user } = useAuth();
+  const { data: myReviews = [], isLoading } = useQuery({
+    queryKey: ["myReviews"],
+    queryFn: async () => {
+      const { data } = await axiosPrivate(`/my-reviews/${user?.email}`);
+      return data;
+    },
+  });
+
+  if (isLoading) return <Loader />;
+
   return (
     <div>
       <Heading
@@ -10,27 +26,38 @@ const MyReviews = () => {
       ></Heading>
 
       {/* table */}
-      <div className="max-w-7xl mx-auto my-6">
-        <div className="overflow-x-auto shadow-2xl rounded-2xl animate__animated animate__fadeInUp">
-          <table className="table">
-            {/* head */}
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Scholarship</th>
-                <th>University</th>
-                <th>Review</th>
-                <th>Review Date</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* row 1 */}
-              <MyReviewRow />
-            </tbody>
-          </table>
+      {myReviews.length > 0 ? (
+        <div className="max-w-7xl mx-auto my-6">
+          <div className="overflow-x-auto shadow-2xl rounded-2xl animate__animated animate__fadeInUp">
+            <table className="table">
+              {/* head */}
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Scholarship</th>
+                  <th>University</th>
+                  <th>Review</th>
+                  <th>Review Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {myReviews?.map((reviews, index) => (
+                  <MyReviewRow
+                    key={reviews._id}
+                    reviews={reviews}
+                    index={index}
+                  />
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
+      ) : (
+        <p className="text-4xl text-center font-bold font-playfair">
+          You haven't given any reviews yet.
+        </p>
+      )}
     </div>
   );
 };

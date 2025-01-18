@@ -1,24 +1,22 @@
 import { FaEdit } from "react-icons/fa";
 import { GiCancel } from "react-icons/gi";
 
-const MyReviewRow = () => {
+const MyReviewRow = ({ index, reviews }) => {
+  const { review, universityName, scholarshipName, reviewDate } = reviews;
   return (
     <tr className="hover">
-      <th>1</th>
+      <th>{index + 1}</th>
 
-      <td>Global Excellence Scholarship</td>
-      <td>Harvard University</td>
+      <td>{scholarshipName}</td>
+      <td>{universityName}</td>
       <td>
         <div className="flex flex-wrap">
-          {`${"The scholarship process was smooth, and the support team was very helpful. Highly recommended for international students.".slice(
-            0,
-            25
-          )}...`}{" "}
+          {review.slice(0, 55)}...
           <button className="btn btn-xs btn-link">Read More</button>
         </div>
       </td>
 
-      <td>12/2/2025</td>
+      <td>{new Date(reviewDate).toLocaleDateString()}</td>
       <td>
         <div className="flex">
           <button className="btn btn-ghost btn-xs">
