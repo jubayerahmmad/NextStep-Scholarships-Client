@@ -18,8 +18,6 @@ const ScholarshipCards = ({ scholarship }) => {
     image,
   } = scholarship || {};
 
-  console.log(applicationDeadline);
-
   return (
     <div className="w-full shadow-lg hover:shadow-xl duration-500 rounded-md border border-gray-200 animate__animated animate__zoomIn">
       <div className="relative flex items-center py-2">

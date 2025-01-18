@@ -1,20 +1,15 @@
 import { FaSearch } from "react-icons/fa";
 
-const SearchBar = () => {
+const SearchBar = ({ setSearch }) => {
   return (
     <div className="max-w-xl mx-auto my-6">
       <div className="flex">
-        <select className="inline-flex items-center py-2 px-4 font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200  ">
-          <option>Subject Category</option>
-          <option>Doctor</option>
-          <option>Engineer</option>
-          <option>Agriculture</option>
-        </select>
         <div className="relative w-full">
           <input
             type="search"
+            onBlur={(e) => setSearch(e.target.value)}
             id="search-dropdown"
-            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-lg outline-none border-s-gray-50 border-s-2 border border-gray-300"
+            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg outline-none border-2 border-gray-300"
             placeholder="Search..."
             required
           />
@@ -29,5 +24,4 @@ const SearchBar = () => {
     </div>
   );
 };
-
 export default SearchBar;

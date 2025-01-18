@@ -11,8 +11,6 @@ const AllUsers = () => {
   const axiosPrivate = useAxiosPrivate();
   const [sortOrder, setSortOrder] = useState("");
 
-  console.log(sortOrder);
-
   const {
     data: users = [],
     isLoading,

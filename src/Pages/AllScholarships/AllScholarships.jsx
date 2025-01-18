@@ -5,19 +5,19 @@ import SearchBar from "../../components/SearchBar";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../components/Loader";
+import { useState } from "react";
 
 const AllScholarships = () => {
   const axiosPublic = useAxiosPublic();
-  const {
-    data: scholarships = [],
-    isLoading,
-    refetch,
-  } = useQuery({
-    queryKey: ["scholarships"],
+  const [search, setSearch] = useState("");
+
+  const { data: scholarships = [], isLoading } = useQuery({
+    queryKey: ["scholarships", search],
     queryFn: async () => {
-      const { data } = await axiosPublic("/scholarships");
+      const { data } = await axiosPublic(`/scholarships?search=${search}`);
       return data;
     },
+    initialData: [],
   });
 
   if (isLoading) return <Loader />;
@@ -29,7 +29,7 @@ const AllScholarships = () => {
       </Helmet>
       <div>
         <Heading Heading="Check All Scholarships"></Heading>
-        <SearchBar />
+        <SearchBar setSearch={setSearch} />
       </div>
 
       {/* cards */}
@@ -45,7 +45,9 @@ const AllScholarships = () => {
           </div>
         </>
       ) : (
-        "No Data"
+        <>
+          <p className="text-4xl font-bold text-center p-10">No Data Found</p>
+        </>
       )}
     </section>
   );
