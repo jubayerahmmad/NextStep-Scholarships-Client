@@ -6,11 +6,13 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useParams } from "react-router-dom";
 import Loader from "../../components/Loader";
+import useRole from "../../hooks/useRole";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 const Checkout = () => {
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
+  const { role } = useRole();
   const { data: scholarship = {}, isLoading } = useQuery({
     queryKey: ["scholarship"],
     queryFn: async () => {
@@ -45,10 +47,17 @@ const Checkout = () => {
         {/* scholarshipDetails */}
         <div className="mb-4 pb-2">
           <p className="tracking-wide">
-            You are applying for <em>{scholarshipName}</em> by{" "}
-            <em>{universityName}</em> for pursuing <b>{degree}</b> degree on{" "}
-            <b>{subjectName}</b>. Please pay the <b>${applicationFees}</b> as
-            application fee to proceed to the apply.
+            {role === "Admin" || role === "Moderator" ? (
+              <>Admin or Moderator Cannot Apply!</>
+            ) : (
+              <>
+                {" "}
+                You are applying for <em>{scholarshipName}</em> by{" "}
+                <em>{universityName}</em> for pursuing <b>{degree}</b> degree on{" "}
+                <b>{subjectName}</b>. Please pay the <b>${applicationFees}</b>{" "}
+                as application fee to proceed to the apply.
+              </>
+            )}
           </p>
         </div>
         <Elements stripe={stripePromise}>

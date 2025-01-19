@@ -3,6 +3,7 @@ import { GiCancel } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 const MyApplicationsRow = ({
   application,
   index,
@@ -105,6 +106,11 @@ const MyApplicationsRow = ({
           </Link>
           <button
             onClick={() => {
+              if (status !== "Pending") {
+                return toast.warning(
+                  "Cannot Update while its processing or already Completed!"
+                );
+              }
               setUpdateModalOpen(true);
               getApplicationId(_id);
             }}
