@@ -2,9 +2,14 @@ import { RxCross1 } from "react-icons/rx";
 import ImageUploadInput from "../ImageUploadInput";
 import { imageUpload } from "../../utils";
 import { useState } from "react";
+import useAuth from "../../hooks/useAuth";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import { toast } from "react-toastify";
 
-const UpdateUserModal = ({ isModalOpen, setisModalOpen, updateUser }) => {
+const UpdateUserModal = ({ isModalOpen, setisModalOpen }) => {
   const [imageFile, setImageFile] = useState("");
+  const axiosPrivate = useAxiosPrivate();
+  const { user, updateUser } = useAuth();
   const handleFileChange = (e) => {
     e.preventDefault();
     const file = e.target.files[0];
@@ -12,14 +17,17 @@ const UpdateUserModal = ({ isModalOpen, setisModalOpen, updateUser }) => {
   };
 
   const handleUpdate = async (e) => {
-    const name = e.target.name;
+    e.preventDefault();
+    const name = e.target.name.value;
     const imageURL = await imageUpload(imageFile);
 
+    const userInfo = { name, image: imageURL };
+
     try {
-      updateUser(name, imageURL);
+      await updateUser(name, imageURL);
       //  save user to the data
-      await axiosPublic.post(`/save-user/${user?.email}`, userInfo);
-      toast.success("User Registration Successful");
+      await axiosPrivate.patch(`/update-user/${user?.email}`, userInfo);
+      toast.success("Profile Updated Successfully");
     } catch (error) {
       console.log(error);
     }

@@ -44,7 +44,6 @@ const MyProfile = () => {
         <UpdateUserModal
           isModalOpen={isModalOpen}
           setisModalOpen={setisModalOpen}
-          updateUser={updateUser}
         />
       </div>
     </div>
