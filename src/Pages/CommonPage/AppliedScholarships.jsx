@@ -13,21 +13,22 @@ const AppliedScholarships = () => {
   const [feedbackModalOpen, setFeedbackModalOpen] = useState(false);
   const [singleData, setSingleData] = useState({});
   const [feedbackId, setFeedbackId] = useState("");
+  const [sortBy, setSortBy] = useState("");
+  console.log(sortBy);
 
-  const {
-    data: appliedScholarships = [],
-    isLoading,
-    refetch,
-  } = useQuery({
-    queryKey: ["appliedScholarships"],
+  const { data: appliedScholarships = [], isLoading } = useQuery({
+    queryKey: ["appliedScholarships", sortBy],
     queryFn: async () => {
-      const { data } = await axiosPrivate(`/applied-scholarships`);
+      const { data } = await axiosPrivate(
+        `/applied-scholarships?date=${sortBy}`
+      );
       return data;
     },
   });
 
   if (isLoading) return <Loader />;
 
+  // view application details
   const handleDetails = async (id) => {
     try {
       const { data } = await axiosPrivate(`/applied-scholarship/${id}`);
@@ -37,6 +38,7 @@ const AppliedScholarships = () => {
     }
   };
 
+  // getting the id of the applied scholarship where  the feedback will be added.
   const getFeedbackId = (id) => {
     setFeedbackId(id);
   };
@@ -50,6 +52,19 @@ const AppliedScholarships = () => {
       {/* table */}
       {appliedScholarships.length > 0 ? (
         <div className="max-w-7xl mx-auto my-6">
+          <div className="my-6 flex items-center gap-3 justify-end">
+            <select
+              onChange={(e) => setSortBy(e.target.value)}
+              className="bg-teal-900 rounded-md px-2 py-1 text-white text-lg font-playfair"
+              name="role"
+              value={sortBy}
+            >
+              <option value="">Sort</option>
+              <option value="appliedDate">Apply Date</option>
+              <option value="applicationDeadline">Deadline</option>
+            </select>
+          </div>
+
           <div className="overflow-x-auto shadow-2xl rounded-2xl animate__animated animate__fadeInUp">
             <table className="table ">
               {/* head */}
@@ -59,6 +74,8 @@ const AppliedScholarships = () => {
                   <th>Applicants Info</th>
                   <th>Scholarship Category</th>
                   <th>Subject Category</th>
+                  <th>Applied Date</th>
+                  <th>Deadline</th>
                   <th>Status</th>
                   <th>Actions</th>
                   <th>Feedback</th>

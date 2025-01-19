@@ -54,7 +54,7 @@ const ScholarshipDetails = () => {
       </Helmet>
       <Heading Heading="Check Full Details"></Heading>
       <div className="divider"></div>
-      <div className="w-full rounded-sm duration-500 mt-6 relative animate__animated animate__zoomInDown">
+      <div className="w-full rounded-sm duration-500 mt-6 relative animate__animated animate__fadeInUp">
         <span className="absolute top-2 right-4 badge badge-accent badge-lg">
           World Rank: {worldRank}
         </span>

@@ -34,6 +34,7 @@ const ApplyScholarshipForm = () => {
     subjectCategory,
     degree,
     serviceCharge,
+    applicationDeadline,
   } = scholarship || {};
 
   // get user data
@@ -71,6 +72,7 @@ const ApplyScholarshipForm = () => {
         scholarshipId: _id,
         scholarshipName,
         appliedDate: new Date(),
+        applicationDeadline,
       });
 
       reset();

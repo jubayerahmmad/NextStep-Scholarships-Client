@@ -21,6 +21,8 @@ const AppliedScholarshipRow = ({
     applicantEmail,
     status,
     applicantPhoto,
+    appliedDate,
+    applicationDeadline,
   } = applications;
 
   const handleUpdateStatus = async (updatedStatus) => {
@@ -82,6 +84,8 @@ const AppliedScholarshipRow = ({
       </td>
       <td>{scholarshipCategory}</td>
       <td>{subjectCategory}</td>
+      <td>{new Date(appliedDate).toLocaleDateString()}</td>
+      <td>{new Date(applicationDeadline).toLocaleDateString()}</td>
       <td>
         <select
           defaultValue={status}
