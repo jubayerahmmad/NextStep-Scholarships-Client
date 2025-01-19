@@ -1,18 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import Heading from "../../components/Heading";
-
 import MyApplicationsRow from "../../components/TableRows/MyApplicationsRow";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useAuth from "../../hooks/useAuth";
 import Loader from "../../components/Loader";
 import { useState } from "react";
 import ReviewModal from "../../components/Modals/ReviewModal";
+import UpdateApplicationDetailsModal from "../../components/Modals/UpdateApplicationDetailsModal";
 
 const MyApplications = () => {
   const { user } = useAuth();
   const axiosPrivate = useAxiosPrivate();
   const [reviewModalOpen, setReviewModalOpen] = useState(false);
+  const [updateModal, setUpdateModalOpen] = useState(false);
   const [scholarshipId, setScholarshipId] = useState("");
+  const [applicationId, setApplicationId] = useState("");
 
   const {
     data: myApplications = [],
@@ -28,8 +30,14 @@ const MyApplications = () => {
 
   if (isLoading) return <Loader />;
 
+  // id of the scholarship where user applied (stored as scholarshipId)
   const getScholarshipId = (id) => {
     setScholarshipId(id);
+  };
+
+  // id of the applied scholarship (stored as _id) where all the info of the applicant is stored
+  const getApplicationId = (id) => {
+    setApplicationId(id);
   };
 
   return (
@@ -64,8 +72,10 @@ const MyApplications = () => {
                     index={index}
                     application={application}
                     getScholarshipId={getScholarshipId}
+                    getApplicationId={getApplicationId}
                     refetch={refetch}
                     setReviewModalOpen={setReviewModalOpen}
+                    setUpdateModalOpen={setUpdateModalOpen}
                   />
                 ))}
               </tbody>
@@ -83,6 +93,13 @@ const MyApplications = () => {
           setReviewModalOpen={setReviewModalOpen}
           reviewModalOpen={reviewModalOpen}
           scholarshipId={scholarshipId}
+        />
+      )}
+      {updateModal && (
+        <UpdateApplicationDetailsModal
+          updateModal={updateModal}
+          setUpdateModalOpen={setUpdateModalOpen}
+          applicationId={applicationId}
         />
       )}
     </div>

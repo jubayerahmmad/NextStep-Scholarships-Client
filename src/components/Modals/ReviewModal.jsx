@@ -24,7 +24,6 @@ const ReviewModal = ({
   });
 
   if (isLoading) return <Loader />;
-  console.log(scholarshipId);
 
   const handleAddReview = async (e) => {
     e.preventDefault();

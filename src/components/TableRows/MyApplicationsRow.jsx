@@ -9,6 +9,8 @@ const MyApplicationsRow = ({
   refetch,
   setReviewModalOpen,
   getScholarshipId,
+  setUpdateModalOpen,
+  getApplicationId,
 }) => {
   const axiosPrivate = useAxiosPrivate();
   const {
@@ -101,7 +103,13 @@ const MyApplicationsRow = ({
               <FaInfoCircle size={20} />{" "}
             </button>
           </Link>
-          <button className="btn btn-ghost btn-sm">
+          <button
+            onClick={() => {
+              setUpdateModalOpen(true);
+              getApplicationId(_id);
+            }}
+            className="btn btn-ghost btn-sm"
+          >
             <FaEdit size={20} />{" "}
           </button>
           <button

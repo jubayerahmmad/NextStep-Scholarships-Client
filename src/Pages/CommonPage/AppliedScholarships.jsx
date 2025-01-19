@@ -14,7 +14,6 @@ const AppliedScholarships = () => {
   const [singleData, setSingleData] = useState({});
   const [feedbackId, setFeedbackId] = useState("");
   const [sortBy, setSortBy] = useState("");
-  console.log(sortBy);
 
   const { data: appliedScholarships = [], isLoading } = useQuery({
     queryKey: ["appliedScholarships", sortBy],
