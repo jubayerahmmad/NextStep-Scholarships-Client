@@ -4,10 +4,14 @@ import MyReviewRow from "../../components/TableRows/MyReviewRow";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useAuth from "../../hooks/useAuth";
 import Loader from "../../components/Loader";
+import { useState } from "react";
+import UpdateReviewModal from "../../components/Modals/UpdateReviewModal";
 
 const MyReviews = () => {
   const axiosPrivate = useAxiosPrivate();
   const { user } = useAuth();
+  const [updateReviewModal, setUpdateReviewModal] = useState(false);
+  const [reviewId, setReviewId] = useState("");
   const {
     data: myReviews = [],
     isLoading,
@@ -21,6 +25,9 @@ const MyReviews = () => {
   });
 
   if (isLoading) return <Loader />;
+  const getReviewId = (id) => {
+    setReviewId(id);
+  };
 
   return (
     <div>
@@ -52,6 +59,8 @@ const MyReviews = () => {
                     reviews={reviews}
                     index={index}
                     refetch={refetch}
+                    getReviewId={getReviewId}
+                    setUpdateReviewModal={setUpdateReviewModal}
                   />
                 ))}
               </tbody>
@@ -62,6 +71,14 @@ const MyReviews = () => {
         <p className="text-4xl text-center font-bold font-playfair">
           You haven't given any reviews yet.
         </p>
+      )}
+
+      {updateReviewModal && (
+        <UpdateReviewModal
+          updateReviewModal={updateReviewModal}
+          setUpdateReviewModal={setUpdateReviewModal}
+          reviewId={reviewId}
+        />
       )}
     </div>
   );

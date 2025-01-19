@@ -3,7 +3,13 @@ import Swal from "sweetalert2";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { MdDelete } from "react-icons/md";
 
-const MyReviewRow = ({ index, reviews, refetch }) => {
+const MyReviewRow = ({
+  index,
+  reviews,
+  refetch,
+  setUpdateReviewModal,
+  getReviewId,
+}) => {
   const axiosPrivate = useAxiosPrivate();
   const { _id, review, universityName, scholarshipName, reviewDate } = reviews;
 
@@ -45,7 +51,13 @@ const MyReviewRow = ({ index, reviews, refetch }) => {
       <td>{new Date(reviewDate).toLocaleDateString()}</td>
       <td>
         <div className="flex">
-          <button className="btn btn-ghost btn-xs">
+          <button
+            onClick={() => {
+              setUpdateReviewModal(true);
+              getReviewId(_id);
+            }}
+            className="btn btn-ghost btn-xs"
+          >
             <FaEdit size={16} />{" "}
           </button>
           <button onClick={deleteReview} className="btn btn-ghost btn-xs">

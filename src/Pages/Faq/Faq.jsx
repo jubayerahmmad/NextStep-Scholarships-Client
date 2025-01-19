@@ -100,7 +100,11 @@ const Faq = () => {
             Don't Hesitate to send us an Email with your Enquiry or statement
           </p>
           {/* form*/}
-          <form className="w-full mt-6">
+          <form
+            action="https://getform.io/f/amddekob"
+            method="POST"
+            className="w-full mt-6"
+          >
             <div className="w-full mx-auto">
               <div className="flex sm:flex-row flex-col items-center gap-[20px]">
                 <div className="flex flex-col gap-[5px] w-full sm:w-[50%]">

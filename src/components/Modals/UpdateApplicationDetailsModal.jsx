@@ -36,6 +36,7 @@ const UpdateApplicationDetailsModal = ({
     gender,
     status,
   } = applicationData;
+
   if (isLoading) return <Loader />;
 
   const onSubmit = async (data) => {
