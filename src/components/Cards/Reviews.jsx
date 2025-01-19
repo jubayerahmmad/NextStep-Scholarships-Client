@@ -6,8 +6,27 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import { Pagination } from "swiper/modules";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import Loader from "../Loader";
+import { FcRating } from "react-icons/fc";
+import Rating from "react-rating";
+import { FaRegStar, FaStar, FaStarHalf } from "react-icons/fa6";
+import { CiStar } from "react-icons/ci";
 
-const Reviews = () => {
+const Reviews = ({ id }) => {
+  console.log(id);
+  const axiosPrivate = useAxiosPrivate();
+  const { data: reviews = [], isLoading } = useQuery({
+    queryKey: ["specific-reviews"],
+    queryFn: async () => {
+      const { data } = await axiosPrivate(`/reviews/${id}`);
+      return data;
+    },
+  });
+
+  if (isLoading) return <Loader />;
+  console.log(reviews);
   return (
     <section className="">
       <Heading
@@ -15,81 +34,68 @@ const Reviews = () => {
         subHeading={"Read what our Students have to say about us"}
       ></Heading>
       {/* cards/sliders */}
-      <div>
-        <Swiper
-          autoplay={true}
-          pagination={{
-            dynamicBullets: true,
-          }}
-          modules={[Pagination]}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            <div>
-              <div className="max-w-lg mx-auto bg-gray-100 p-8 rounded-lg shadow-md flex flex-col items-start space-y-4">
-                {/* Review Text */}
-                <div className="flex-grow">
-                  <p className="text-gray-700 text-lg font-medium leading-relaxed">
-                    "It is extremely difficult to find developers like Max who
-                    are this competent, reliable, fast and fair in terms of
-                    pricing. Together with Rosy DX we have already realized two
-                    websites and I hope there will be many more projects to
-                    follow."
-                  </p>
-                </div>
+      {reviews.length > 0 ? (
+        <div>
+          <Swiper
+            autoplay={true}
+            pagination={{
+              dynamicBullets: true,
+            }}
+            modules={[Pagination]}
+            className="mySwiper"
+          >
+            {reviews?.map((review) => (
+              <SwiperSlide key={review._id}>
                 <div>
-                  {/* rating */}
-
-                  {/* User Info */}
-                  <div className="flex items-center space-x-3 z-10">
+                  <div className="max-w-lg mx-auto bg-gray-100 p-6 rounded-lg shadow-md flex flex-col items-start space-y-4">
                     <div>
-                      <p className="font-bold text-gray-800">Pau Cubarsi</p>
-                      <p className="text-sm text-gray-500">FC Barcelona</p>
+                      {/* rating */}
+
+                      {/* User Info */}
+                      <div className="lg:flex items-center gap-2 space-y-2 my-5">
+                        <img
+                          referrerPolicy="no-referrer"
+                          src={review.reviewerImage}
+                          alt="User Avatar"
+                          className="w-12 h-12 object-cover rounded-full"
+                        />
+                        <div className="flex-grow">
+                          <p className="font-bold text-gray-800">
+                            {review.reviewerName}
+                          </p>
+                          <p className="text-sm text-gray-500">
+                            Reviewed On: {review.reviewDate.split("T")[0]}
+                          </p>
+                        </div>
+                        <p className="">
+                          <Rating
+                            initialRating={review.rating}
+                            readonly
+                            emptySymbol={<FaRegStar color="orange" />}
+                            fullSymbol={<FaStar color="orange" />}
+                            fractions={2}
+                            stop={10}
+                          />
+                        </p>
+                      </div>
+                      {/* Review Text */}
+                      <div className="pb-4">
+                        <em className="text-gray-700 text-lg font-medium leading-relaxed">
+                          {review.review}
+                        </em>
+                      </div>
                     </div>
-                    <img
-                      src="https://i.ibb.co.com/cDJwpsZ/Pau-Cubarsi.jpg"
-                      alt="User Avatar"
-                      className="w-12 h-12 object-cover rounded-full"
-                    />
                   </div>
                 </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div>
-              <div className="max-w-lg mx-auto bg-gray-100 p-8 rounded-lg shadow-md flex flex-col items-start space-y-4">
-                {/* Review Text */}
-                <div className="flex-grow">
-                  <p className="text-gray-700 text-lg font-medium leading-relaxed">
-                    "It is extremely difficult to find developers like Max who
-                    are this competent, reliable, fast and fair in terms of
-                    pricing. Together with Rosy DX we have already realized two
-                    websites and I hope there will be many more projects to
-                    follow."
-                  </p>
-                </div>
-                <div>
-                  {/* rating */}
-
-                  {/* User Info */}
-                  <div className="flex items-center space-x-3 z-10">
-                    <div>
-                      <p className="font-bold text-gray-800">Pau Cubarsi</p>
-                      <p className="text-sm text-gray-500">FC Barcelona</p>
-                    </div>
-                    <img
-                      src="https://i.ibb.co.com/cDJwpsZ/Pau-Cubarsi.jpg"
-                      alt="User Avatar"
-                      className="w-12 h-12 object-cover rounded-full"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-        </Swiper>
-      </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      ) : (
+        <p className="text-4xl font-bold font-playfair text-center mt-12">
+          No Reviews Found
+        </p>
+      )}
     </section>
   );
 };

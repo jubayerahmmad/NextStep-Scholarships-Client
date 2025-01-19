@@ -60,7 +60,7 @@ const AllUsers = () => {
             <div className="overflow-x-auto shadow-2xl rounded-2xl animate__animated animate__fadeInUp">
               <table className="table ">
                 {/* head */}
-                <thead className="">
+                <thead className="bg-teal-500 text-gray-50">
                   <tr>
                     <th>User Info</th>
                     <th>User Email</th>

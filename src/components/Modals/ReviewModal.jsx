@@ -22,8 +22,9 @@ const ReviewModal = ({
       return data;
     },
   });
-  console.log(scholarship);
+
   if (isLoading) return <Loader />;
+  console.log(scholarshipId);
 
   const handleAddReview = async (e) => {
     e.preventDefault();
@@ -32,7 +33,7 @@ const ReviewModal = ({
 
     // save data
     try {
-      const { data } = await axiosPrivate.post("/add-review", {
+      const { data } = await axiosPrivate.post(`/add-review/${scholarshipId}`, {
         rating,
         review,
         scholarshipName: scholarship.scholarshipName,
@@ -43,11 +44,11 @@ const ReviewModal = ({
         reviewerEmail: user?.email,
         reviewerImage: user?.photoURL,
       });
-      toast.success("Review Added");
-      console.log(data);
       setReviewModalOpen(false);
+      toast.success("Review Added");
     } catch (error) {
-      console.log(error);
+      setReviewModalOpen(false);
+      toast.error(error.response.data.message);
     }
   };
 

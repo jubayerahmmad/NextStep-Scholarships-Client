@@ -1,8 +1,11 @@
 import { FcRating } from "react-icons/fc";
 import { MdDelete } from "react-icons/md";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import Swal from "sweetalert2";
 
-const AllReviewsRow = ({ reviews, index }) => {
+const AllReviewsRow = ({ reviews, index, refetch }) => {
   const {
+    _id,
     rating,
     review,
     universityName,
@@ -11,6 +14,31 @@ const AllReviewsRow = ({ reviews, index }) => {
     reviewerImage,
     reviewerName,
   } = reviews;
+
+  const axiosPrivate = useAxiosPrivate();
+
+  const deleteReview = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosPrivate.delete(`/delete-review/${_id}`);
+        Swal.fire({
+          title: "Deleted!",
+          text: "Review has been deleted.",
+          icon: "success",
+        });
+        refetch();
+      }
+    });
+  };
+
   return (
     <tr className="hover">
       <th>{index + 1}</th>
@@ -48,7 +76,10 @@ const AllReviewsRow = ({ reviews, index }) => {
       </td>
       <td>{new Date(reviewDate).toLocaleDateString()}</td>
       <td>
-        <button className="btn btn-error text-white btn-xs">
+        <button
+          onClick={deleteReview}
+          className="btn btn-error text-white btn-xs"
+        >
           <MdDelete size={16} />
         </button>
       </td>

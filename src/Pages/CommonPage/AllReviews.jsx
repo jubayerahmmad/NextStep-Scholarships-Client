@@ -7,7 +7,11 @@ import Loader from "../../components/Loader";
 const AllReviews = () => {
   const axiosPrivate = useAxiosPrivate();
 
-  const { data: allReviews = [], isLoading } = useQuery({
+  const {
+    data: allReviews = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["allReviews"],
     queryFn: async () => {
       const { data } = await axiosPrivate("/reviews");
@@ -16,7 +20,6 @@ const AllReviews = () => {
   });
 
   if (isLoading) return <Loader />;
-  console.log(allReviews);
   return (
     <div>
       <Heading
@@ -29,7 +32,7 @@ const AllReviews = () => {
           <div className="overflow-x-auto shadow-2xl rounded-2xl animate__animated animate__fadeInUp">
             <table className="table ">
               {/* head */}
-              <thead className="">
+              <thead className="bg-teal-500 text-gray-50">
                 <tr>
                   <th>#</th>
                   <th>Reviewer</th>
@@ -46,6 +49,7 @@ const AllReviews = () => {
                     key={reviews._id}
                     reviews={reviews}
                     index={index}
+                    refetch={refetch}
                   />
                 ))}
               </tbody>

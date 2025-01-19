@@ -20,6 +20,7 @@ const AppliedScholarshipRow = ({
     applicantName,
     applicantEmail,
     status,
+    applicantPhoto,
   } = applications;
 
   const handleUpdateStatus = async (updatedStatus) => {
@@ -64,6 +65,15 @@ const AppliedScholarshipRow = ({
       <th>{i + 1}</th>
       <td>
         <div className="flex items-center gap-3">
+          <div className="avatar">
+            <div className="mask mask-squircle h-8 w-8 lg:h-12 lg:w-12">
+              <img
+                referrerPolicy="no-referrer"
+                src={applicantPhoto}
+                alt="Avatar"
+              />
+            </div>
+          </div>
           <div>
             <div className="font-bold text-xs">{applicantName}</div>
             <div className="text-xs">{applicantEmail}</div>

@@ -8,7 +8,11 @@ import Loader from "../../components/Loader";
 const MyReviews = () => {
   const axiosPrivate = useAxiosPrivate();
   const { user } = useAuth();
-  const { data: myReviews = [], isLoading } = useQuery({
+  const {
+    data: myReviews = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["myReviews"],
     queryFn: async () => {
       const { data } = await axiosPrivate(`/my-reviews/${user?.email}`);
@@ -31,7 +35,7 @@ const MyReviews = () => {
           <div className="overflow-x-auto shadow-2xl rounded-2xl animate__animated animate__fadeInUp">
             <table className="table">
               {/* head */}
-              <thead>
+              <thead className="bg-teal-500 text-gray-50">
                 <tr>
                   <th>#</th>
                   <th>Scholarship</th>
@@ -47,6 +51,7 @@ const MyReviews = () => {
                     key={reviews._id}
                     reviews={reviews}
                     index={index}
+                    refetch={refetch}
                   />
                 ))}
               </tbody>
