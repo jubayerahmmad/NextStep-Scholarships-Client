@@ -8,12 +8,12 @@ const SearchBar = ({ setSearch }) => {
           <input
             type="search"
             onBlur={(e) => setSearch(e.target.value)}
-            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg outline-none border-2 border-gray-300"
+            className="block p-2.5 w-full text-sm text-gray-900 focus:outline-none bg-gray-50 rounded-xl border border-gray-300"
             placeholder="Search..."
           />
           <button
             type="submit"
-            className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-teal-700 rounded-e-lg border border-teal-700 hover:bg-teal-800 focus:outline-none "
+            className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-teal-700 rounded-e-xl border border-teal-700 hover:bg-teal-800 focus:outline-none "
           >
             <FaSearch />
           </button>

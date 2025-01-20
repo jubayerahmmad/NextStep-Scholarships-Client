@@ -6,6 +6,8 @@ import { MdRateReview } from "react-icons/md";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../components/Loader";
+import Chart from "../../components/TableRows/Chart";
+import Heading from "../../components/Heading";
 
 const AdminProfile = () => {
   const axiosPrivate = useAxiosPrivate();
@@ -16,6 +18,7 @@ const AdminProfile = () => {
       totalReviews,
       totalScholarships,
       avgRating,
+      chartData,
     } = {},
     isLoading,
   } = useQuery({
@@ -68,6 +71,7 @@ const AdminProfile = () => {
       <Helmet>
         <title>Admin Dashboard</title>
       </Helmet>
+      <Heading Heading="Overview" />
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
         {stats.map((stat, i) => (
           <div
@@ -81,6 +85,15 @@ const AdminProfile = () => {
             <span className="text-3xl font-bold">{stat.numbers}</span>
           </div>
         ))}
+      </div>
+      {/* chart */}
+
+      <div className="my-12">
+        <Heading
+          Heading="View daily applications and Earnings"
+          subHeading="Track your daily progress and revenue"
+        />
+        <Chart chartData={chartData} />
       </div>
     </div>
   );

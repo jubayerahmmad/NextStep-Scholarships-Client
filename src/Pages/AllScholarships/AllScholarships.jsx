@@ -92,7 +92,7 @@ const AllScholarships = () => {
               className={`btn btn-outline btn-circle btn-sm ${
                 currentPage === page
                   ? "bg-accent text-white"
-                  : "text-accent hover:bg-accent hover:border-accent "
+                  : "text-accent hover:bg-accent hover:border-accent"
               } `}
             >
               {page + 1}

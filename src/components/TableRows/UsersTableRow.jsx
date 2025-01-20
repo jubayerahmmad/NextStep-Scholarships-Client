@@ -45,7 +45,7 @@ const UsersTableRow = ({ userData, refetch }) => {
   };
 
   return (
-    <tr className="hover">
+    <tr className="hover text-sm">
       <td>
         <div className="flex items-center gap-3">
           <div className="avatar">
@@ -76,7 +76,7 @@ const UsersTableRow = ({ userData, refetch }) => {
       <td>
         <div className="flex">
           <button onClick={handleDelete} className="btn btn-error btn-sm">
-            <MdDelete size={20} />
+            <MdDelete size={18} />
           </button>
         </div>
       </td>

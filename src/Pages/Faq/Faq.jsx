@@ -114,7 +114,7 @@ const Faq = () => {
                     type="text"
                     placeholder="Your name"
                     name="name"
-                    className="peer border-[#383844] border rounded-md outline-none px-4 py-3 w-full bg-transparent text-gray-400 transition-colors duration-300"
+                    className="peer border-[#383844] border rounded-md focus:outline-teal-500 px-4 py-3 w-full bg-transparent text-gray-400 transition-colors duration-300"
                   />
                 </div>
 
@@ -123,7 +123,7 @@ const Faq = () => {
                     type="email"
                     placeholder="Email address"
                     name="email"
-                    className="peer border-[#383844] border rounded-md outline-none px-4 py-3 w-full bg-transparent text-gray-400 transition-colors duration-300"
+                    className="peer border-[#383844] border rounded-md focus:outline-teal-500 px-4 py-3 w-full bg-transparent text-gray-400 transition-colors duration-300"
                   />
                 </div>
               </div>
@@ -132,7 +132,7 @@ const Faq = () => {
                 <textarea
                   placeholder="Write your Questions"
                   name="questions"
-                  className="peer min-h-[200px] border-[#383844] border rounded-md outline-none px-4 bg-transparent py-3 w-full text-gray-400 transition-colors duration-300"
+                  className="peer min-h-[200px] border-[#383844] border rounded-md focus:outline-teal-500 px-4 bg-transparent py-3 w-full text-gray-400 transition-colors duration-300"
                 ></textarea>
               </div>
 
