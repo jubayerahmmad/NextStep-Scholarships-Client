@@ -79,16 +79,16 @@ const UpdateScholarshipModal = ({
   };
 
   return (
-    <div className="h-full">
+    <div>
       <div
         className={`${
           modalOpen ? "visible" : "invisible"
-        } w-full absolute top-0 left-0 z-50 bg-[#000000c4] overflow-auto transition-all duration-300 flex items-center justify-center`}
+        } w-full min-h-screen absolute top-0 left-0 z-50 bg-[#0000002a] overflow-auto transition-all duration-300 flex items-center justify-center`}
       >
         <div
           className={`${
             modalOpen ? "scale-[1] opacity-100" : "scale-[0] opacity-0"
-          } w-[90%] md:w-[80%] lg:w-[55%]  bg-gray-100 rounded-lg transition-all duration-300 mx-auto my-4`}
+          } w-[90%] md:w-[80%] lg:w-[75%] xl:w-[50%] bg-gray-100 rounded-lg transition-all duration-300 mx-auto my-4`}
         >
           <div className="overflow-y-auto">
             <div className="w-full flex items-end px-4 py-2 justify-between border-b border-[#d1d1d1]">

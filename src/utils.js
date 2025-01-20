@@ -14,5 +14,3 @@ export const imageUpload = async (imageFile) => {
   const image_url = data.url;
   return image_url;
 };
-
-export const saveUserData = async (name, email, image) => {};

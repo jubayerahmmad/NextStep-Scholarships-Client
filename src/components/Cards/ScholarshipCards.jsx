@@ -21,7 +21,7 @@ const ScholarshipCards = ({ scholarship }) => {
 
   return (
     <div className="w-full shadow-lg hover:shadow-xl duration-500 rounded-md border border-gray-200 animate__animated animate__zoomIn">
-      <div className="relative flex items-center py-2">
+      <div className="relative flex items-center py-6 xl:py-4">
         {/* University Image */}
         <figure className="p-2">
           <img
@@ -82,7 +82,7 @@ const ScholarshipCards = ({ scholarship }) => {
         </p>
       </div>
       {/* Scholarship Details Button */}
-      <div className="flex items-center justify-between px-5 pb-4 mt-4">
+      <div className="flex items-center justify-between px-5 pb-4 mt-8 lg:mt-4">
         {/* Rating */}
         <div className="flex items-center space-x-1">
           <span className="text-yellow-500">⭐</span>

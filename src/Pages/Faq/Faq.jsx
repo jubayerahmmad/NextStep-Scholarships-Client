@@ -111,6 +111,7 @@ const Faq = () => {
                   <input
                     type="text"
                     placeholder="Your name"
+                    name="name"
                     className="peer border-[#383844] border rounded-md outline-none px-4 py-3 w-full bg-transparent text-gray-400 transition-colors duration-300"
                   />
                 </div>
@@ -119,6 +120,7 @@ const Faq = () => {
                   <input
                     type="email"
                     placeholder="Email address"
+                    name="email"
                     className="peer border-[#383844] border rounded-md outline-none px-4 py-3 w-full bg-transparent text-gray-400 transition-colors duration-300"
                   />
                 </div>
@@ -127,6 +129,7 @@ const Faq = () => {
               <div className="flex flex-col gap-[5px] w-full mt-[20px]">
                 <textarea
                   placeholder="Write your Questions"
+                  name="questions"
                   className="peer min-h-[200px] border-[#383844] border rounded-md outline-none px-4 bg-transparent py-3 w-full text-gray-400 transition-colors duration-300"
                 ></textarea>
               </div>

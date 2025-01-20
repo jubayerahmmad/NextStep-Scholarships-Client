@@ -31,13 +31,13 @@ const Banner = () => {
 
             {/* Content (Text) */}
             <div className="flex flex-col justify-center items-center max-w-5xl mx-auto text-center h-full text-white font-bold relative z-10 opacity-100 transition-opacity duration-300 space-y-2 p-4">
-              <h2 className="text-white text-4xl lg:text-6xl font-bold mb-4 animate__animated animate__fadeInLeft">
+              <h2 className="text-white text-3xl lg:text-6xl font-bold mb-4 animate__animated animate__fadeInLeft">
                 Welcome to <br />
                 <span className="font-bold bg-gradient-to-br from-teal-200 via-teal-400 to-teal-500 bg-clip-text text-transparent font-playfair">
                   NextStep Scholarships
                 </span>
               </h2>
-              <p className="text-gray-300 tracking-wider text-xs px-5 lg:text-lg max-w-6xl text-center animate__animated animate__fadeInLeft">
+              <p className="text-gray-300 tracking-wide text-xs px-5 lg:text-lg max-w-6xl text-center animate__animated animate__fadeInLeft">
                 NextStep Scholarships is a platform that provides financial aid
                 to students who are pursuing higher education. Our scholarships
                 are open to all students, regardless of their background or
@@ -48,7 +48,7 @@ const Banner = () => {
                 to="/allScholarships"
                 className="btn btn-sm btn-outline hover:bg-teal-900 hover:border-teal-700 text-teal-500 text-lg"
               >
-                Explore Scholarships
+                Explore
               </Link>
             </div>
           </div>

@@ -67,7 +67,7 @@ const UpdateApplicationDetailsModal = ({
       <div
         className={`${
           updateModal ? "scale-[1] opacity-100" : " scale-[0] opacity-0"
-        } w-[90%] md:w-[80%] lg:w-[35%] bg-gray-200 rounded-lg transition-all duration-300 mx-auto mt-8`}
+        } w-[90%] md:w-[80%] lg:w-[55%] bg-gray-200 rounded-lg transition-all duration-300 mx-auto mt-8`}
       >
         <div className="w-full flex items-end p-4 justify-between border-b border-[#d1d1d1]">
           <h1 className="text-[1.5rem] font-bold">
