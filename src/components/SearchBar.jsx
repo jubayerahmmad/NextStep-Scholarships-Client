@@ -8,10 +8,8 @@ const SearchBar = ({ setSearch }) => {
           <input
             type="search"
             onBlur={(e) => setSearch(e.target.value)}
-            id="search-dropdown"
             className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg outline-none border-2 border-gray-300"
             placeholder="Search..."
-            required
           />
           <button
             type="submit"

@@ -7,6 +7,7 @@ import Loader from "../../components/Loader";
 import { useState } from "react";
 import ReviewModal from "../../components/Modals/ReviewModal";
 import UpdateApplicationDetailsModal from "../../components/Modals/UpdateApplicationDetailsModal";
+import { Helmet } from "react-helmet-async";
 
 const MyApplications = () => {
   const { user } = useAuth();
@@ -42,6 +43,9 @@ const MyApplications = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>My Applications || Dashboard</title>
+      </Helmet>
       <Heading
         Heading="Check All Your Applications"
         subHeading="View the status of all your submitted applications and track your progress."

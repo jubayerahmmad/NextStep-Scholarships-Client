@@ -17,8 +17,13 @@ span {
 }
 
 p,
-li {
+li,
+td {
   font-family: "Merriweather", serif;
+}
+
+td {
+  font-size: 12px;
 }
 
 .active {

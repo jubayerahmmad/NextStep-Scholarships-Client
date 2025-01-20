@@ -3,14 +3,18 @@ import UpdateUserModal from "../../components/Modals/UpdateUserModal";
 import useAuth from "../../hooks/useAuth";
 import useRole from "../../hooks/useRole";
 import Loader from "../../components/Loader";
+import { Helmet } from "react-helmet-async";
 
 const MyProfile = () => {
-  const { user, updateUser } = useAuth();
+  const { user } = useAuth();
   const [isModalOpen, setisModalOpen] = useState(false);
   const { role, isLoading } = useRole();
   if (isLoading) return <Loader />;
   return (
     <div className="px-4 flex flex-col items-center justify-center min-h-[calc(100vh-96px)]">
+      <Helmet>
+        <title>My Profile || Dashboard</title>
+      </Helmet>
       <div className="rounded-2xl max-w-4xl border bg-base-100 shadow-2xl ">
         <figure>
           <img

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Heading from "../../components/Heading";
 import { Helmet } from "react-helmet-async";
+import { BiSend } from "react-icons/bi";
+import { FiSend } from "react-icons/fi";
 
 const Faq = () => {
   const [bgAccording, setBgAccording] = useState(null);
@@ -136,9 +138,12 @@ const Faq = () => {
 
               <button
                 type="submit"
-                className={`py-1.5 px-4 bg-gradient-to-r from-teal-400 via-teal-800 to-cyan-950 text-white rounded-md text-[1rem] mt-[10px] w-full`}
+                className={`py-1 px-2 flex justify-center items-center gap-2 bg-gradient-to-r from-teal-400 via-teal-800 to-cyan-950 text-white rounded-md text-[1rem] mt-3 w-full`}
               >
-                Send
+                Send{" "}
+                <span>
+                  <FiSend />
+                </span>
               </button>
             </div>
           </form>

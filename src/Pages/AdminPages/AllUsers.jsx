@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import Loader from "../../components/Loader";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const AllUsers = () => {
   const { user } = useAuth();
@@ -33,6 +34,9 @@ const AllUsers = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Manage Users || Admin Dashboard</title>
+      </Helmet>
       <Heading
         Heading="Registered Users"
         subHeading="View and manage all registered users on the platform"

@@ -24,7 +24,7 @@ const Reviews = ({ id }) => {
   });
 
   if (isLoading) return <Loader />;
-  console.log(reviews);
+
   return (
     <section className="">
       <Heading

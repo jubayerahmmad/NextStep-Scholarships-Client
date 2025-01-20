@@ -7,6 +7,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useParams } from "react-router-dom";
 import Loader from "../../components/Loader";
 import useRole from "../../hooks/useRole";
+import { Helmet } from "react-helmet-async";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 const Checkout = () => {
@@ -34,6 +35,9 @@ const Checkout = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-6 my-2">
+      <Helmet>
+        <title>Checkout || NextStep Scholarships</title>
+      </Helmet>
       <Heading
         Heading={"Payment Checkout"}
         subHeading={"Pay Application Fee to apply for this Scholarship"}

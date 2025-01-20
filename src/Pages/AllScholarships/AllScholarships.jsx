@@ -25,16 +25,14 @@ const AllScholarships = () => {
   });
 
   // get total data
-  const { data: totalData = {} } = useQuery({
+  const { data: totalData = {}, isPending } = useQuery({
     queryKey: ["totalData"],
     queryFn: async () => {
       const { data } = await axiosPublic("/total-scholarships");
       return data;
     },
   });
-  if (isLoading) return <Loader />;
-
-  // return console.log(totalData.total);
+  if (isLoading || isPending) return <Loader />;
 
   const numberOfPages = Math.ceil(totalData.total / itemsPerpage);
   const pages = [...Array(numberOfPages).keys()];
@@ -78,40 +76,38 @@ const AllScholarships = () => {
         </>
       )}
 
-      {scholarships?.length >= 6 && (
-        <div className="flex justify-center items-center gap-3 mt-6">
-          <button
-            onClick={handlePrevPage}
-            className="btn btn-ghost btn-circle btn-sm"
-          >
-            {" "}
-            <FaArrowLeft />{" "}
-          </button>
+      <div className="flex justify-center items-center gap-3 mt-6">
+        <button
+          onClick={handlePrevPage}
+          className="btn btn-ghost btn-circle btn-sm"
+        >
+          {" "}
+          <FaArrowLeft />{" "}
+        </button>
 
-          <div className="flex gap-2">
-            {pages.map((page) => (
-              <button
-                key={page}
-                className={`btn btn-outline btn-circle btn-sm ${
-                  currentPage === page
-                    ? "bg-accent text-white"
-                    : "text-accent hover:bg-accent hover:border-accent "
-                } `}
-              >
-                {page + 1}
-              </button>
-            ))}
-          </div>
-
-          <button
-            onClick={handleNextPage}
-            className="btn btn-ghost btn-circle btn-sm"
-          >
-            {" "}
-            <FaArrowRight />{" "}
-          </button>
+        <div className="flex gap-2">
+          {pages.map((page) => (
+            <button
+              key={page}
+              className={`btn btn-outline btn-circle btn-sm ${
+                currentPage === page
+                  ? "bg-accent text-white"
+                  : "text-accent hover:bg-accent hover:border-accent "
+              } `}
+            >
+              {page + 1}
+            </button>
+          ))}
         </div>
-      )}
+
+        <button
+          onClick={handleNextPage}
+          className="btn btn-ghost btn-circle btn-sm"
+        >
+          {" "}
+          <FaArrowRight />{" "}
+        </button>
+      </div>
     </section>
   );
 };

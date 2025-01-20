@@ -3,6 +3,7 @@ import Heading from "../../components/Heading";
 import AllReviewsRow from "../../components/TableRows/AllReviewsRow";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import Loader from "../../components/Loader";
+import { Helmet } from "react-helmet-async";
 
 const AllReviews = () => {
   const axiosPrivate = useAxiosPrivate();
@@ -22,6 +23,9 @@ const AllReviews = () => {
   if (isLoading) return <Loader />;
   return (
     <div>
+      <Helmet>
+        <title>All Reviews || Dashboard</title>
+      </Helmet>
       <Heading
         Heading="View All Reviews"
         subHeading="Reviews given by all users"

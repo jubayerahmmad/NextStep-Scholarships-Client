@@ -19,7 +19,6 @@ const MyApplicationsRow = ({
     scholarshipId,
     universityName,
     universityAddress,
-    subjectCategory,
     degree,
     applicationFees,
     serviceCharge,
@@ -61,20 +60,11 @@ const MyApplicationsRow = ({
         </div>
       </td>
 
-      <td>
-        {degree}
-        <br />
-        <span className="badge badge-ghost badge-xs text-xs">
-          {subjectCategory}
-        </span>
-      </td>
+      <td>{degree}</td>
       <td>
         <div className="flex flex-wrap">
           {feedback ? (
-            <>
-              {feedback.slice(0, 30)}...
-              <button className="btn btn-xs btn-link">Read More</button>
-            </>
+            <p className="w-80 text-xs">{feedback}</p>
           ) : (
             "No Feedback Given"
           )}
@@ -101,7 +91,7 @@ const MyApplicationsRow = ({
         <div className="flex">
           <Link to={`/scholarship-details/${scholarshipId}`}>
             <button className="btn btn-ghost btn-sm">
-              <FaInfoCircle size={20} />{" "}
+              <FaInfoCircle size={16} />{" "}
             </button>
           </Link>
           <button
@@ -116,13 +106,13 @@ const MyApplicationsRow = ({
             }}
             className="btn btn-ghost btn-sm"
           >
-            <FaEdit size={20} />{" "}
+            <FaEdit size={16} />{" "}
           </button>
           <button
             onClick={handleCancelApplication}
             className="btn btn-ghost btn-sm"
           >
-            <GiCancel size={20} />
+            <GiCancel size={16} />
           </button>
         </div>
       </td>

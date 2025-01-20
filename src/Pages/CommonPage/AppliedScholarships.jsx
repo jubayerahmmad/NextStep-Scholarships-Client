@@ -6,6 +6,7 @@ import Loader from "../../components/Loader";
 import { useState } from "react";
 import ApplicationDetailsModal from "../../components/Modals/ApplicationDetailsModal";
 import FeedbackModal from "../../components/Modals/FeedbackModal";
+import { Helmet } from "react-helmet-async";
 
 const AppliedScholarships = () => {
   const axiosPrivate = useAxiosPrivate();
@@ -44,6 +45,9 @@ const AppliedScholarships = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Applied Scholarships || Dashboard</title>
+      </Helmet>
       <Heading
         Heading="Applied Scholarships"
         subHeading="Manage and review all applied scholarships."

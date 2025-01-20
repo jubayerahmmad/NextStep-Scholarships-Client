@@ -5,6 +5,7 @@ import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../components/Loader";
 import UpdateScholarshipModal from "../../components/Modals/UpdateScholarshipModal";
+import { Helmet } from "react-helmet-async";
 
 const ManageScholarships = () => {
   const axiosPrivate = useAxiosPrivate();
@@ -24,7 +25,6 @@ const ManageScholarships = () => {
   });
   if (isLoading) return <Loader />;
 
-  // TODO: Edit func
   const handleOpenModal = async (id) => {
     setModalOpen(true);
 
@@ -38,6 +38,9 @@ const ManageScholarships = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Manage Scholarships || Dashboard</title>
+      </Helmet>
       <Heading
         Heading="Manage All Scholarships"
         subHeading="View and manage all available scholarships on NextStep"

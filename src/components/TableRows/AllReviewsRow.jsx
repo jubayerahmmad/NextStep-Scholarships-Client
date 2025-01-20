@@ -63,10 +63,7 @@ const AllReviewsRow = ({ reviews, index, refetch }) => {
       </td>
 
       <td>
-        <div className="flex flex-wrap">
-          {review.slice(0, 25)}...
-          <button className="btn btn-xs btn-link">Read More</button>
-        </div>
+        <div className="flex flex-wrap w-80">{review}</div>
       </td>
       <td>
         <span>{universityName}</span>

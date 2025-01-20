@@ -41,13 +41,7 @@ const MyReviewRow = ({
 
       <td>{scholarshipName}</td>
       <td>{universityName}</td>
-      <td>
-        <div className="flex flex-wrap">
-          {review.slice(0, 55)}...
-          <button className="btn btn-xs btn-link">Read More</button>
-        </div>
-      </td>
-
+      <td className="text-xs">{review}</td>
       <td>{new Date(reviewDate).toLocaleDateString()}</td>
       <td>
         <div className="flex">

@@ -6,6 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import Loader from "../../components/Loader";
 import { useState } from "react";
 import UpdateReviewModal from "../../components/Modals/UpdateReviewModal";
+import { Helmet } from "react-helmet-async";
 
 const MyReviews = () => {
   const axiosPrivate = useAxiosPrivate();
@@ -31,6 +32,9 @@ const MyReviews = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>My Reviews || Dashboard</title>
+      </Helmet>
       <Heading
         Heading="Your Reviews"
         subHeading="View all reviews given by you."
