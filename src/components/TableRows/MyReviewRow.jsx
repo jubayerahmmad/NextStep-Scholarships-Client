@@ -8,7 +8,7 @@ const MyReviewRow = ({
   reviews,
   refetch,
   setUpdateReviewModal,
-  getReviewId,
+  setReviewId,
 }) => {
   const axiosPrivate = useAxiosPrivate();
   const { _id, review, universityName, scholarshipName, reviewDate } = reviews;
@@ -48,7 +48,7 @@ const MyReviewRow = ({
           <button
             onClick={() => {
               setUpdateReviewModal(true);
-              getReviewId(_id);
+              setReviewId(_id);
             }}
             className="btn btn-ghost btn-xs"
           >

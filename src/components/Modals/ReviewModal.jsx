@@ -14,7 +14,6 @@ const ReviewModal = ({
   const axiosPrivate = useAxiosPrivate();
 
   // get scholarship data by id(the id of scholarship where user reviewing)
-
   const { data: scholarship = {}, isLoading } = useQuery({
     queryKey: ["scholarship"],
     queryFn: async () => {
@@ -32,7 +31,7 @@ const ReviewModal = ({
 
     // save data
     try {
-      const { data } = await axiosPrivate.post(`/add-review/${scholarshipId}`, {
+      await axiosPrivate.post(`/add-review/${scholarshipId}`, {
         rating,
         review,
         scholarshipName: scholarship.scholarshipName,
@@ -60,7 +59,7 @@ const ReviewModal = ({
       <div
         className={`${
           reviewModalOpen ? "scale-[1] opacity-100" : " scale-[0] opacity-0"
-        } w-[90%] md:w-[80%] lg:w-[55%] bg-[#fff] rounded-lg transition-all duration-300 mx-auto mt-8`}
+        } w-[90%] md:w-[80%] lg:w-[30%] bg-[#fff] rounded-lg transition-all duration-300 mx-auto mt-8`}
       >
         <div className="w-full flex items-end p-4 justify-between border-b border-[#d1d1d1]">
           <h1 className="text-[1.5rem] font-bold">Rate Us</h1>

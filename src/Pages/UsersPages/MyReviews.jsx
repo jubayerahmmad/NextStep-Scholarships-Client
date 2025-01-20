@@ -13,6 +13,7 @@ const MyReviews = () => {
   const { user } = useAuth();
   const [updateReviewModal, setUpdateReviewModal] = useState(false);
   const [reviewId, setReviewId] = useState("");
+
   const {
     data: myReviews = [],
     isLoading,
@@ -26,9 +27,6 @@ const MyReviews = () => {
   });
 
   if (isLoading) return <Loader />;
-  const getReviewId = (id) => {
-    setReviewId(id);
-  };
 
   return (
     <div>
@@ -63,7 +61,7 @@ const MyReviews = () => {
                     reviews={reviews}
                     index={index}
                     refetch={refetch}
-                    getReviewId={getReviewId}
+                    setReviewId={setReviewId}
                     setUpdateReviewModal={setUpdateReviewModal}
                   />
                 ))}

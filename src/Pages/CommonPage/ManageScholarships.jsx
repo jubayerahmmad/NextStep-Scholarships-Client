@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../components/Loader";
 import UpdateScholarshipModal from "../../components/Modals/UpdateScholarshipModal";
 import { Helmet } from "react-helmet-async";
+import { toast } from "react-toastify";
 
 const ManageScholarships = () => {
   const axiosPrivate = useAxiosPrivate();
@@ -30,10 +31,10 @@ const ManageScholarships = () => {
 
     try {
       const { data } = await axiosPrivate(`/scholarship/${id}`);
-      // console.log(data);
       setUpdateScholarship(data);
     } catch (error) {
       console.log(error);
+      toast.error(error.response.data.message);
     }
   };
   return (
