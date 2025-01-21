@@ -13,10 +13,10 @@ const FeedbackModal = ({
     const feedback = e.target.feedback.value;
 
     try {
-      const { data } = await axiosPrivate.patch(`/add-feedback/${feedbackId}`, {
+      await axiosPrivate.patch(`/add-feedback/${feedbackId}`, {
         feedback,
       });
-      console.log(data);
+
       toast.success("Feedback Given!");
       setFeedbackModalOpen(false);
     } catch (error) {

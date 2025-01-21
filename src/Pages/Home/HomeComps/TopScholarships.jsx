@@ -10,18 +10,18 @@ const TopScholarships = () => {
   const { data: TopScholarships = [], isLoading } = useQuery({
     queryKey: ["top-scholarship"],
     queryFn: async () => {
-      const { data } = await axiosPublic(
-        "/top-scholarships?fees=true&date=true"
-      );
+      const { data } = await axiosPublic("/top-scholarships");
       return data;
     },
   });
+
   if (isLoading) return <Loader />;
+
   return (
     <section className="px-4 py-6">
       <Heading
         Heading="Top Scholarships"
-        subHeading="Explore the scholarships with lowest application fees"
+        subHeading="Explore the recently added scholarships with lowest application fees"
       />
       {/* cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 max-w-7xl mx-auto">

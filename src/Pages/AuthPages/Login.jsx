@@ -38,7 +38,6 @@ const Login = () => {
       reset();
     } catch (error) {
       setLoad(false);
-      console.log(error);
       toast.error(error.code.split("/")[1].split("-").join(" ").toUpperCase());
     }
   };

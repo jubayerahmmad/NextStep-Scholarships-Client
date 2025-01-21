@@ -17,6 +17,8 @@ const ScholarshipCards = ({ scholarship }) => {
     applicationDeadline,
     image,
     postDate,
+    averageRating,
+    numberOfReviews,
   } = scholarship || {};
 
   return (
@@ -84,10 +86,16 @@ const ScholarshipCards = ({ scholarship }) => {
       {/* Scholarship Details Button */}
       <div className="flex items-center justify-between px-5 pb-4 mt-8 lg:mt-4">
         {/* Rating */}
-        <div className="flex items-center space-x-1">
-          <span className="text-yellow-500">⭐</span>
-          <span className="font-bold text-gray-800">{4.6}</span>
-        </div>
+        {averageRating ? (
+          <div className="flex items-center space-x-1">
+            <span className="text-yellow-500">⭐</span>
+            <span className="font-bold text-gray-800">
+              {averageRating} <small>/{numberOfReviews} Review(s)</small>{" "}
+            </span>
+          </div>
+        ) : (
+          <small>⭐ No Reviews</small>
+        )}
         <Link to={`/scholarship-details/${_id}`}>
           <button className="btn btn-outline text-teal-700 hover:bg-teal-800 btn-sm">
             View Details

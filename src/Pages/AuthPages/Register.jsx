@@ -45,7 +45,6 @@ const Register = () => {
       const { user } = await createUser(email, password);
       // update profile
       await updateUser(name, imageURL);
-      console.log(user);
       const userInfo = {
         name: user?.displayName,
         email: user?.email,
@@ -59,7 +58,6 @@ const Register = () => {
       navigate(`${state ? state : "/"}`);
     } catch (error) {
       setLoad(false);
-      console.log(error);
       toast.error(error.code.split("/")[1].split("-").join(" ").toUpperCase());
     }
   };
@@ -79,7 +77,6 @@ const Register = () => {
       toast.success("User Sign In Successful");
       navigate(`${state ? state : "/"}`);
     } catch (error) {
-      console.log(error);
       toast.error(error.code.split("/")[1].split("-").join(" ").toUpperCase());
     }
   };

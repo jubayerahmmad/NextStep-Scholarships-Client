@@ -13,7 +13,6 @@ import Rating from "react-rating";
 import { FaRegStar, FaStar } from "react-icons/fa6";
 
 const Reviews = ({ id }) => {
-  console.log(id);
   const axiosPrivate = useAxiosPrivate();
   const { data: reviews = [], isLoading } = useQuery({
     queryKey: ["specific-reviews"],

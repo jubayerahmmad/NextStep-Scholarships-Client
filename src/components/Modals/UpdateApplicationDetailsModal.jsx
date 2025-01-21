@@ -44,11 +44,7 @@ const UpdateApplicationDetailsModal = ({
       return;
     }
     try {
-      const { data: updated } = await axiosPrivate.patch(
-        `/update-application/${applicationId}`,
-        data
-      );
-      console.log(updated);
+      await axiosPrivate.patch(`/update-application/${applicationId}`, data);
       setLoading(false);
       setUpdateModalOpen(false);
       toast.success("Application Details Updated");
