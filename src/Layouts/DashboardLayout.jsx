@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 
 const DashboardLayout = () => {
   return (
-    <div className="flex">
+    <div className="flex gap-3">
       <Helmet>
         <title>Dashboard | My Profile</title>
       </Helmet>

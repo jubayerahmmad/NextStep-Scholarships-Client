@@ -37,7 +37,7 @@ const UpdateUserModal = ({ isModalOpen, setisModalOpen }) => {
     <div
       className={`${
         isModalOpen ? "visible" : "invisible"
-      } w-full min-h-screen fixed top-0 left-0 z-50 bg-[#0000002a] transition-all duration-300 flex items-center justify-center`}
+      } w-full min-h-screen fixed top-0 left-0 z-50 bg-[#0000008e] transition-all duration-300 flex items-center justify-center`}
     >
       <div
         className={`${

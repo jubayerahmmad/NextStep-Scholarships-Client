@@ -83,7 +83,7 @@ const UpdateScholarshipModal = ({
       <div
         className={`${
           modalOpen ? "visible" : "invisible"
-        } w-full min-h-screen absolute top-0 left-0 z-50 bg-[#0000002a] overflow-auto transition-all duration-300 flex items-center justify-center`}
+        } min-w-full min-h-screen absolute top-0 left-0 z-50 bg-[#00000088] overflow-auto transition-all duration-300 flex items-center justify-center`}
       >
         <div
           className={`${

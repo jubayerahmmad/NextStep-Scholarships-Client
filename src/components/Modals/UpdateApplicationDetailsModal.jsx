@@ -58,7 +58,7 @@ const UpdateApplicationDetailsModal = ({
     <div
       className={`${
         updateModal ? " visible" : " invisible"
-      } w-full h-screen fixed top-0 left-0 z-50 bg-[#0000002a] transition-all duration-300 flex items-center justify-center`}
+      } w-full h-screen fixed top-0 left-0 z-50 bg-[#00000067] transition-all duration-300 flex items-center justify-center`}
     >
       <div
         className={`${
