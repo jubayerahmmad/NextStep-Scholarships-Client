@@ -79,7 +79,7 @@ const AllScholarships = () => {
       )}
 
       {/* Pagination controller */}
-      {scholarships?.length >= itemsPerpage && (
+      {search === "" && (
         <div className="flex justify-center items-center gap-3 mt-6">
           <button
             onClick={handlePrevPage}
