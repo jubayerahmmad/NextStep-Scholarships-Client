@@ -12,12 +12,7 @@ const AddScholarshipForm = () => {
   const axiosPrivate = useAxiosPrivate();
   const [loading, setLoading] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const handleFileChange = async (e) => {
     e.preventDefault();
@@ -53,8 +48,7 @@ const AddScholarshipForm = () => {
       toast.success("New Scholarship Added!");
     } catch (error) {
       setLoading(false);
-      console.log(error);
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message);
     }
   };
 

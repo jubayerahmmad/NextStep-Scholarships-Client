@@ -47,7 +47,6 @@ const Login = () => {
     try {
       const { user } = await googleLogin();
 
-      setLoad(false);
       const userInfo = {
         name: user?.displayName,
         email: user?.email,
@@ -58,9 +57,10 @@ const Login = () => {
 
       navigate(`${state ? state : "/"}`);
       toast.success("User Sign In Successful");
+      setLoad(false);
     } catch (error) {
-      console.log(error);
       toast.error(error.code.split("/")[1].split("-").join(" ").toUpperCase());
+      setLoad(false);
     }
   };
 

@@ -11,7 +11,7 @@ const UpdateApplicationDetailsModal = ({
   setUpdateModalOpen,
   applicationId,
 }) => {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   const axiosPrivate = useAxiosPrivate();
   const [loading, setLoading] = useState(false);
 

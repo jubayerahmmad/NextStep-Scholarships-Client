@@ -81,8 +81,7 @@ const ApplyScholarshipForm = () => {
       navigate("/dashboard/myApplications");
     } catch (error) {
       setLoading(false);
-      console.log(error);
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message);
     }
   };
   return (

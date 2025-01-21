@@ -1,5 +1,6 @@
 import { FaHourglassStart, FaMoneyBill } from "react-icons/fa";
 import { FaGraduationCap, FaHourglass, FaLocationArrow } from "react-icons/fa6";
+import { FcRating } from "react-icons/fc";
 import { IoBookSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
@@ -88,9 +89,11 @@ const ScholarshipCards = ({ scholarship }) => {
         {/* Rating */}
         {averageRating ? (
           <div className="flex items-center space-x-1">
-            <span className="text-yellow-500">⭐</span>
+            <span className="text-yellow-500">
+              <FcRating />
+            </span>
             <span className="font-bold text-gray-800">
-              {averageRating} <small>/{numberOfReviews} Review(s)</small>{" "}
+              {averageRating} <small>/ {numberOfReviews} Review(s)</small>{" "}
             </span>
           </div>
         ) : (

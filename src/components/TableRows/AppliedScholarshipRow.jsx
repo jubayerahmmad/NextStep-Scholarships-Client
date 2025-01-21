@@ -32,7 +32,6 @@ const AppliedScholarshipRow = ({
       await axiosPrivate.patch(`/change-status/${_id}`, {
         status: updatedStatus,
       });
-      // console.log(data);
       toast.success("Status Updated");
     } catch (error) {
       console.log(error);
@@ -56,7 +55,6 @@ const AppliedScholarshipRow = ({
         await axiosPrivate.patch(`/change-status/${_id}`, {
           status: "Rejected",
         });
-        // console.log(data);
         toast.success("Application Rejected");
       }
     });

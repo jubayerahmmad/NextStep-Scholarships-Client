@@ -34,7 +34,7 @@ const Chart = ({ chartData }) => {
           <Bar
             dataKey="totalApplications"
             fill="rebeccapurple"
-            activeBar={<Rectangle fill="pink" stroke="blue" />}
+            activeBar={<Rectangle fill="purple" stroke="blue" />}
           />
           <Bar
             dataKey="feesEarned"

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Heading from "../../components/Heading";
 import { Helmet } from "react-helmet-async";
-import { BiSend } from "react-icons/bi";
 import { FiSend } from "react-icons/fi";
 
 const Faq = () => {
@@ -101,7 +100,9 @@ const Faq = () => {
           <p className="text-xs lg:text-base">
             Don't Hesitate to send us an Email with your Enquiry or statement
           </p>
-          {/* form*/}
+
+          {/* ----- FORM ----*/}
+
           <form
             action="https://getform.io/f/amddekob"
             method="POST"

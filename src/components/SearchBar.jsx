@@ -12,7 +12,7 @@ const SearchBar = ({ setSearch }) => {
             placeholder="Search..."
           />
           <button
-            type="submit"
+            type="button"
             className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-teal-700 rounded-e-xl border border-teal-700 hover:bg-teal-800 focus:outline-none "
           >
             <FaSearch />

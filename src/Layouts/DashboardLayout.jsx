@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 
 const DashboardLayout = () => {
   return (
-    <div className="flex gap-2">
+    <div className="flex">
       <Helmet>
         <title>Dashboard | My Profile</title>
       </Helmet>
@@ -13,7 +13,7 @@ const DashboardLayout = () => {
         <Sidebar />
       </div>
       {/* Dynamically show outlet */}
-      <div className="p-4 lg:ml-60 mt-16 w-full">
+      <div className="p-4 lg:ml-60 mt-14 w-full">
         <Outlet />
       </div>
     </div>

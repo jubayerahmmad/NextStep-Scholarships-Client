@@ -19,7 +19,7 @@ const ScholarshipDetails = () => {
   const { id } = useParams();
 
   const { data: scholarship = {}, isLoading } = useQuery({
-    queryKey: ["scholarship"],
+    queryKey: ["scholarship-details"],
     queryFn: async () => {
       const { data } = await axiosPublic(`/scholarship/${id}`);
       return data;
@@ -27,8 +27,6 @@ const ScholarshipDetails = () => {
   });
 
   if (isLoading) return <Loader />;
-
-  // TODO: Apply functionality
 
   const {
     image,
@@ -73,7 +71,7 @@ const ScholarshipDetails = () => {
               <h2 className="text-xl lg:text-4xl font-bold text-gray-800">
                 {scholarshipName}{" "}
               </h2>
-              <span className=""> By {universityName}</span>
+              <p className="text-teal-600"> By {universityName}</p>
             </div>
 
             {/* degree */}

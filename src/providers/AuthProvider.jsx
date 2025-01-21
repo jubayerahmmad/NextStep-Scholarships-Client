@@ -19,6 +19,8 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const axiosPublic = useAxiosPublic();
+
+  // preloading state
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -63,7 +65,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
       // console.log(currentUser);
-      if (currentUser?.email) {
+      if (currentUser) {
         setUser(currentUser);
         try {
           const { data } = await axiosPublic.post("/jwt", {

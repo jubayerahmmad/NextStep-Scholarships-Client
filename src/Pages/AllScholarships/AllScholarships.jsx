@@ -7,21 +7,23 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../components/Loader";
 import { useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
+import noData from "../../assets/No-data.gif";
 
 const AllScholarships = () => {
   const axiosPublic = useAxiosPublic();
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerpage = 6;
+  const itemsPerpage = 9;
 
   const { data: scholarships = [], isLoading } = useQuery({
-    queryKey: ["scholarships", search, itemsPerpage, currentPage],
+    queryKey: ["all-scholarships", search, itemsPerpage, currentPage],
     queryFn: async () => {
       const { data } = await axiosPublic(
         `/scholarships?search=${search}&page=${currentPage}&limit=${itemsPerpage}`
       );
       return data;
     },
+    initialData: [],
   });
 
   // get total data
@@ -71,43 +73,48 @@ const AllScholarships = () => {
           </div>
         </>
       ) : (
-        <>
-          <p className="text-4xl font-bold text-center p-10">No Data Found</p>
-        </>
+        <div className="flex justify-center items-center">
+          <img src={noData} alt="no-data"></img>
+        </div>
       )}
 
-      <div className="flex justify-center items-center gap-3 mt-6">
-        <button
-          onClick={handlePrevPage}
-          className="btn btn-ghost btn-circle btn-sm"
-        >
-          {" "}
-          <FaArrowLeft />{" "}
-        </button>
+      {/* Pagination controller */}
+      {scholarships?.length >= itemsPerpage && (
+        <div className="flex justify-center items-center gap-3 mt-6">
+          <button
+            onClick={handlePrevPage}
+            disabled={currentPage === 0}
+            className="btn btn-ghost btn-circle btn-sm"
+          >
+            {" "}
+            <FaArrowLeft />{" "}
+          </button>
 
-        <div className="flex gap-2">
-          {pages.map((page) => (
-            <button
-              key={page}
-              className={`btn btn-outline btn-circle btn-sm ${
-                currentPage === page
-                  ? "bg-accent text-white"
-                  : "text-accent hover:bg-accent hover:border-accent"
-              } `}
-            >
-              {page + 1}
-            </button>
-          ))}
+          <div className="flex gap-2">
+            {pages.map((page) => (
+              <button
+                key={page}
+                className={`btn btn-outline btn-circle btn-sm ${
+                  currentPage === page
+                    ? "bg-accent text-white"
+                    : "text-accent hover:bg-accent hover:border-accent"
+                } `}
+              >
+                {page + 1}
+              </button>
+            ))}
+          </div>
+
+          <button
+            onClick={handleNextPage}
+            disabled={currentPage === pages?.length - 1}
+            className="btn btn-ghost disabled:btn-disabled btn-circle btn-sm"
+          >
+            {" "}
+            <FaArrowRight />{" "}
+          </button>
         </div>
-
-        <button
-          onClick={handleNextPage}
-          className="btn btn-ghost btn-circle btn-sm"
-        >
-          {" "}
-          <FaArrowRight />{" "}
-        </button>
-      </div>
+      )}
     </section>
   );
 };

@@ -28,7 +28,7 @@ const useAxiosPrivate = () => {
       return response;
     },
     (error) => {
-      console.log(error.response?.status);
+      console.log("Error status", error.response?.status);
       const status = error.response.status;
       if (status === 401 || status === 403) {
         logOutUser().then(() => {

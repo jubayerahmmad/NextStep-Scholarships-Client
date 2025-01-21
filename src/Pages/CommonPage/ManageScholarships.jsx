@@ -18,7 +18,7 @@ const ManageScholarships = () => {
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["scholarships"],
+    queryKey: ["manage-scholarships"],
     queryFn: async () => {
       const { data } = await axiosPrivate("/scholarship-admin-access");
       return data;
@@ -33,8 +33,7 @@ const ManageScholarships = () => {
       const { data } = await axiosPrivate(`/scholarship/${id}`);
       setUpdateScholarship(data);
     } catch (error) {
-      console.log(error);
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message);
     }
   };
   return (
@@ -89,7 +88,7 @@ const ManageScholarships = () => {
             )}
           </div>
         ) : (
-          "No Data"
+          <p className="text-4xl text-center font-playfair">No Data Found!</p>
         )}
       </div>
     </div>
