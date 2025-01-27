@@ -41,4 +41,4 @@ NextStep Scholarships is a web application designed to manage scholarships, prov
 ## Live URL
 
 [[Live Demo](https://nextstep-scholarships.web.app/)]
-[[Server Side Repo](Will be updated soon)]
+[[Server Side Repo](https://github.com/jubayerahmmad/NextStep-Scholarships-Server)]
