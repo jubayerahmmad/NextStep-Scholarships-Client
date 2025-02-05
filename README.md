@@ -8,11 +8,11 @@ Here are some screenshots of the NextStep Scholarships application:
 
 **Home Page**
 
-![Home Page](./home-page.png)
+![Home Page](https://i.ibb.co.com/QvLg38RD/home-page.png)
 
 **Scholarship Details Page**
 
-![Admin Dashboard](./admin-dashboard.png)
+![Admin Dashboard](https://i.ibb.co.com/pvzcWZ0C/admin-dashboard.png)
 
 ## Features
 
