@@ -2,6 +2,18 @@
 
 NextStep Scholarships is a web application designed to manage scholarships, providing a platform for users to explore and apply for various scholarship opportunities.
 
+## Screenshots
+
+Here are some screenshots of the NextStep Scholarships application:
+
+**Home Page**
+
+![Home Page](./home-page.png)
+
+**Scholarship Details Page**
+
+![Admin Dashboard](./admin-dashboard.png)
+
 ## Features
 
 **Admin Dashboard**
