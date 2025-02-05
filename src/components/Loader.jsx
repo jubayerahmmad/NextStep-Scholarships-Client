@@ -13,7 +13,7 @@ const Loader = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-teal-50 via-gray-100 to-teal-100 flex flex-col justify-center items-center">
+    <div className="min-h-screen flex flex-col justify-center items-center">
       <div className="flex items-center gap-2 animate-bounce">
         <img className="w-12 h-12" src={logo} alt="" />
         <div className="text-left bg-gradient-to-br from-cyan-500 via-cyan-700 to-cyan-900 bg-clip-text text-transparent">
