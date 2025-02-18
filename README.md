@@ -10,7 +10,7 @@ Here are some screenshots of the NextStep Scholarships application:
 
 ![Home Page](https://i.ibb.co.com/QvLg38RD/home-page.png)
 
-**Scholarship Details Page**
+**Admin Dashboard**
 
 ![Admin Dashboard](https://i.ibb.co.com/pvzcWZ0C/admin-dashboard.png)
 

@@ -1,28 +1,40 @@
 import { createBrowserRouter } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import MainLayout from "../Layouts/MainLayout";
-import Home from "../Pages/Home/Home";
-import AllScholarships from "../Pages/AllScholarships/AllScholarships";
-import Login from "../Pages/AuthPages/Login";
-import Register from "../Pages/AuthPages/Register";
-import DashboardLayout from "../Layouts/DashboardLayout";
-import ErrorPage from "../Pages/ErrorPage";
-import MyProfile from "../Pages/CommonPage/MyProfile";
-import AllUsers from "../Pages/AdminPages/AllUsers";
-import AddScholarship from "../Pages/CommonPage/AddScholarship";
-import AppliedScholarships from "../Pages/CommonPage/AppliedScholarships";
-import ManageScholarships from "../Pages/CommonPage/ManageScholarships";
-import AllReviews from "../Pages/CommonPage/AllReviews";
-import MyApplications from "../Pages/UsersPages/MyApplications";
-import MyReviews from "../Pages/UsersPages/MyReviews";
-import ScholarshipDetails from "../Pages/ScholarshipDetails/ScholarshipDetails";
-import Faq from "../Pages/Faq/Faq";
-import AdminProfile from "../Pages/AdminPages/AdminProfile";
 import PrivateRoute from "./PrivateRoute";
-import Checkout from "../Pages/Checkout/Checkout";
-import ApplyScholarshipForm from "../components/Forms/ApplyScholarshipForm";
 import OnlyAdminRoute from "./OnlyAdminRoute";
 import AdminModeratorRoute from "./AdminModeratorRoute";
 import UsersRoute from "./UsersRoute";
+import Loader from "../components/Loader";
+const Home = lazy(() => import("../Pages/Home/Home"));
+const AllScholarships = lazy(() =>
+  import("../Pages/AllScholarships/AllScholarships")
+);
+const Login = lazy(() => import("../Pages/AuthPages/Login"));
+const Register = lazy(() => import("../Pages/AuthPages/Register"));
+const DashboardLayout = lazy(() => import("../Layouts/DashboardLayout"));
+const ErrorPage = lazy(() => import("../Pages/ErrorPage"));
+const MyProfile = lazy(() => import("../Pages/CommonPage/MyProfile"));
+const AllUsers = lazy(() => import("../Pages/AdminPages/AllUsers"));
+const AddScholarship = lazy(() => import("../Pages/CommonPage/AddScholarship"));
+const AppliedScholarships = lazy(() =>
+  import("../Pages/CommonPage/AppliedScholarships")
+);
+const ManageScholarships = lazy(() =>
+  import("../Pages/CommonPage/ManageScholarships")
+);
+const AllReviews = lazy(() => import("../Pages/CommonPage/AllReviews"));
+const MyApplications = lazy(() => import("../Pages/UsersPages/MyApplications"));
+const MyReviews = lazy(() => import("../Pages/UsersPages/MyReviews"));
+const ScholarshipDetails = lazy(() =>
+  import("../Pages/ScholarshipDetails/ScholarshipDetails")
+);
+const Faq = lazy(() => import("../Pages/Faq/Faq"));
+const AdminProfile = lazy(() => import("../Pages/AdminPages/AdminProfile"));
+const Checkout = lazy(() => import("../Pages/Checkout/Checkout"));
+const ApplyScholarshipForm = lazy(() =>
+  import("../components/Forms/ApplyScholarshipForm")
+);
 
 const router = createBrowserRouter([
   {
@@ -31,25 +43,35 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Home />
+          </Suspense>
+        ),
       },
       {
         path: "allScholarships",
-        element: <AllScholarships />,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <AllScholarships />
+          </Suspense>
+        ),
       },
       {
         path: "scholarship-details/:id",
         element: (
-          <PrivateRoute>
+          <Suspense fallback={<Loader />}>
             <ScholarshipDetails />
-          </PrivateRoute>
+          </Suspense>
         ),
       },
       {
         path: "/checkout/:id",
         element: (
           <PrivateRoute>
-            <Checkout />
+            <Suspense fallback={<Loader />}>
+              <Checkout />
+            </Suspense>
           </PrivateRoute>
         ),
       },
@@ -57,28 +79,45 @@ const router = createBrowserRouter([
         path: "/apply-form/:id",
         element: (
           <PrivateRoute>
-            <ApplyScholarshipForm />
+            <Suspense fallback={<Loader />}>
+              <ApplyScholarshipForm />
+            </Suspense>
           </PrivateRoute>
         ),
       },
       {
         path: "faq",
-        element: <Faq />,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Faq />
+          </Suspense>
+        ),
       },
     ],
   },
   {
     path: "/login",
-    element: <Login />,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Login />
+      </Suspense>
+    ),
   },
   {
     path: "/register",
-    element: <Register />,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Register />
+      </Suspense>
+    ),
   },
-
   {
     path: "/*",
-    element: <ErrorPage />,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <ErrorPage />
+      </Suspense>
+    ),
   },
   {
     path: "/dashboard",
@@ -90,30 +129,39 @@ const router = createBrowserRouter([
     children: [
       {
         path: "my-profile",
-        element: <MyProfile />,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <MyProfile />
+          </Suspense>
+        ),
       },
-      // Admin/Moderator Routes
       {
         path: "allUsers",
         element: (
           <OnlyAdminRoute>
-            <AllUsers />
+            <Suspense fallback={<Loader />}>
+              <AllUsers />
+            </Suspense>
           </OnlyAdminRoute>
-        ), // admin only
+        ),
       },
       {
         path: "admin-profile",
         element: (
           <OnlyAdminRoute>
-            <AdminProfile />
+            <Suspense fallback={<Loader />}>
+              <AdminProfile />
+            </Suspense>
           </OnlyAdminRoute>
-        ), // admin only
+        ),
       },
       {
         path: "addScholarships",
         element: (
           <AdminModeratorRoute>
-            <AddScholarship />
+            <Suspense fallback={<Loader />}>
+              <AddScholarship />
+            </Suspense>
           </AdminModeratorRoute>
         ),
       },
@@ -121,7 +169,9 @@ const router = createBrowserRouter([
         path: "appliedScholarships",
         element: (
           <AdminModeratorRoute>
-            <AppliedScholarships />
+            <Suspense fallback={<Loader />}>
+              <AppliedScholarships />
+            </Suspense>
           </AdminModeratorRoute>
         ),
       },
@@ -129,8 +179,9 @@ const router = createBrowserRouter([
         path: "manageScholarships",
         element: (
           <AdminModeratorRoute>
-            {" "}
-            <ManageScholarships />
+            <Suspense fallback={<Loader />}>
+              <ManageScholarships />
+            </Suspense>
           </AdminModeratorRoute>
         ),
       },
@@ -138,25 +189,29 @@ const router = createBrowserRouter([
         path: "allReviews",
         element: (
           <AdminModeratorRoute>
-            <AllReviews />
+            <Suspense fallback={<Loader />}>
+              <AllReviews />
+            </Suspense>
           </AdminModeratorRoute>
         ),
       },
-      // User Routes
       {
         path: "myApplications",
         element: (
           <UsersRoute>
-            <MyApplications />,
+            <Suspense fallback={<Loader />}>
+              <MyApplications />
+            </Suspense>
           </UsersRoute>
         ),
       },
-
       {
         path: "myReviews",
         element: (
           <UsersRoute>
-            <MyReviews />
+            <Suspense fallback={<Loader />}>
+              <MyReviews />
+            </Suspense>
           </UsersRoute>
         ),
       },
