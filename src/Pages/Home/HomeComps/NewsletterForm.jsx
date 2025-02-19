@@ -11,8 +11,8 @@ const NewsletterForm = () => {
 
         {/* content */}
         <div className="sm:w-[70%] w-full lg:w-[50%] mx-auto">
-          <h1 className="text-[2rem] sm:text-[3rem] mt-8 font-[800] capitalize text-teal-500 leading-[50px] text-center">
-            newsletter
+          <h1 className="text-[2rem] sm:text-[3rem] mt-8 font-extrabold capitalize text-teal-500 text-center">
+            Subscribe to Our newsletter
           </h1>
           <p className="text-[1.1rem] mt-2 text-center text-gray-200 font-[300]">
             Stay updated with the latest scholarship opportunities, deadlines,

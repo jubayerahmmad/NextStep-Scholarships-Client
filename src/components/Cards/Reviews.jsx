@@ -4,17 +4,17 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import Loader from "../Loader";
 import Rating from "react-rating";
 import { FaRegStar, FaStar } from "react-icons/fa6";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Reviews = ({ id }) => {
-  const axiosPrivate = useAxiosPrivate();
+  const axiosPublic = useAxiosPublic();
   const { data: reviews = [], isLoading } = useQuery({
     queryKey: ["specific-reviews"],
     queryFn: async () => {
-      const { data } = await axiosPrivate(`/reviews/${id}`);
+      const { data } = await axiosPublic(`/reviews/${id}`);
       return data;
     },
   });

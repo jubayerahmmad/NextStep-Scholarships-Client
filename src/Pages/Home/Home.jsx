@@ -3,6 +3,7 @@ import AboutUs from "./HomeComps/AboutUs";
 import Banner from "./HomeComps/Banner";
 import NewsletterForm from "./HomeComps/NewsletterForm";
 import TopScholarships from "./HomeComps/TopScholarships";
+import Testimonial from "./HomeComps/Testimonial";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <Banner />
       <AboutUs />
       <TopScholarships />
+      <Testimonial />
       <NewsletterForm />
     </div>
   );
