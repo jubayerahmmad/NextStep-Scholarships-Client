@@ -19,9 +19,11 @@ const UpdateUserModal = ({ isModalOpen, setisModalOpen }) => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;
+    const phone = e.target.phone.value;
+    const address = e.target.address.value;
     const imageURL = await imageUpload(imageFile);
 
-    const userInfo = { name, image: imageURL };
+    const userInfo = { name, phone, image: imageURL, address };
 
     try {
       await updateUser(name, imageURL);
@@ -37,12 +39,12 @@ const UpdateUserModal = ({ isModalOpen, setisModalOpen }) => {
     <div
       className={`${
         isModalOpen ? "visible" : "invisible"
-      } w-full min-h-screen fixed top-0 left-0 z-50 bg-[#0000008e] transition-all duration-300 flex items-center justify-center`}
+      } w-full min-h-screen fixed top-0 left-0 z-50 bg-[#000000a2] transition-all duration-300 flex items-center justify-center`}
     >
       <div
         className={`${
           isModalOpen ? "scale-[1] opacity-100" : "scale-[0] opacity-0"
-        } w-[90%] md:w-[80%] lg:w-[55%] bg-[#fff] rounded-lg transition-all duration-300 mx-auto mt-8`}
+        } w-[90%] md:w-[80%] lg:w-[30%] bg-[#fff] rounded-lg transition-all duration-300 mx-auto mt-8`}
       >
         <div className="w-full flex items-end p-4 justify-between border-b border-[#d1d1d1]">
           <h1 className="text-[1.5rem] font-bold">Update Your Profile</h1>
@@ -53,6 +55,7 @@ const UpdateUserModal = ({ isModalOpen, setisModalOpen }) => {
         </div>
 
         <form onSubmit={handleUpdate} className="flex flex-col gap-5 p-4">
+          {/* Name */}
           <div>
             <label
               htmlFor="Name"
@@ -62,12 +65,46 @@ const UpdateUserModal = ({ isModalOpen, setisModalOpen }) => {
             </label>
             <input
               type="text"
+              defaultValue={user?.displayName}
               name="name"
               id="Name"
               placeholder="Your Name"
               className="py-2 px-3 border border-[#d1d1d1] rounded-md w-full focus:outline-none mt-1 focus:border-teal-500"
             />
           </div>
+          {/* Phone */}
+          <div>
+            <label
+              htmlFor="phone"
+              className="text-[1rem] font-[500] text-[#464646]"
+            >
+              Phone
+            </label>
+            <input
+              type="tel"
+              name="phone"
+              id="phone"
+              placeholder="Your Phone Number"
+              className="py-2 px-3 border border-[#d1d1d1] rounded-md w-full focus:outline-none mt-1 focus:border-teal-500"
+            />
+          </div>
+          {/* Address */}
+          <div>
+            <label
+              htmlFor="address"
+              className="text-[1rem] font-[500] text-[#464646]"
+            >
+              Phone
+            </label>
+            <input
+              type="tel"
+              name="address"
+              id="address"
+              placeholder="Your Address"
+              className="py-2 px-3 border border-[#d1d1d1] rounded-md w-full focus:outline-none mt-1 focus:border-teal-500"
+            />
+          </div>
+          {/* Image */}
           <div className="mb-5">
             <ImageUploadInput
               imageFile={imageFile}

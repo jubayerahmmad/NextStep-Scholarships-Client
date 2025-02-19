@@ -53,12 +53,12 @@ const ReviewModal = ({
   return (
     <div
       className={`${
-        reviewModalOpen ? " visible" : " invisible"
+        reviewModalOpen ? "visible" : "invisible"
       } w-full h-screen fixed top-0 left-0 z-50 bg-[#0000007e] transition-all duration-300 flex items-center justify-center`}
     >
       <div
         className={`${
-          reviewModalOpen ? "scale-[1] opacity-100" : " scale-[0] opacity-0"
+          reviewModalOpen ? "scale-[1] opacity-100" : "scale-[0] opacity-0"
         } w-[90%] md:w-[80%] lg:w-[30%] bg-[#fff] rounded-lg transition-all duration-300 mx-auto mt-8`}
       >
         <div className="w-full flex items-end p-4 justify-between border-b border-[#d1d1d1]">
