@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { user, logOutUser } = useAuth();
+
   const navOptions = (
     <>
       <li>
@@ -25,11 +26,19 @@ const Navbar = () => {
       </li>
 
       {user && (
-        <li>
-          <NavLink to="/dashboard/my-profile">
-            <button>Dashboard</button>
-          </NavLink>
-        </li>
+        <>
+          <li>
+            <NavLink to="/dashboard/allUsers">
+              <button>Dashboard</button>
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/dashboard/my-profile">
+              <button>My Profile</button>
+            </NavLink>
+          </li>
+        </>
       )}
     </>
   );

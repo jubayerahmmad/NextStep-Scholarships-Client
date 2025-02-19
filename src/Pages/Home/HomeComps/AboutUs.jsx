@@ -2,12 +2,12 @@ import img from "../../../assets/about.png";
 import Heading from "../../../components/Heading";
 const AboutUs = () => {
   return (
-    <section className="px-4 py-6">
+    <section className="px-4 py-6 bg-gray-100">
       <Heading
         Heading={"About Us"}
         subHeading={"Empowering dreams, one scholarship at a time."}
       ></Heading>
-      <div className="max-w-7xl mx-auto px-6 py-4 rounded-md shadow-lg text-gray-800">
+      <div className="max-w-7xl mx-auto px-6 py-4 rounded-md text-gray-800">
         <div className="flex flex-wrap items-center">
           {/* Left Side: Text */}
           <div className="w-full md:w-1/2 mb-6 md:mb-0">

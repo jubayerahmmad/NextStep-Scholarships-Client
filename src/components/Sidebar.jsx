@@ -124,7 +124,7 @@ const Sidebar = () => {
                 <li>
                   <NavLink
                     to="admin-profile"
-                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-teal-100 dark:hover:bg-gray-700 group"
                   >
                     <FcStatistics size={20} />
                     <span className="ms-3">Admin Profile</span>
@@ -133,7 +133,7 @@ const Sidebar = () => {
                 <li>
                   <NavLink
                     to="allUsers"
-                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-teal-100 dark:hover:bg-gray-700 group"
                   >
                     <FaUserShield size={20} />
                     <span className="flex-1 ms-3 whitespace-nowrap">
@@ -150,7 +150,7 @@ const Sidebar = () => {
                 <li>
                   <NavLink
                     to="appliedScholarships"
-                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-teal-100 dark:hover:bg-gray-700 group"
                   >
                     <FaUserGraduate size={20} />
                     <span className="flex-1 ms-3 whitespace-nowrap">
@@ -161,7 +161,7 @@ const Sidebar = () => {
                 <li>
                   <NavLink
                     to="allReviews"
-                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-teal-100 dark:hover:bg-gray-700 group"
                   >
                     <MdReviews size={20} />
                     <span className="flex-1 ms-3 whitespace-nowrap">
@@ -172,7 +172,7 @@ const Sidebar = () => {
                 <li>
                   <NavLink
                     to="addScholarships"
-                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-teal-100 dark:hover:bg-gray-700 group"
                   >
                     <GiGraduateCap size={20} />
                     <span className="flex-1 ms-3 whitespace-nowrap">
@@ -183,7 +183,7 @@ const Sidebar = () => {
                 <li>
                   <NavLink
                     to="manageScholarships"
-                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-teal-100 dark:hover:bg-gray-700 group"
                   >
                     <LiaGraduationCapSolid size={20} />
                     <span className="flex-1 ms-3 whitespace-nowrap">
@@ -200,7 +200,7 @@ const Sidebar = () => {
                 <li>
                   <NavLink
                     to="myApplications"
-                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-teal-100 dark:hover:bg-gray-700 group"
                   >
                     <VscGitStashApply size={20} />
                     <span className="flex-1 ms-3 whitespace-nowrap">
@@ -211,7 +211,7 @@ const Sidebar = () => {
                 <li>
                   <NavLink
                     to="myReviews"
-                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-teal-100 dark:hover:bg-gray-700 group"
                   >
                     <MdRateReview size={20} />
                     <span className="flex-1 ms-3 whitespace-nowrap">
@@ -227,7 +227,7 @@ const Sidebar = () => {
             <li>
               <NavLink
                 to="my-profile"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-teal-100 dark:hover:bg-gray-700 group"
               >
                 <CgProfile size={20} />
                 <span className="flex-1 ms-3 whitespace-nowrap">Profile</span>
@@ -236,7 +236,7 @@ const Sidebar = () => {
             <li>
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-3 p-2 w-full text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="flex items-center gap-3 p-2 w-full text-gray-900 rounded-lg dark:text-white hover:bg-teal-100 dark:hover:bg-gray-700"
               >
                 <BiLogOut size={20} />
                 <span>Log Out</span>

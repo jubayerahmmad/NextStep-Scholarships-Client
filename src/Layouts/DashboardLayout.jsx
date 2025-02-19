@@ -13,7 +13,7 @@ const DashboardLayout = () => {
         <Sidebar />
       </div>
       {/* Dynamically show outlet */}
-      <div className="lg:ml-60 mt-14 w-full">
+      <div className="lg:ml-60 mt-[72px] w-full">
         <Outlet />
       </div>
     </div>
