@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
-    <div className="">
+    <>
       <Swiper
         pagination={true}
         modules={[Pagination]}
@@ -141,7 +141,7 @@ const Banner = () => {
           </div>
         </SwiperSlide>
       </Swiper>
-    </div>
+    </>
   );
 };
 

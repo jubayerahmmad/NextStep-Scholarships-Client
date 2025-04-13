@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="">
             {/* logo */}
             <div className="flex items-center gap-2">
-              <img className="w-16 h-16" src={logo} alt="" />
+              <img className="w-16 h-16" src={logo} alt="logo" />
               <div className="text-left bg-gradient-to-br from-teal-500 via-teal-700 to-teal-900 bg-clip-text text-transparent">
                 <h1 className="text-lg lg:text-xl font-bold">NextStep</h1>
                 <p className="text-lg lg:text-xl font-bold">Scholarships</p>

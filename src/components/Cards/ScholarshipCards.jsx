@@ -23,7 +23,7 @@ const ScholarshipCards = ({ scholarship }) => {
   } = scholarship || {};
 
   return (
-    <div className="w-full shadow-lg hover:shadow-xl duration-500 rounded-md border border-gray-200 animate__animated animate__zoomIn">
+    <div className="w-full shadow-lg hover:shadow-xl hover:border-black hover:bg-gray-100 duration-500 rounded-md border border-gray-200 animate__animated animate__zoomIn">
       <div className="relative flex items-center py-6 xl:py-4">
         {/* University Image */}
         <figure className="p-2">

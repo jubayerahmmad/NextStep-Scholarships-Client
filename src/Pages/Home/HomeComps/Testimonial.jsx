@@ -48,7 +48,7 @@ const Testimonial = () => {
         >
           {reviews?.map((review) => (
             <SwiperSlide>
-              <div className="w-full h-[450px] z-0 bg-gray-200 p-6 flex items-center justify-center flex-col">
+              <div className="w-full h-[450px] z-0 bg-gray-200 border rounded-lg hover:border hover:border-black duration-300 p-6 flex items-center justify-center flex-col">
                 <img
                   src={review.reviewerImage}
                   alt="reviewerImage"

@@ -51,7 +51,7 @@ const Navbar = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes!",
+      confirmButtonText: "Yes",
     }).then((result) => {
       if (result.isConfirmed) {
         logOutUser().then(() => {
@@ -66,7 +66,9 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed top-0 w-full z-50 bg-teal-100 animate__animated animate__fadeInDown shadow-xl">
+    <div
+      className={`fixed top-0 w-full transition-all duration-300 z-50 bg-teal-100 shadow-xl`}
+    >
       <div className="navbar lg:max-w-7xl mx-auto px-4 xl:px-0">
         <div className="navbar-start">
           <Link to={"/"} className="text-base hover:bg-none lg:text-2xl">

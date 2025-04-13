@@ -17,7 +17,6 @@ const Sidebar = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
   const { user, logOutUser } = useAuth();
   const navigate = useNavigate();
-
   const { role } = useRole();
 
   const handleLogout = () => {
@@ -63,7 +62,7 @@ const Sidebar = () => {
               {/* logo */}
               <Link to="/">
                 <div className="flex justify-center items-center gap-2">
-                  <img className="w-10 h-10" src={logo} alt="" />
+                  <img className="w-10 h-10" src={logo} alt="logo" />
                   <div className="text-left bg-gradient-to-br from-teal-500 via-teal-700 to-teal-950 bg-clip-text text-transparent">
                     <h1 className="text-sm lg:text-base font-bold">NextStep</h1>
                     <p className="text-xs lg:text-sm font-bold">Scholarships</p>
