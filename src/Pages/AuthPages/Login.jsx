@@ -182,6 +182,13 @@ const Login = () => {
                     Create Account
                   </Link>
                 </p>
+
+                <div>
+                  <h1 className="text-white text-center font-mono">
+                    Admin Credentials: email: cucu@cubarsi.com ||| password:
+                    Asdfghj
+                  </h1>
+                </div>
               </div>
             </div>
           </div>

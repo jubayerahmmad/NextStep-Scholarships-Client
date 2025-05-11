@@ -2,6 +2,10 @@
 
 NextStep Scholarships is a web application designed to manage scholarships, providing a platform for users to explore and apply for various scholarship opportunities.
 
+### Admin Credentials for Checking
+
+email: cucu@cubarsi.com || password: Asdfghj
+
 ## Screenshots
 
 Here are some screenshots of the NextStep Scholarships application:
