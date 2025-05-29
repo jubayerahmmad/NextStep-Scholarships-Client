@@ -5,7 +5,8 @@ import PrivateRoute from "./PrivateRoute";
 import OnlyAdminRoute from "./OnlyAdminRoute";
 import AdminModeratorRoute from "./AdminModeratorRoute";
 import UsersRoute from "./UsersRoute";
-import Loader from "../components/Loader";
+import Loader from "../components/Loaders/Loader";
+
 const Home = lazy(() => import("../Pages/Home/Home"));
 const AllScholarships = lazy(() =>
   import("../Pages/AllScholarships/AllScholarships")

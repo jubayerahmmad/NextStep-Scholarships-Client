@@ -2,8 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import ScholarshipCards from "../../../components/Cards/ScholarshipCards";
 import Heading from "../../../components/Heading";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
-import Loader from "../../../components/Loader";
 import { Link } from "react-router-dom";
+import Loader2 from "../../../components/Loaders/Loader2";
 
 const TopScholarships = () => {
   const axiosPublic = useAxiosPublic();
@@ -15,7 +15,7 @@ const TopScholarships = () => {
     },
   });
 
-  if (isLoading) return <Loader />;
+  if (isLoading) return <Loader2 />;
 
   return (
     <section className="px-4 py-6">

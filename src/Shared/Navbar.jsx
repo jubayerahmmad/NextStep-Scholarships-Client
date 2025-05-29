@@ -76,7 +76,7 @@ const Navbar = () => {
               <img className="w-10 h-10" src={logo} alt="" />
               <div className="text-left bg-gradient-to-br from-cyan-500 via-cyan-700 to-cyan-900 bg-clip-text text-transparent">
                 <h1 className="text-sm lg:text-base font-bold">NextStep</h1>
-                <p className="text-xs lg:text-sm font-bold">Scholarships</p>
+                <h2 className="text-xs lg:text-sm font-bold">Scholarships</h2>
               </div>
             </div>
           </Link>

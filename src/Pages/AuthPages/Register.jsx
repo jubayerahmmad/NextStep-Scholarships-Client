@@ -11,8 +11,9 @@ import ImageUploadInput from "../../components/ImageUploadInput";
 import { imageUpload } from "../../utils";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
-import Loader from "../../components/Loader";
+
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Loader from "../../components/Loaders/Loader";
 const Register = () => {
   const [imageFile, setImageFile] = useState("");
   const [showPassword, setShowPassword] = useState(false);

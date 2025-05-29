@@ -5,8 +5,9 @@ import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import Loader from "../Loader";
+
 import { toast } from "react-toastify";
+import Loader from "../Loaders/Loader";
 
 const ApplyScholarshipForm = () => {
   const { register, handleSubmit, reset } = useForm();

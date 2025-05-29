@@ -4,10 +4,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
 import { useQuery } from "@tanstack/react-query";
-import Loader from "../Loader";
+
 import Rating from "react-rating";
 import { FaRegStar, FaStar } from "react-icons/fa6";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Loader2 from "../Loaders/Loader2";
 
 const Reviews = ({ id }) => {
   const axiosPublic = useAxiosPublic();
@@ -19,7 +20,7 @@ const Reviews = ({ id }) => {
     },
   });
 
-  if (isLoading) return <Loader />;
+  if (isLoading) return <Loader2 />;
 
   return (
     <section className="">
@@ -85,9 +86,7 @@ const Reviews = ({ id }) => {
           </Swiper>
         </div>
       ) : (
-        <p className="text-4xl font-bold font-playfair text-center mt-12">
-          No Reviews Found
-        </p>
+        <p className="text-4xl font-bold text-center mt-12">No Reviews Found</p>
       )}
     </section>
   );

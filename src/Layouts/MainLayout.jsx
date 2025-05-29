@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../Shared/Navbar";
 import Footer from "../Shared/Footer";
 import useAuth from "../hooks/useAuth";
-import Loader from "../components/Loader";
+import Loader from "../components/Loaders/Loader";
 
 const MainLayout = () => {
   const { loading } = useAuth();

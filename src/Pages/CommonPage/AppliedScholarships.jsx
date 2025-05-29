@@ -2,11 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import Heading from "../../components/Heading";
 import AppliedScholarshipRow from "../../components/TableRows/AppliedScholarshipRow";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-import Loader from "../../components/Loader";
+
 import { useState } from "react";
 import ApplicationDetailsModal from "../../components/Modals/ApplicationDetailsModal";
 import FeedbackModal from "../../components/Modals/FeedbackModal";
 import { Helmet } from "react-helmet-async";
+import Loader from "../../components/Loaders/Loader";
 
 const AppliedScholarships = () => {
   const axiosPrivate = useAxiosPrivate();

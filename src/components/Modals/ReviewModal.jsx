@@ -2,8 +2,9 @@ import { RxCross1 } from "react-icons/rx";
 import useAuth from "../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-import Loader from "../Loader";
+
 import { toast } from "react-toastify";
+import Loader from "../Loaders/Loader";
 
 const ReviewModal = ({
   setReviewModalOpen,

@@ -3,11 +3,12 @@ import Heading from "../../components/Heading";
 import MyApplicationsRow from "../../components/TableRows/MyApplicationsRow";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useAuth from "../../hooks/useAuth";
-import Loader from "../../components/Loader";
+
 import { useState } from "react";
 import ReviewModal from "../../components/Modals/ReviewModal";
 import UpdateApplicationDetailsModal from "../../components/Modals/UpdateApplicationDetailsModal";
 import { Helmet } from "react-helmet-async";
+import Loader from "../../components/Loaders/Loader";
 
 const MyApplications = () => {
   const { user } = useAuth();

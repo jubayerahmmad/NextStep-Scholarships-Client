@@ -9,8 +9,9 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
-import Loader from "../../components/Loader";
+
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Loader from "../../components/Loaders/Loader";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { loginUser, googleLogin } = useAuth();

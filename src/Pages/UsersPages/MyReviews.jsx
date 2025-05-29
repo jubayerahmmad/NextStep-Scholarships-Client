@@ -3,10 +3,10 @@ import Heading from "../../components/Heading";
 import MyReviewRow from "../../components/TableRows/MyReviewRow";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useAuth from "../../hooks/useAuth";
-import Loader from "../../components/Loader";
 import { useState } from "react";
 import UpdateReviewModal from "../../components/Modals/UpdateReviewModal";
 import { Helmet } from "react-helmet-async";
+import Loader from "../../components/Loaders/Loader";
 
 const MyReviews = () => {
   const axiosPrivate = useAxiosPrivate();

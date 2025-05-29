@@ -4,7 +4,7 @@ import Heading from "../../components/Heading";
 import SearchBar from "../../components/SearchBar";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
-import Loader from "../../components/Loader";
+import Loader from "../../components/Loaders/Loader";
 import { useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import noData from "../../assets/No-data.gif";

@@ -4,7 +4,7 @@ import logo from "../assets/logo.png";
 
 const Footer = () => {
   return (
-    <section className="py-10 bg-teal-100">
+    <section className="py-10 bg-teal-400/30">
       <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="">
@@ -13,7 +13,7 @@ const Footer = () => {
               <img className="w-16 h-16" src={logo} alt="logo" />
               <div className="text-left bg-gradient-to-br from-teal-500 via-teal-700 to-teal-900 bg-clip-text text-transparent">
                 <h1 className="text-lg lg:text-xl font-bold">NextStep</h1>
-                <p className="text-lg lg:text-xl font-bold">Scholarships</p>
+                <h2 className="text-lg lg:text-xl font-bold">Scholarships</h2>
               </div>
             </div>
 

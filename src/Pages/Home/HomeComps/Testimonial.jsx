@@ -6,8 +6,8 @@ import { Pagination } from "swiper/modules";
 import Heading from "../../../components/Heading";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
-import Loader from "../../../components/Loader";
 import Rating from "react-rating";
+import Loader2 from "../../../components/Loaders/Loader2";
 const Testimonial = () => {
   const axiosPublic = useAxiosPublic();
 
@@ -19,7 +19,7 @@ const Testimonial = () => {
     },
   });
 
-  if (isLoading) return <Loader />;
+  if (isLoading) return <Loader2 />;
 
   return (
     <section className="px-4 py-6">
@@ -47,8 +47,8 @@ const Testimonial = () => {
           modules={[Pagination]}
         >
           {reviews?.map((review) => (
-            <SwiperSlide>
-              <div className="w-full h-[450px] z-0 bg-gray-200 border rounded-lg hover:border hover:border-black duration-300 p-6 flex items-center justify-center flex-col">
+            <SwiperSlide key={review._id}>
+              <div className="w-full h-[450px] z-0 bg-gray-200 border rounded-lg hover:border hover:border-gray-400 duration-300 p-6 flex items-center justify-center flex-col">
                 <img
                   src={review.reviewerImage}
                   alt="reviewerImage"

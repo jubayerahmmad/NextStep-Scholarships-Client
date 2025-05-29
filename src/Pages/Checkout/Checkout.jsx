@@ -5,9 +5,10 @@ import Heading from "../../components/Heading";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useParams } from "react-router-dom";
-import Loader from "../../components/Loader";
+
 import useRole from "../../hooks/useRole";
 import { Helmet } from "react-helmet-async";
+import Loader from "../../components/Loaders/Loader";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 const Checkout = () => {

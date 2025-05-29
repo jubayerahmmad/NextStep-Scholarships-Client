@@ -5,9 +5,10 @@ import { GrDocumentPerformance } from "react-icons/gr";
 import { MdRateReview } from "react-icons/md";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useQuery } from "@tanstack/react-query";
-import Loader from "../../components/Loader";
+
 import Chart from "../../components/TableRows/Chart";
 import Heading from "../../components/Heading";
+import Loader from "../../components/Loaders/Loader";
 
 const AdminProfile = () => {
   const axiosPrivate = useAxiosPrivate();

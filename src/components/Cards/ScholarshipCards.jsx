@@ -23,7 +23,7 @@ const ScholarshipCards = ({ scholarship }) => {
   } = scholarship || {};
 
   return (
-    <div className="w-full shadow-lg hover:shadow-xl hover:border-black hover:bg-gray-100 duration-500 rounded-md border border-gray-200 animate__animated animate__zoomIn">
+    <div className="w-full shadow-lg hover:shadow-xl hover:border-gray-400 hover:bg-gray-50 duration-500 rounded-md border border-gray-200  animate__animated animate__fadeIn">
       <div className="relative flex items-center py-6 xl:py-4">
         {/* University Image */}
         <figure className="p-2">
@@ -54,7 +54,7 @@ const ScholarshipCards = ({ scholarship }) => {
 
       {/* Card Body */}
       <div className="px-5 pb-2 h-32">
-        <h2 className="text-xl font-bold mb-4 font-playfair bg-gradient-to-br from-cyan-800 via-teal-800 to-teal-50 bg-clip-text text-transparent">
+        <h2 className="text-xl font-bold mb-4 bg-gradient-to-br from-cyan-800 via-teal-800 to-teal-50 bg-clip-text text-transparent">
           {scholarshipName}
         </h2>
         {/* Post date */}

@@ -3,9 +3,10 @@ import Heading from "../../components/Heading";
 import UsersTableRow from "../../components/TableRows/UsersTableRow";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-import Loader from "../../components/Loader";
+
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import Loader from "../../components/Loaders/Loader";
 
 const AllUsers = () => {
   const { user } = useAuth();

@@ -2,10 +2,11 @@ import { useState } from "react";
 import UpdateUserModal from "../../components/Modals/UpdateUserModal";
 import useAuth from "../../hooks/useAuth";
 import useRole from "../../hooks/useRole";
-import Loader from "../../components/Loader";
+
 import { Helmet } from "react-helmet-async";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Loader from "../../components/Loaders/Loader";
 
 const MyProfile = () => {
   const { user } = useAuth();

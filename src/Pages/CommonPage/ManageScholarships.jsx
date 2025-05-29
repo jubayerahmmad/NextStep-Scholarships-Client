@@ -3,10 +3,11 @@ import Heading from "../../components/Heading";
 import ManageScholarshipRow from "../../components/TableRows/ManageScholarshipRow";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useQuery } from "@tanstack/react-query";
-import Loader from "../../components/Loader";
+
 import UpdateScholarshipModal from "../../components/Modals/UpdateScholarshipModal";
 import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
+import Loader from "../../components/Loaders/Loader";
 
 const ManageScholarships = () => {
   const axiosPrivate = useAxiosPrivate();

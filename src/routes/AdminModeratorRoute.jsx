@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import useRole from "../hooks/useRole";
-import Loader from "../components/Loader";
+import Loader from "../components/Loaders/Loader";
 
 const AdminModeratorRoute = ({ children }) => {
   const { role, isLoading } = useRole();

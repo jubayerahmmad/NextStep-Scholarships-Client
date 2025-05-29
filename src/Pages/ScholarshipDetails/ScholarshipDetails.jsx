@@ -11,7 +11,7 @@ import { Helmet } from "react-helmet-async";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
-import Loader from "../../components/Loader";
+import Loader from "../../components/Loaders/Loader";
 import { FaGraduationCap } from "react-icons/fa6";
 
 const ScholarshipDetails = () => {

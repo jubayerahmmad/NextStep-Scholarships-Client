@@ -2,8 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import Heading from "../../components/Heading";
 import AllReviewsRow from "../../components/TableRows/AllReviewsRow";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-import Loader from "../../components/Loader";
+
 import { Helmet } from "react-helmet-async";
+import Loader from "../../components/Loaders/Loader";
 
 const AllReviews = () => {
   const axiosPrivate = useAxiosPrivate();
