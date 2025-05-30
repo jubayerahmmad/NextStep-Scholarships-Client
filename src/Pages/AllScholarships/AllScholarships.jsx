@@ -94,6 +94,7 @@ const AllScholarships = () => {
             {pages.map((page) => (
               <button
                 key={page}
+                onClick={() => setCurrentPage(page)}
                 className={`btn btn-outline btn-circle btn-sm ${
                   currentPage === page
                     ? "bg-accent text-white"

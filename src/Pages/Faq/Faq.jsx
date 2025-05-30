@@ -48,7 +48,7 @@ const Faq = () => {
         {accordingData?.map((according, index) => (
           <article key={index} className="bg-[#e5eaf2] rounded">
             <div
-              className="flex gap-2 cursor-pointer items-center justify-between w-full bg-gray-700 p-3 rounded"
+              className="flex gap-2 cursor-pointer items-center justify-between w-full bg-teal-700 p-3 rounded"
               onClick={() => handlebgAccording(index)}
             >
               <h2 className={` text-[#ffffff] font-[600] text-[1.2rem]`}>
@@ -94,7 +94,7 @@ const Faq = () => {
           </article>
         ))}
         <div className="text-center my-6 px-6">
-          <h3 className="text-xl lg:text-3xl font-bold underline underline-offset-4 decoration-teal-800">
+          <h3 className="text-xl lg:text-3xl font-bold underline underline-offset-8 decoration-teal-800">
             Have any other Questions?
           </h3>
           <p className="text-xs lg:text-base">
@@ -115,7 +115,7 @@ const Faq = () => {
                     type="text"
                     placeholder="Your name"
                     name="name"
-                    className="peer border-[#383844] border rounded-md focus:outline-teal-500 px-4 py-3 w-full bg-transparent text-gray-400 transition-colors duration-300"
+                    className="peer border-[#383844] border rounded-lg focus:outline-teal-500 px-4 py-2 w-full bg-transparent text-gray-400 transition-colors duration-300"
                   />
                 </div>
 
@@ -124,7 +124,7 @@ const Faq = () => {
                     type="email"
                     placeholder="Email address"
                     name="email"
-                    className="peer border-[#383844] border rounded-md focus:outline-teal-500 px-4 py-3 w-full bg-transparent text-gray-400 transition-colors duration-300"
+                    className="peer border-[#383844] border rounded-lg focus:outline-teal-500 px-4 py-2 w-full bg-transparent text-gray-400 transition-colors duration-300"
                   />
                 </div>
               </div>
@@ -133,7 +133,8 @@ const Faq = () => {
                 <textarea
                   placeholder="Write your Questions"
                   name="questions"
-                  className="peer min-h-[200px] border-[#383844] border rounded-md focus:outline-teal-500 px-4 bg-transparent py-3 w-full text-gray-400 transition-colors duration-300"
+                  rows={5}
+                  className="peer border-[#383844] border rounded-lg focus:outline-teal-500 px-4 bg-transparent py-2 w-full text-gray-400 transition-colors duration-300"
                 ></textarea>
               </div>
 

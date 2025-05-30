@@ -47,7 +47,7 @@ const ReviewModal = ({
       toast.success("Review Added");
     } catch (error) {
       setReviewModalOpen(false);
-      toast.error(error.response.data.message);
+      toast.error(error.response.data.message || "Error Adding Review");
     }
   };
 

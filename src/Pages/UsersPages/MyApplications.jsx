@@ -32,16 +32,6 @@ const MyApplications = () => {
 
   if (isLoading) return <Loader />;
 
-  // id of the scholarship where user applied (stored as scholarshipId)
-  const getScholarshipId = (id) => {
-    setScholarshipId(id);
-  };
-
-  // id of the applied scholarship (stored as _id) where all the info of the applicant is stored
-  const getApplicationId = (id) => {
-    setApplicationId(id);
-  };
-
   return (
     <div>
       <Helmet>
@@ -76,8 +66,8 @@ const MyApplications = () => {
                     key={application._id}
                     index={index}
                     application={application}
-                    getScholarshipId={getScholarshipId}
-                    getApplicationId={getApplicationId}
+                    setScholarshipId={setScholarshipId}
+                    setApplicationId={setApplicationId}
                     refetch={refetch}
                     setReviewModalOpen={setReviewModalOpen}
                     setUpdateModalOpen={setUpdateModalOpen}

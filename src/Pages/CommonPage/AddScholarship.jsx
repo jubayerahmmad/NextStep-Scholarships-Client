@@ -11,7 +11,7 @@ const AddScholarship = () => {
       <Heading Heading="Add a New Scholarship"></Heading>
 
       <div>
-        <AddScholarshipForm></AddScholarshipForm>
+        <AddScholarshipForm />
       </div>
     </div>
   );

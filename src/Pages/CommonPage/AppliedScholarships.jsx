@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import Heading from "../../components/Heading";
 import AppliedScholarshipRow from "../../components/TableRows/AppliedScholarshipRow";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-
 import { useState } from "react";
 import ApplicationDetailsModal from "../../components/Modals/ApplicationDetailsModal";
 import FeedbackModal from "../../components/Modals/FeedbackModal";
@@ -37,11 +36,6 @@ const AppliedScholarships = () => {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  // getting the id of the applied scholarship where  the feedback will be added.
-  const getFeedbackId = (id) => {
-    setFeedbackId(id);
   };
 
   return (
@@ -95,7 +89,7 @@ const AppliedScholarships = () => {
                     setisModalOpen={setisModalOpen}
                     setFeedbackModalOpen={setFeedbackModalOpen}
                     handleDetails={handleDetails}
-                    getFeedbackId={getFeedbackId}
+                    setFeedbackId={setFeedbackId}
                   />
                 ))}
               </tbody>

@@ -9,9 +9,9 @@ const MyApplicationsRow = ({
   index,
   refetch,
   setReviewModalOpen,
-  getScholarshipId,
   setUpdateModalOpen,
-  getApplicationId,
+  setApplicationId,
+  setScholarshipId,
 }) => {
   const axiosPrivate = useAxiosPrivate();
   const {
@@ -102,7 +102,7 @@ const MyApplicationsRow = ({
                 );
               }
               setUpdateModalOpen(true);
-              getApplicationId(_id);
+              setApplicationId(_id);
             }}
             className="btn btn-ghost btn-sm"
           >
@@ -120,7 +120,7 @@ const MyApplicationsRow = ({
         <button
           onClick={() => {
             setReviewModalOpen(true);
-            getScholarshipId(scholarshipId);
+            setScholarshipId(scholarshipId);
           }}
           className="btn btn-sm btn-accent"
         >

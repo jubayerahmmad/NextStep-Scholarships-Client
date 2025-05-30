@@ -9,8 +9,8 @@ const AppliedScholarshipRow = ({
   i,
   setisModalOpen,
   handleDetails,
-  getFeedbackId,
   setFeedbackModalOpen,
+  setFeedbackId,
 }) => {
   const axiosPrivate = useAxiosPrivate();
   const {
@@ -129,7 +129,7 @@ const AppliedScholarshipRow = ({
       <td>
         <button
           onClick={() => {
-            getFeedbackId(_id);
+            setFeedbackId(_id);
             setFeedbackModalOpen(true);
           }}
           className="btn btn-xs btn-accent"

@@ -2,7 +2,7 @@ import { RxCross1 } from "react-icons/rx";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import Loader from "../Loaders/Loader";
+import Loader2 from "../Loaders/Loader2";
 
 const UpdateReviewModal = ({
   setUpdateReviewModal,
@@ -19,7 +19,7 @@ const UpdateReviewModal = ({
     },
   });
 
-  if (isLoading) return <Loader />;
+  if (isLoading) return <Loader2 />;
   const { rating, review } = reviewData;
 
   const handleUpdate = async (e) => {
@@ -35,6 +35,7 @@ const UpdateReviewModal = ({
       toast.success("Review Updated");
       setUpdateReviewModal(false);
     } catch (error) {
+      toast.error(error.message || "Error Updating Review");
       console.log(error);
     }
   };
@@ -43,11 +44,11 @@ const UpdateReviewModal = ({
     <div
       className={`${
         updateReviewModal ? "visible" : "invisible"
-      } w-full h-screen fixed top-0 left-0 z-50 bg-[#0000009c] transition-all duration-300 flex items-center justify-center`}
+      } w-full min-h-screen fixed top-0 left-0 z-50 bg-[#0000009c] transition-all duration-300 flex items-center justify-center`}
     >
       <div
         className={`${
-          updateReviewModal ? "scale-[1] opacity-100" : " scale-[0] opacity-0"
+          updateReviewModal ? "scale-[1] opacity-100" : "scale-[0] opacity-0"
         } w-[90%] md:w-[80%] lg:w-[35%] bg-[#fff] rounded-lg transition-all duration-300 mx-auto mt-8`}
       >
         <div className="w-full flex items-end p-4 justify-between border-b border-[#d1d1d1]">
